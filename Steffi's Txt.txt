@@ -1,1 +1,61 @@
-Yes it worked
+UNH Boot Camp Project 2 Proposal
+Be sure to check the project requirements in the 02-Homework folder.
+
+Project Name
+The name of your application. A working title is fine.
+NH Pickup Leagues 
+
+
+Project Description
+In a few sentences, describe the following:
+*Helping people find pick-up games in New Hampshire.
+
+Who the audience is of this application
+
+*people in New Hampshire
+
+What the goal of this application is
+to match people locally to play pick-up games of their desired sport.
+How this application is used
+WHEN user creates an account
+THEN the user is prompt with suggestions
+WHEN the user finishes profile
+THEN they can create or join games
+
+
+Technical Details
+Here list out the following:
+Mysql
+Sequelize
+Heroku
+
+Server-side APIs used
+
+CSS Framework used
+Bootstrap 
+Additional API/Libraries used (axios, jQuery, moment)
+jQuery
+moment
+
+Group Leader
+You must choose amongst your group who the leader is, the leader's additional responsibilities are:
+Blake Thompson
+
+Manage the GitHub repo for the project
+
+Ensure everyone is completing their work
+Aid in distributing work fairly among teammates
+Facilitate group calls and zoom meetings
+Filling out this proposal document and providing it to the instructional staff
+
+The group leader is not just a project manager, it is expected for them to directly contribute to the project code as well.
+
+Team Members
+List out your team members and their roles here. You may choose not to define roles for team members
+and that is okay, but if your team has designated specific members for HTML, Design, JS, API work, etc. You can note that
+
+Blake Thompson 
+Keith Beaudoin
+Steffi Jerome
+Luba Pecheneva
+
