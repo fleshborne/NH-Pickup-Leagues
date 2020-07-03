@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(() => {
   $('.collapsible').collapsible();
   $('.dropdown-trigger').dropdown();
 });
