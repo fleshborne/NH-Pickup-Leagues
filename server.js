@@ -1,22 +1,41 @@
-const express = require('express');
-const db = require('./models');
-const routes = require('./routes');
+var express = require('express');
+var session = require('express-session');
 
-const app = express();
+// requiring passport as we 've configured it
 
-const PORT = process.env.PORT || 8080;
+var passport = require('./config/passport');
+
+//Setting up the port and requiring models for syncing
+
+var PORT = process.env.PORT || 3000;
+var db = require('./models');
+
+// required our API and HTML Routes
+const apiRoutes = require('./routes/apiRoutes');
+const htmlRoutes = require('./routes/htmlRoutes');
+
+//creating express app and configuring middleware needed for authentication
+
+var app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-app.use('/', routes);
+// we need to use sessions to keep track of our users' login
+app.use(
+  session({ secret: 'keyboard cat', resave: true, saveUninitialized: true })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
-// Sync sequelize models then start Express app
-// =============================================
-db.sequelize.sync().then(() => {
-  app.listen(PORT, () => {
-    console.log(`App listening on PORT ${PORT}`);
-  });
+//requiring routes
+
+app.use('/api', apiRoutes);
+app.use('/', htmlRoutes);
+
+// db.sequelize.sync().then(function () {
+app.listen(PORT, function () {
+  console.log(`Server listening on port ${PORT}`);
 });
-// adding some test text
+// });
