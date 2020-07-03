@@ -9,11 +9,11 @@ module.exports = (sequelize, DataTypes) => {
         // eslint-disable-next-line linebreak-style
       },
     },
-    body: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      len: [1],
-    },
+    // body: {
+    //   type: DataTypes.TEXT,
+    //   allowNull: false,
+    //   len: [1],
+    // },
     location: {
       type: DataTypes.TEXT,
       allowNull: false,
