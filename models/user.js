@@ -3,7 +3,6 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable max-len */
 /* eslint-disable no-param-reassign */
-/* eslint-disable linebreak-style */
 const bcrypt = require('bcryptjs');
 const { uuid } = require('uuidv4');
 // Creating our User model
@@ -11,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
   // eslint-disable-next-line no-var
   const User = sequelize.define('User', {
     userId: {
+      type: DataTypes.TEXT,
       id: uuid(),
+      primaryKey: true,
     },
     // The email cannot be null, and must be a proper email before creation
     email: {
@@ -32,6 +33,7 @@ module.exports = (sequelize, DataTypes) => {
   // unhashed password entered by the user can be compared to the hashed password stored in our database
   User.prototype.validPassword = (password) =>
     bcrypt.compareSync(password, this.password);
+
   // Hooks are automatic methods that run during various phases of the User Model lifecycle
   // In this case, before a User is created, we will automatically hash their password
   User.addHook('beforeCreate', (user) => {

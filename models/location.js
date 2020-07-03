@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable indent */
-
+// eslint-disable-next-line linebreak-style
 const { uuid } = require('uuidv4');
 
 module.exports = (sequelize, DataTypes) => {
@@ -11,14 +11,12 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         len: [1],
-        // eslint-disable-next-line linebreak-style
       },
     },
     id: {
+      id: uuid(),
       type: DataTypes.TEXT,
-      id: {
-        uuid,
-      },
+      primaryKey: true,
     },
     freezeTableName: true,
   });
