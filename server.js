@@ -1,4 +1,5 @@
-var express = require('express');
+/* eslint-disable linebreak-style */
+const express = require('express');
 const db = require('./models');
 const routes = require('./routes');
 
