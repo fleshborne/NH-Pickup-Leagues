@@ -1,0 +1,15 @@
+body {
+    background-color: #37474f;
+    color: #c6ff00;
+    text-align: center;
+}
+
+/* #dashboard {
+    border: 1px solid white;
+    border-radius: 25px;
+} */
+
+img {
+    height: 200px;
+    width: 200px;
+}
