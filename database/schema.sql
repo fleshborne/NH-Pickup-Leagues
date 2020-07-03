@@ -1,2 +1,35 @@
-DROP DATABASE IF EXISTS `sample_db`;
-CREATE DATABASE `sample_db`;
+DROP DATABASE IF EXISTS pickup_league;
+
+CREATE DATABASE pickup_league;
+
+USE pickup_league
+
+CREATE TABLE users (
+ id INTEGER AUTO_INCREMENT NOT NULL,
+ email VARCHAR(255) NOT NULL,
+ firstName VARCHAR(255) NOT NULL,
+ lastName VARCHAR(255) NOT NULL,
+ PASSWORD VARCHAR(255) NOT NULL,
+ PRIMARY KEY(id)
+);
+
+CREATE TABLE gameTypes (
+    id INTEGER AUTO_INCREMENT NOT NULL,
+    gameId VARCHAR(255) NOT NULL , 
+    minPlayers INTEGER NOT NULL,
+    maxPlayers INTEGER NOT NULL,
+    neededToPlay BOOLEAN NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY(gameId) REFERENCES games (id)
+);
+
+CREATE TABLE eventLocation (
+    id INTEGER AUTO_INCREMENT NOT NULL,
+    parkName VARCHAR(255) NOT NULL,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE games (
+    Id INTEGER AUTO_INCREMENT NOT NULL,
+    gameName  
+)
