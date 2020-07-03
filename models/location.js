@@ -1,6 +1,7 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable indent */
-/* eslint-disable linebreak-style */
+
 const { uuid } = require('uuidv4');
 
 module.exports = (sequelize, DataTypes) => {
