@@ -16,8 +16,10 @@ const { uuid } = require('uuidv4');
 module.exports = (sequelize, DataTypes) => {
   // eslint-disable-next-line no-var
   const User = sequelize.define('User', {
-    userId: {
+    id: {
+      type: DataTypes.TEXT,
       id: uuid(),
+      primaryKey: true,
     },
     // The email cannot be null, and must be a proper email before creation
     email: {
