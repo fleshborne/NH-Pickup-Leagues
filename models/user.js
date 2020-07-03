@@ -1,15 +1,25 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable func-names */
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable linebreak-style */
+/* eslint-disable import/no-unresolved */
+
 /* eslint-disable comma-dangle */
 /* eslint-disable no-param-reassign */
 /* eslint-disable linebreak-style */
-/* eslint-disable func-names */
 
 const bcrypt = require('bcryptjs');
+const { uuid } = require('uuidv4');
 // Creating our User model
-module.exports = function (sequelize, DataTypes) {
-  const User = sequelize.define('User', {
-    // The email cannot be null, and must be a proper email before creation
 
+// Creating our User model
+module.exports = (sequelize, DataTypes) => {
+  // eslint-disable-next-line no-var
+  const User = sequelize.define('User', {
+    userId: {
+      id: uuid(),
+    },
+    // The email cannot be null, and must be a proper email before creation
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -23,17 +33,6 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
-
-    // //username
-
-    // username: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   unique: true,
-    //   validate: {
-    //     isusername: true,
-    //   },
-    // },
   });
 
   User.prototype.validPassword = function (password) {
