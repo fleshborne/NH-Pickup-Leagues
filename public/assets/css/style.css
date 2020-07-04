@@ -1,0 +1,37 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+@font-face {
+  font-family: 'sports';
+  src: url(../fonts/TrueType/SFSportsNight.ttf);
+}
+@font-face {
+  font-family: 'teamspirit';
+  src: url(../fonts/TrueType/TeamSpiritNF.otf);
+}
+
+body {
+  background-image: url('../images/vball.jpg');
+  background-size: cover !important;
+  min-height: 100vh;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+}
+h1 {
+  font-family: sports;
+  margin: 0;
+  text-shadow: 1px 1px 2px orange;
+}
