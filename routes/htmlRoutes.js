@@ -1,4 +1,7 @@
 /* eslint-disable linebreak-style */
+// eslint-disable-next-line linebreak-style
+/* eslint-disable quotes */
+/* eslint-disable linebreak-style */
 const path = require('path');
 const router = require('express').Router();
 
@@ -24,7 +27,13 @@ router.get('/login', (req, res) => {
 // Here we've add our isAuthenticated middleware to this route.
 
 router.get('/members', isAuthenticated, (req, res) => {
+  console.log('code should come here');
   res.sendFile(path.join(__dirname, '../public/members.html'));
 });
 
+// Route for logging user out
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
+});
 module.exports = router;
