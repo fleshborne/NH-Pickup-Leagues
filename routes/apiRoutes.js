@@ -1,4 +1,6 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable prefer-template */
+/* eslint-disable linebreak-style */
 /* eslint-disable spaced-comment */
 /* eslint-disable linebreak-style */
 /* eslint-disable func-names */
@@ -15,6 +17,7 @@ const passport = require('../config/passport');
 // If the user has valid login credentials, send them to the members page.
 // Otherwise the user will be sent an error
 router.post('/login', passport.authenticate('local'), function (req, res) {
+  console.log(req.user + res.user);
   res.json(req.user);
 });
 
@@ -25,9 +28,10 @@ router.post('/signup', (req, res) => {
     email: req.body.email,
     password: req.body.password,
   })
-    .then(() => {
-      res.redirect(307, '/members');
-      console.log('user created');
+    .then(function () {
+      res.redirect(307, '/api/login');
+      //res.json(req.body.email);
+      // console.log('createduser' + req.body);
     })
     .catch((err) => {
       res.status(401).json(err);

@@ -1,4 +1,13 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable spaced-comment */
+/* eslint-disable linebreak-style */
+/* eslint-disable space-infix-ops */
+/* eslint-disable linebreak-style */
+/* eslint-disable prefer-template */
+/* eslint-disable linebreak-style */
+/* eslint-disable indent */
+/* eslint-disable quotes */
+/* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 
@@ -34,16 +43,20 @@ $(document).ready(() => {
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
   function signUpUser(email, password) {
+    console.log('check 1' + email + password);
     $.post('/api/signup', {
       //   username: username,
       email,
       password,
     })
-      .then((data) => {
+      .then(() => {
+        console.log('check 2');
         window.location.replace('/members');
         // If there's an error, handle it by throwing up a bootstrap alert
       })
-      .catch(handleLoginErr);
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function handleLoginErr(err) {
