@@ -16,9 +16,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     id: {
       type: DataTypes.TEXT,
-      id: {
-        uuid,
-      },
+      id: uuid(),
+      primaryKey: true,
     },
     freezeTableName: true,
   });
