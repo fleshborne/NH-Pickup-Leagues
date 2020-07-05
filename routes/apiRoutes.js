@@ -62,12 +62,13 @@ router.get('/user_data', (req, res) => {
   }
 });
 router.get('/user_schedule', (req, res) => {
+  db.GameTypes.findAll().then((schedule) => res.json(schedule));
   console.log(res);
-  res.json('get all games from schedule');
+  // res.json('get all games from schedule');
 });
 
 router.get('/user_schedule/:id', (req, res) => {
-  console.log(res);
+  // console.log(res);
   res.json('get schedule by id');
 });
 
