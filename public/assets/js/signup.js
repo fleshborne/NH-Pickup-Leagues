@@ -21,6 +21,7 @@ $(document).ready(() => {
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on('submit', (event) => {
     event.preventDefault();
+
     const userData = {
       username: userNameInput.val().trim(),
       email: emailInput.val().trim(),
@@ -48,8 +49,9 @@ $(document).ready(() => {
       email,
       password,
     })
-      .then(() => {
-        console.log('check 2');
+      .then((res) => {
+        //console.log('check 2');
+        // sessionStorage.setItem('id', res.user.id);
         window.location.replace('/members');
         // If there's an error, handle it by throwing up a bootstrap alert
       })
