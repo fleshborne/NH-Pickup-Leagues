@@ -54,8 +54,8 @@ h1 {
   margin: 0;
   /* text-shadow: 1px 1px 2px orange; */
 }
-.profileimg {
-  width: 20px;
+#avatar {
+  height: 300px;
   /* text-shadow: 1px 1px 2px orange; */
   /* TODO: fix this class for profile pic */
 }
