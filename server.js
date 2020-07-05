@@ -24,6 +24,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // we need to use sessions to keep track of our users' login
+
 app.use(
   session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }),
 );
