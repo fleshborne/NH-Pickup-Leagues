@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-=======
-/* eslint-disable linebreak-style */
-/* eslint-disable comma-dangle */
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable linebreak-style */
-
->>>>>>> 43d8e1f4068e8475562521c81a3e0ab074e99650
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');

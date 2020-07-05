@@ -13,17 +13,9 @@ const bcrypt = require('bcryptjs');
 // Creating our User model
 
 // Creating our User model
-
-// Creating our User model
 module.exports = (sequelize, DataTypes) => {
   // eslint-disable-next-line no-var
   const User = sequelize.define('User', {
-<<<<<<< HEAD
-    id: {
-      type: DataTypes.TEXT,
-      id: uuid(),
-      primaryKey: true,
-=======
     // id: {
     //   type: DataTypes.INTEGER,
     //   id: uuid(),
@@ -37,7 +29,6 @@ module.exports = (sequelize, DataTypes) => {
       // validate: {
       //   isusername: true,
       // },
->>>>>>> 43d8e1f4068e8475562521c81a3e0ab074e99650
     },
     // The email cannot be null, and must be a proper email before creation
     email: {
