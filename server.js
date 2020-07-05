@@ -9,7 +9,7 @@ const passport = require('./config/passport');
 // Setting up the port and requiring models for syncing
 
 const PORT = process.env.PORT || 8081;
-// const db = require('./models');
+const db = require('./models');
 
 // required our API and HTML Routes
 const apiRoutes = require('./routes/apiRoutes');
@@ -24,7 +24,9 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // we need to use sessions to keep track of our users' login
-app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+app.use(
+  session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }),
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -33,8 +35,8 @@ app.use(passport.session());
 app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
 
-// db.sequelize.sync().then(function () {
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+db.sequelize.sync().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+  });
 });
-// });

@@ -1,4 +1,7 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable comma-dangle */
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable linebreak-style */
 
 const fs = require('fs');
 const path = require('path');
@@ -19,13 +22,14 @@ if (config.use_env_variable) {
     config.database,
     config.username,
     config.password,
-    config,
+    config
   );
 }
 
 fs.readdirSync(__dirname)
   .filter(
-    (file) => file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js',
+    (file) =>
+      file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
   )
   .forEach((file) => {
     const model = sequelize.import(path.join(__dirname, file));

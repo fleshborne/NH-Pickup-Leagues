@@ -17,14 +17,14 @@ const passport = require('../config/passport');
 // If the user has valid login credentials, send them to the members page.
 // Otherwise the user will be sent an error
 router.post('/login', passport.authenticate('local'), function (req, res) {
-  // console.log(req.user + res.user);
+  console.log(req.user);
   res.json(req.user);
 });
 
 // otherwise send back an error
 router.post('/signup', (req, res) => {
   db.User.create({
-    // username: req.body.username,
+    username: req.body.username,
     email: req.body.email,
     password: req.body.password,
   })
@@ -53,6 +53,7 @@ router.get('/user_data', (req, res) => {
     // Otherwise send back the user's email and id
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
+      username: req.user.username,
       email: req.user.email,
       id: req.user.id,
     });
