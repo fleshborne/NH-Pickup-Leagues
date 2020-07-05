@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "password",
-    "database": "passport_demo",
+    "database": "pickup_league",
     "host": "localhost",
     "dialect": "mysql"
   },
