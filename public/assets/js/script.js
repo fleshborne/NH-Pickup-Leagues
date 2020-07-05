@@ -5,10 +5,4 @@
 $(document).ready(() => {
   $('.collapsible').collapsible();
   $('.dropdown-trigger').dropdown();
-
-  const signupbutton = $('#input-signup');
-
-  signupbutton.on('submit', (event) => {
-    event.preventDefault();
-  });
 });
