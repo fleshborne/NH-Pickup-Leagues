@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const router = require('express').Router();
 const apiRoutes = require('./api-routes');
 const htmlRoutes = require('./html-routes');

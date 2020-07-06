@@ -4,16 +4,11 @@
 /* eslint-disable max-len */
 /* eslint-disable no-param-reassign */
 const bcrypt = require('bcryptjs');
-const { uuid } = require('uuidv4');
+
 // Creating our User model
 module.exports = (sequelize, DataTypes) => {
   // eslint-disable-next-line no-var
   const User = sequelize.define('User', {
-    userId: {
-      type: DataTypes.TEXT,
-      id: uuid(),
-      primaryKey: true,
-    },
     // The email cannot be null, and must be a proper email before creation
     email: {
       type: DataTypes.STRING,
@@ -43,5 +38,6 @@ module.exports = (sequelize, DataTypes) => {
       null
     );
   });
+  // User.hasMany(Game, {});
   return User;
 };

@@ -83,11 +83,13 @@
               </div>
             </li>
             <li>
-              <div class="collapsible-header blue-grey darken-3">
-                <i class="material-icons">group_add</i>Find a Game
+              <div class="collapsible-header blue-grey darken-3 findGame">
+                <i class="material-icons">group_add</i>
+                Find a Game
               </div>
-              <div class="collapsible-body blue-grey">
-                <span>Add a Game stuff.</span>
+              <div id="searchBtn" class="collapsible-body grey darken-3">
+                <a class="waves-effect waves-light btn">Search!</a>
+                <div id="map"></div>
               </div>
             </li>
             <li>
@@ -148,5 +150,11 @@
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./assets/js/script.js"></script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmB4KsTsBpXxLxGIYpMNwBYv9Hs1SJ0js&callback=initMap"
+    async
+    defer
+  ></script>
+
   </body>
 </html>
