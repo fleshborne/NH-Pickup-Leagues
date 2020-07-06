@@ -18,6 +18,11 @@ function displaySaved() {
 }
 
 $(document).ready(() => {
+  $.get('/api/locations').then((data) => {
+    console.log(data);
+    console.log('This is data');
+  });
+
   const newGameForm = $('.add-game');
   const gameTypeInput = $('#game-type');
   const locationInput = $('#game-location');
@@ -26,8 +31,9 @@ $(document).ready(() => {
     event.preventDefault();
     console.log(gameTypeInput.val());
     console.log(locationInput.val());
+
     displaySaved();
   });
 });
 
-locationInput.append(`<option> `)
+// locationInput.append(`<option> `);
