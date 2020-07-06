@@ -9,9 +9,14 @@
 // After entering data, it is appended to the page, and after the "Create" button appears.
 
 // On click "Create", the new "game" is added to the table, to your games.
+function displaySaved() {
+  document.getElementById('display-message').innerHTML = 'Game Saved to My Schedule!';
+  setTimeout(() => {
+    document.getElementById('display-message').innerHTML = ' ';
+  }, 1000);
+}
 
 $(document).ready(() => {
-
   const newGameForm = $('.add-game');
   const gameTypeInput = $('#game-type');
 
@@ -20,19 +25,7 @@ $(document).ready(() => {
     event.preventDefault();
     // alert('button clicked');
     console.log(gameTypeInput.val());
-    // const userData = {
-    //   email: emailInput.val().trim(),
-    //   password: passwordInput.val(),
-    // };
-
-    // if (!userData.email || !userData.password) {
-    //   return;
-    // }
-
-    // // If we have an email and password we run the loginUser function and clear the form
-    // loginUser(userData.email, userData.password);
-    // emailInput.val('');
-    // passwordInput.val('');
+    displaySaved();
   });
   //   function loginUser(email, password) {
   //     // sessionStorage.setItem('test', email);
