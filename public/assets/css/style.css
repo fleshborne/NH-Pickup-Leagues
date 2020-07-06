@@ -14,11 +14,28 @@
 }
 @font-face {
   font-family: 'sports';
-  src: url(../fonts/TrueType/SFSportsNight.ttf);
+  src: url(../fonts/TrueType/SFSportsNightNS.ttf);
 }
 @font-face {
   font-family: 'teamspirit';
   src: url(../fonts/TrueType/TeamSpiritNF.otf);
+}
+@font-face {
+  font-family: 'fightnight';
+  src: url(../fonts/TrueType/FightNight.otf);
+}
+@font-face {
+  font-family: 'sketchcollege';
+  src: url(../fonts/TrueType/SketchCollege.ttf);
+}
+@font-face {
+  font-family: 'Enfatica';
+  src: url(../fonts/TrueType/Enfatica.otf);
+}
+
+@font-face {
+  font-family: 'Enfaticaob';
+  src: url(../fonts/TrueType/Enfaticaob.otf);
 }
 
 body {
@@ -29,9 +46,19 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   color: white;
+  /* font-family: sports; */
+  margin: 0;
 }
 h1 {
-  font-family: sports;
+  font-family: sketchcollege;
   margin: 0;
-  text-shadow: 1px 1px 2px orange;
+  /* text-shadow: 1px 1px 2px orange; */
+}
+#avatar {
+  width: 100%;
+  /* text-shadow: 1px 1px 2px orange; */
+  /* TODO: fix this class for profile pic */
+}
+h5 {
+  font-family: sports;
 }
