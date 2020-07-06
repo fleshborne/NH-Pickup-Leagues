@@ -28,7 +28,7 @@ $(document).ready(() => {
       password: passwordInput.val().trim(),
     };
 
-    console.log(userData);
+    // console.log(userData);
 
     if (!userData.email || !userData.password || !userData.username) {
       return;

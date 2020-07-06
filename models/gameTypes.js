@@ -17,6 +17,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
-  console.log(Schedule);
+  // console.log(Schedule);
   return Schedule;
 };
