@@ -5,8 +5,47 @@
 // On click "Time", I can enter time.
 
 // On click "location", I request the list of locations from thw db.
-const locationList = $("dropdown4");
 
 // After entering data, it is appended to the page, and after the "Create" button appears.
 
 // On click "Create", the new "game" is added to the table, to your games.
+
+$(document).ready(() => {
+
+  const newGameForm = $('.add-game');
+  const gameTypeInput = $('#game-type');
+
+  // When the form is submitted, we validate there's an email and password entered
+  newGameForm.on('submit', (event) => {
+    event.preventDefault();
+    // alert('button clicked');
+    console.log(gameTypeInput.val());
+    // const userData = {
+    //   email: emailInput.val().trim(),
+    //   password: passwordInput.val(),
+    // };
+
+    // if (!userData.email || !userData.password) {
+    //   return;
+    // }
+
+    // // If we have an email and password we run the loginUser function and clear the form
+    // loginUser(userData.email, userData.password);
+    // emailInput.val('');
+    // passwordInput.val('');
+  });
+  //   function loginUser(email, password) {
+  //     // sessionStorage.setItem('test', email);
+  //     $.post('/api/login', {
+  //       email,
+  //       password,
+  //     })
+  //       .then(() => {
+  //         window.location.replace('/members');
+  //         // If there's an error, log the error
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }
+});
