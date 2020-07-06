@@ -21,13 +21,14 @@ $(document).ready(() => {
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on('submit', (event) => {
     event.preventDefault();
+
     const userData = {
       username: userNameInput.val().trim(),
       email: emailInput.val().trim(),
       password: passwordInput.val().trim(),
     };
 
-    console.log(userData);
+    // console.log(userData);
 
     if (!userData.email || !userData.password || !userData.username) {
       return;
@@ -48,8 +49,9 @@ $(document).ready(() => {
       email,
       password,
     })
-      .then(() => {
-        console.log('check 2');
+      .then((res) => {
+        //console.log('check 2');
+        // sessionStorage.setItem('id', res.user.id);
         window.location.replace('/members');
         // If there's an error, handle it by throwing up a bootstrap alert
       })

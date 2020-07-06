@@ -1,4 +1,6 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-useless-return */
+/* eslint-disable linebreak-style */
 /* eslint-disable prefer-template */
 /* eslint-disable linebreak-style */
 /* eslint-disable spaced-comment */
@@ -29,9 +31,9 @@ router.post('/signup', (req, res) => {
     password: req.body.password,
   })
     .then(function () {
+      //res.json(req.body);
+      //console.log('createduser' + res.body);
       res.redirect(307, '/api/login');
-      //res.json(req.body.email);
-      // console.log('createduser' + req.body);
     })
     .catch((err) => {
       res.status(401).json(err);
@@ -72,5 +74,15 @@ router.get('/user_data', (req, res) => {
 
 
 
+router.get('/user_schedule', (req, res) => {
+  db.GameTypes.findAll().then((schedule) => res.json(schedule));
+  console.log(res);
+  // res.json('get all games from schedule');
+});
+
+router.get('/user_schedule/:id', (req, res) => {
+  // console.log(res);
+  res.json('get schedule by id');
+});
 
 module.exports = router;
