@@ -7,12 +7,13 @@ $.get('/api/user_data').then((data) => {
   $('.member-name').text(data.username);
 });
 
-//get all the games 
+// get all the games
+// eslint-disable-next-line no-undef
 axios.get('/api//user_schedule')
   .then((schedule) => {
     // code goes here
     console.log(schedule);
-    schedule.data.forEach(game => {
+    schedule.data.forEach((game) => {
       console.log(game);
       const $table = $('#schedule-table tbody');
       const $rowCardTable = $('#rowCardAppend');
@@ -24,7 +25,7 @@ axios.get('/api//user_schedule')
       <td>${game.minPlayers}</td>
       <td>${game.maxPlayers}</td>
     </tr>`);
-      // try card 
+      // try card
       if (game.gameTypesName === 'Soccer') {
         imageCardPath = `${imageCardPath}soccer.jpg`;
       } else if (game.gameTypesName === 'Volleyball') {
@@ -51,12 +52,7 @@ axios.get('/api//user_schedule')
                   </div>
                 </div>
               </div>
-              </div>`
+              </div>`,
       );
     });
   });
-
-
-//loop over each activity
-
-//render each game
