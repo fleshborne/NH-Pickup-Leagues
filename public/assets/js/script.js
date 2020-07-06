@@ -25,10 +25,11 @@ function initMap() {
       map,
       title: location.name,
     });
+    // will call marker when we establish what we want to show
   });
 }
 $(document).ready(() => {
   $('.collapsible').collapsible();
   $('.dropdown-trigger').dropdown();
-  $('#searchBtn').on('click', initMap);
+  $('#searchBtn').on('click', initMap());
 });
