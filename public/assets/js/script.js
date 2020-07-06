@@ -1,5 +1,5 @@
-/* eslint-disable no-undef */
 /* eslint-disable linebreak-style */
+/* eslint-disable no-undef */
 /* eslint-disable padded-blocks */
 /* eslint-disable no-trailing-spaces */
 const portsmouth = {
@@ -16,6 +16,7 @@ function initMap() {
   });
 
   allLocations.forEach((location) => {
+    // eslint-disable-next-line no-unused-vars
     const marker = new google.maps.Marker({
       position: {
         lat: location.lat,
