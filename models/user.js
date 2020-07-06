@@ -17,14 +17,6 @@ module.exports = (sequelize, DataTypes) => {
   // eslint-disable-next-line no-var
   const User = sequelize.define('User', {
     // The email cannot be null, and must be a proper email before creation
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true,
-      },
-    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -32,6 +24,14 @@ module.exports = (sequelize, DataTypes) => {
       // validate: {
       //   isUsername: true,
       // },
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true,
+      },
     },
     // The password cannot be null
     password: {
