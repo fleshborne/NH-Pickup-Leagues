@@ -51,7 +51,7 @@ $(document).ready(() => {
     })
       .then((res) => {
         //console.log('check 2');
-        // sessionStorage.setItem('id', res.user.id);
+        sessionStorage.setItem('id', res.user.id);
         window.location.replace('/members');
         // If there's an error, handle it by throwing up a bootstrap alert
       })

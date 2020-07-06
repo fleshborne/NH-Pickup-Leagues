@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 module.exports = (sequelize, DataTypes) => {
   const Schedule = sequelize.define('GameTypes', {
     gameTypesName: {

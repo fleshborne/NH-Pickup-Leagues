@@ -1,7 +1,5 @@
 /* eslint-disable linebreak-style */
-// eslint-disable-next-line linebreak-style
 /* eslint-disable quotes */
-/* eslint-disable linebreak-style */
 const path = require('path');
 const router = require('express').Router();
 

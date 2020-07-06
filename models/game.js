@@ -1,26 +1,14 @@
 /* eslint-disable linebreak-style */
 module.exports = (sequelize, DataTypes) => {
   const Game = sequelize.define('Game', {
-    title: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      validate: {
-        len: [1],
-        // eslint-disable-next-line linebreak-style
-      },
+    gameType: {
+      type: DataTypes.STRING,
     },
     location: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      len: [1],
+      type: DataTypes.TEXT,
     },
-    minPlayer: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    maxPlayer: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
+    date: {
+      type: DataTypes.TEXT,
     },
   });
   Game.associate = (models) => {
