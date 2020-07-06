@@ -1,6 +1,7 @@
 /* eslint-disable linebreak-style */
-/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable comma-dangle */
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable linebreak-style */
 
 const fs = require('fs');
 const path = require('path');

@@ -10,9 +10,20 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         len: [1],
+        // eslint-disable-next-line linebreak-style
       },
     },
+    gameType: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   });
-
+  Location.associate = (models) => {
+    Location.hasMany(models.Game, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
   return Location;
 };

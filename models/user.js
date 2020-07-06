@@ -1,9 +1,16 @@
 /* eslint-disable linebreak-style */
-/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable func-names */
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable linebreak-style */
+/* eslint-disable import/no-unresolved */
+
 /* eslint-disable comma-dangle */
-/* eslint-disable max-len */
 /* eslint-disable no-param-reassign */
+/* eslint-disable linebreak-style */
+
 const bcrypt = require('bcryptjs');
+// const { uuid } = require('uuidv4');
+// Creating our User model
 
 // Creating our User model
 module.exports = (sequelize, DataTypes) => {
@@ -24,12 +31,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
-  // Creating a custom method for our User model. This will check if an
-  // unhashed password entered by the user can be compared to the hashed password stored in our database
-  User.prototype.validPassword = (password) =>
-    bcrypt.compareSync(password, this.password);
 
-  // Hooks are automatic methods that run during various phases of the User Model lifecycle
+  User.prototype.validPassword = function (password) {
+    return bcrypt.compareSync(password, this.password);
+  };
+  // Hooks are automatic methods that run during constious phases of the User Model lifecycle
   // In this case, before a User is created, we will automatically hash their password
   User.addHook('beforeCreate', (user) => {
     user.password = bcrypt.hashSync(
