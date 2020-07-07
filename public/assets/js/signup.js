@@ -14,7 +14,6 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
-
 $(document).ready(() => {
   // $('.modal').modal();
   // Getting references to our form and input
@@ -55,14 +54,20 @@ $(document).ready(() => {
       email: emailInput.val().trim(),
       password: passwordInput.val().trim(),
     };
+<<<<<<< HEAD
     // console.log('OVJ', userData);
+=======
+    // console.log(userData);
+    if (!userData.email || !userData.password || !userData.username) {
+      return;
+    }
+>>>>>>> 2e743fba128e74d47b5712e495d3a03cebf0ab9c
     // If we have an email and password, run the signUpUser function
     signUpUser(userData.username, userData.email, userData.password);
     emailInput.val('');
     passwordInput.val('');
     userNameInput.val('');
   });
-
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
   function signUpUser(username, email, password) {
@@ -77,7 +82,6 @@ $(document).ready(() => {
         console.log(err);
       });
   }
-
   function handleLoginErr(err) {
     $('#alert .msg').text(err.responseJSON);
     $('#alert').fadeIn(500);
