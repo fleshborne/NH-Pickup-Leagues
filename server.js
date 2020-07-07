@@ -1,6 +1,6 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable eol-last */
-
+/* eslint-disable import/no-unresolved */
 const express = require('express');
 const session = require('express-session');
 
