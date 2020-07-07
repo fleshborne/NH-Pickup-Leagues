@@ -1,3 +1,4 @@
+/* eslint-disable eol-last */
 /* eslint-disable linebreak-style */
 /* eslint-disable func-names */
 /* eslint-disable no-trailing-spaces */
@@ -21,9 +22,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      // validate: {
-      //   isUsername: true,
-      // },
     },
     email: {
       type: DataTypes.STRING,
