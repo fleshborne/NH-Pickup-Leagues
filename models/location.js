@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 module.exports = (sequelize, DataTypes) => {
   const Location = sequelize.define('Location', {
     parkName: {
@@ -5,14 +6,12 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
-
-//   Location.associate = (models) => {
-//     Location.belongsTo(models.Game, {
-//       foreignKey: {
-//         allowNull: false,
-//       },
-//     });
-//   };
-
+  //   Location.associate = (models) => {
+  //     Location.belongsTo(models.Game, {
+  //       foreignKey: {
+  //         allowNull: false,
+  //       },
+  //     });
+  //   };
   return Location;
 };
