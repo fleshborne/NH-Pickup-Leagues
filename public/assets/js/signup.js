@@ -10,14 +10,12 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
-
 $(document).ready(() => {
   // Getting references to our form and input
   const signUpForm = $('form.signup');
   const userNameInput = $('input#username-input');
   const emailInput = $('input#email-input');
   const passwordInput = $('input#password-input');
-
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on('submit', (event) => {
     event.preventDefault();
@@ -27,9 +25,7 @@ $(document).ready(() => {
       email: emailInput.val().trim(),
       password: passwordInput.val().trim(),
     };
-
     // console.log(userData);
-
     if (!userData.email || !userData.password || !userData.username) {
       return;
     }
@@ -39,7 +35,6 @@ $(document).ready(() => {
     passwordInput.val('');
     // userNameInput.val('');
   });
-
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
   function signUpUser(username, email, password) {
@@ -59,7 +54,6 @@ $(document).ready(() => {
         console.log(err);
       });
   }
-
   function handleLoginErr(err) {
     $('#alert .msg').text(err.responseJSON);
     $('#alert').fadeIn(500);

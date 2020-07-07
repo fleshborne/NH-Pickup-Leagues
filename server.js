@@ -1,4 +1,6 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable eol-last */
+
 const express = require('express');
 const session = require('express-session');
 
@@ -19,14 +21,20 @@ const htmlRoutes = require('./routes/htmlRoutes');
 
 const app = express();
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+  extended: true,
+}));
 app.use(express.json());
 app.use(express.static('public'));
 
 // we need to use sessions to keep track of our users' login
 
 app.use(
-  session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }),
+  session({
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true,
+  }),
 );
 app.use(passport.initialize());
 app.use(passport.session());

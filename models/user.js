@@ -16,21 +16,15 @@ const bcrypt = require('bcryptjs');
 module.exports = (sequelize, DataTypes) => {
   // eslint-disable-next-line no-var
   const User = sequelize.define('User', {
-    // id: {
-    //   type: DataTypes.INTEGER,
-    //   id: uuid(),
-    //   primaryKey: true,
-    // },
-
+    // The email cannot be null, and must be a proper email before creation
     username: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
       // validate: {
-      //   isusername: true,
+      //   isUsername: true,
       // },
     },
-    // The email cannot be null, and must be a proper email before creation
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -58,5 +52,10 @@ module.exports = (sequelize, DataTypes) => {
       null
     );
   });
+  User.associate = (models) => {
+    User.hasMany(models.Game, {
+      onDelete: 'cascade',
+    });
+  };
   return User;
 };
