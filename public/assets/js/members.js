@@ -1,4 +1,10 @@
 /* eslint-disable linebreak-style */
+
+// Handles the dropdown logic
+$(document).ready(() => {
+  $('select').formSelect();
+});
+
 $(document).ready(() => {
   $('.collapsible').collapsible();
   $('.dropdown-trigger').dropdown();
