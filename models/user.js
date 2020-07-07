@@ -52,6 +52,10 @@ module.exports = (sequelize, DataTypes) => {
       null
     );
   });
-  // User.hasMany(Game, {});
+  User.associate = (models) => {
+    User.hasMany(models.Game, {
+      onDelete: 'cascade',
+    });
+  };
   return User;
 };

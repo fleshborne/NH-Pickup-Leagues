@@ -59,16 +59,13 @@ h1 {
   /* text-shadow: 1px 1px 2px orange; */
   /* TODO: fix this class for profile pic */
 }
+h5 {
+  font-family: sports;
+}
 #map {
-  height: 250px;
-  width: 250px;
+  height: 150px;
+  width: 150px;
 }
 .hideMap {
   visibility: hidden;
-}
-.displayMap {
-  visibility: visible;
-}
-h5 {
-  font-family: sports;
 }

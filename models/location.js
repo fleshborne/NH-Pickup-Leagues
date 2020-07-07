@@ -27,3 +27,5 @@ module.exports = (sequelize, DataTypes) => {
   };
   return Location;
 };
+
+// api call to data base, render inside dropdowns

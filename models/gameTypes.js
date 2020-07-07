@@ -18,6 +18,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
+  Schedule.associate = (models) => {
+    Schedule.belongsTo(models.Game, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
   // console.log(Schedule);
   return Schedule;
 };
