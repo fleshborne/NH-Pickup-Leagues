@@ -1,6 +1,7 @@
 DROP DATABASE IF EXISTS pickup_league;
 CREATE DATABASE pickup_league;
 USE pickup_league;
+
 CREATE TABLE users (
  id INTEGER AUTO_INCREMENT NOT NULL,
  email VARCHAR(255) NOT NULL,

@@ -61,7 +61,15 @@ router.get('/user_data', (req, res) => {
     });
   }
 });
-// attempting to get schedule by id
+// ****************LUBA ADD GAME***************************
+router.get('/locations', (req, res) => {
+  // Here we add an "include" property to our options in our findAll query
+  // In this case, just db.Post
+  db.Location.findAll().then((response) => {
+    res.json(response);
+  });
+});
+
 router.get('/user_schedule', (req, res) => {
   db.
     res.json('get all games from schedule');
