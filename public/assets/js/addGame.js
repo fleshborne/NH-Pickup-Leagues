@@ -16,17 +16,14 @@ function displaySaved() {
     document.getElementById('display-message').innerHTML = ' ';
   }, 1000);
 }
-
 $(document).ready(() => {
   $.get('/api/locations').then((data) => {
     console.log(data);
     console.log('This is data');
   });
-
   const newGameForm = $('.add-game');
   const gameTypeInput = $('#game-type');
   const locationInput = $('#game-location');
-
   newGameForm.on('submit', (event) => {
     event.preventDefault();
     console.log(gameTypeInput.val());
@@ -35,5 +32,4 @@ $(document).ready(() => {
     displaySaved();
   });
 });
-
 // locationInput.append(`<option> `);
