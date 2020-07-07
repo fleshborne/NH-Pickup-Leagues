@@ -54,14 +54,11 @@ $(document).ready(() => {
       email: emailInput.val().trim(),
       password: passwordInput.val().trim(),
     };
-<<<<<<< HEAD
     // console.log('OVJ', userData);
-=======
     // console.log(userData);
     if (!userData.email || !userData.password || !userData.username) {
       return;
     }
->>>>>>> 2e743fba128e74d47b5712e495d3a03cebf0ab9c
     // If we have an email and password, run the signUpUser function
     signUpUser(userData.username, userData.email, userData.password);
     emailInput.val('');
