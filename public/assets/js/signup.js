@@ -16,7 +16,7 @@
 /* eslint-disable no-use-before-define */
 
 $(document).ready(() => {
-  $('.modal').modal();
+  // $('.modal').modal();
   // Getting references to our form and input
   const signUpForm = $('form.signup');
   const userNameInput = $('#username-input');
@@ -27,38 +27,37 @@ $(document).ready(() => {
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on('submit', (event) => {
     event.preventDefault();
-
+    // validation();
     // console.log(
     //   'CREDS',
     //   userNameInput.val(),
     //   emailInput.val(),
     //   passwordInput.val()
     //   );
-
-    if (userNameInput.val() === '') {
-      const mess = 'userName is empty';
-      $('.modal-content').text(mess);
-      $('#modal1').modal('open');
-    }
-    if (emailInput.val() === '') {
-      const mess = 'email is empty';
-      $('.modal-content').text(mess);
-      $('#modal1').modal('open');
-    }
-    if (passwordInput.val() === '') {
-      const mess = 'password is empty';
-      $('.modal-content').text(mess);
-      $('#modal1').modal('open');
-    }
-
+    // function validation() {
+    //   if (userNameInput.val() === '') {
+    //     const mess = 'userName is empty';
+    //     $('.modal-content').text(mess);
+    //     $('#modal1').modal('open');
+    //   } else if (emailInput.val() === '' && userNameInput.val() === '') {
+    //     const mess = 'username and email is empty';
+    //     $('.modal-content').text(mess);
+    //     $('#modal1').modal('open');
+    //   } else if (passwordInput.val() === '' && emailInput.val() === '') {
+    //     const mess = 'email and password is empty';
+    //     $('.modal-content').text(mess);
+    //     $('#modal1').modal('open');
+    //   }
+    //   else{}
+    // }
     const userData = {
       username: userNameInput.val().trim(),
       email: emailInput.val().trim(),
       password: passwordInput.val().trim(),
     };
-    console.log('OVJ', userData);
+    // console.log('OVJ', userData);
     // If we have an email and password, run the signUpUser function
-    // signUpUser(userData.username, userData.email, userData.password);
+    signUpUser(userData.username, userData.email, userData.password);
     emailInput.val('');
     passwordInput.val('');
     userNameInput.val('');
