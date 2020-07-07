@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable eol-last */
 module.exports = (sequelize, DataTypes) => {
   const Game = sequelize.define('Game', {
     gameType: {

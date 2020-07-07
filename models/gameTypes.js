@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable eol-last */
 module.exports = (sequelize, DataTypes) => {
   const Schedule = sequelize.define('GameTypes', {
     gameTypesName: {
@@ -17,6 +18,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
+    // gameId: {
+    //   type: DataTypes.TEXT,
+    //   references: {
+    //     model: 'game',
+    //     key: 'id',
+    //   },
+    // },
   });
   Schedule.associate = (models) => {
     Schedule.belongsTo(models.Game, {
