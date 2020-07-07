@@ -27,7 +27,9 @@ router.get('/login', (req, res) => {
 // Here we've add our isAuthenticated middleware to this route.
 
 router.get('/members', isAuthenticated, (req, res) => {
-  console.log('code should come here');
+  // console.log('code should come here');
+  // console.log(`check 2${req.user.id}`);
+  // sessionStorage.setItem('id', JSON.stringify(req.user.id));
   res.sendFile(path.join(__dirname, '../public/members.html'));
 });
 
