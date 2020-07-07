@@ -31,5 +31,7 @@ function initMap() {
 $(document).ready(() => {
   $('.collapsible').collapsible();
   $('.dropdown-trigger').dropdown();
-  $('#searchBtn').on('click', initMap());
+  $('#searchBtn').on('click', initMap, {
+    // $('#map').removeClass('hideMap')
+  });
 });

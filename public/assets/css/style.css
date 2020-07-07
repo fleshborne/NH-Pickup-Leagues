@@ -60,7 +60,14 @@ h1 {
   /* TODO: fix this class for profile pic */
 }
 #map {
-  height: 100%;
+  height: 250px;
+  width: 250px;
+}
+.hideMap {
+  visibility: hidden;
+}
+.displayMap {
+  visibility: visible;
 }
 h5 {
   font-family: sports;
