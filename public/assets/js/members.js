@@ -1,4 +1,18 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable comma-dangle */
+/* eslint-disable linebreak-style */
+/* eslint-disable no-undef */
+/* eslint-disable linebreak-style */
+$(document).ready(() => {
+  // This file just does a GET request to figure out which user is logged in
+  // and updates the HTML on the page
+  $.get('/api/user_data').then((data) => {
+    $('.member-name').text(data.username);
+    const userid = data.id;
+    console.log(userid);
+    sessionStorage.setItem('id', JSON.stringify(userid));
+  });
+});
 /* eslint-disable eol-last */
 /* eslint-disable no-undef */
 // const mapDiv = $('#map');
@@ -48,10 +62,6 @@ $(document).ready(() => {
   });
 });
 
-$.get('/api/user_data').then((data) => {
-  $('.member-name').text(data.username);
-});
-
 // get all the games
 // eslint-disable-next-line no-undef
 axios.get('/api//user_schedule').then((schedule) => {
@@ -75,7 +85,8 @@ axios.get('/api//user_schedule').then((schedule) => {
     } else if (game.gameTypesName === 'Volleyball') {
       imageCardPath = `${imageCardPath}vball.jpg`;
       // eslint-disable-next-line no-empty
-    } else {}
+    } else {
+    }
     $rowCardTable.append(
       ` <div class="col s12 m7">
               <div class="card horizontal">
@@ -96,7 +107,7 @@ axios.get('/api//user_schedule').then((schedule) => {
                   </div>
                 </div>
               </div>
-              </div>`,
+              </div>`
     );
   });
 });
