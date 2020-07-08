@@ -3,7 +3,7 @@
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable linebreak-style */
 /* eslint-disable import/no-unresolved */
-
+/* eslint-disable eol-last */
 /* eslint-disable comma-dangle */
 /* eslint-disable no-param-reassign */
 /* eslint-disable linebreak-style */
@@ -50,8 +50,9 @@ module.exports = (sequelize, DataTypes) => {
     );
   });
   User.associate = (models) => {
-    User.hasMany(models.Game, {
+    User.belongsToMany(models.Game, {
       onDelete: 'cascade',
+      through: 'UserGame',
     });
   };
   return User;
