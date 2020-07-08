@@ -3,7 +3,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Game = sequelize.define('Game', {
     date: {
-      type: DataTypes.dateTime,
+      type: DataTypes.DATE,
     },
   });
   Game.associate = (models) => {
