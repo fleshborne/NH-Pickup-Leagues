@@ -27,10 +27,8 @@ module.exports = (sequelize, DataTypes) => {
     // },
   });
   Schedule.associate = (models) => {
-    Schedule.belongsTo(models.Game, {
-      foreignKey: {
-        allowNull: false,
-      },
+    Schedule.hasMany(models.Game, {
+      onDelete: 'cascade',
     });
   };
   // console.log(Schedule);

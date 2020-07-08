@@ -50,8 +50,9 @@ module.exports = (sequelize, DataTypes) => {
     );
   });
   User.associate = (models) => {
-    User.hasMany(models.Game, {
+    User.belongsToMany(models.Game, {
       onDelete: 'cascade',
+      through: 'UserGame',
     });
   };
   return User;
