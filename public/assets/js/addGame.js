@@ -17,24 +17,62 @@ function displaySaved() {
     document.getElementById('display-message').innerHTML = ' ';
   }, 1000);
 }
+
+// function initiateClickFunc() {
+//   // initialize
+
+//   // update function for demo purposes
+//   $('#myButton').click(() => {});
+// }
+
 $(document).ready(() => {
+  // const initiateClick = $('#initiate-click');
   const newGameForm = $('.add-game');
   const gameTypeInput = $('#game-type');
-  const locationInput = $('#game-location');
-  $.get('/api/locations').then((data) => {
+  const locationInput = $('#myDropdown');
+  $(() => {
+    // initialize
+    $('.materialSelect').formSelect();
 
+    // setup listener for custom event to re-initialize on change
+    $('.materialSelect').on('contentChanged', () => {
+      $(this).formSelect();
+    });
 
-    
+    // update function for demo purposes
 
+    // add new value
+    const newOpt = $('<option>').attr('value', 1).text('newValue');
 
+    console.log(newOpt);
+    $('#myDropdown').append(newOpt);
 
-    console.log(data);
-    console.log(data[0].title);
-    // const option = document.createElement('<option>');
-    // option.innerHTML(data[0].title);
-    locationInput.append(`<option>${data[0].title}</option>`);
-    // locationInput.append(`<option> `);
+    // fire custom event anytime you've updated select
+    $('#myDropdown').trigger('contentChanged');
   });
+
+  // initiateClick.on('click', () => {
+  //   // eslint-disable-next-line no-alert
+
+  //   // add new value
+  //   const newValue = 'this a-hole works!';
+  //   const $newOpt = $('<option>').attr('value', newValue).text(newValue);
+  //   locationInput.append($newOpt);
+
+  //   // fire custom event anytime you've updated select
+  //   locationInput.trigger('contentChanged');
+
+  //   // $.get('/api/locations').then((data) => {
+  //   //   console.log(data);
+  //   //   console.log(data[0].title);
+  //   //   // add new value
+  //   //   const newValue = 'this a-hole works!';
+  //   //   const $newOpt = $('<option>').text(newValue);
+  //   //   locationInput.append($newOpt);
+
+  //   // });
+  // });
+
   newGameForm.on('submit', (event) => {
     event.preventDefault();
     console.log(gameTypeInput.val());

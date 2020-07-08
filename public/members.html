@@ -137,7 +137,7 @@
 
 
 
-                <div class="collapsible-body blue-grey darken-1">
+                <div class="collapsible-body blue-grey darken-1" id="initiate-click">
 
 
                   <form class="add-game">
@@ -174,24 +174,26 @@
                         <label>Time</label>
                       </div>
                     </div>
-
-                    <div class="form-group">
-
-                      <div class="input-field col s6">
-                        <select id="game-location">
-                          <option value="" disabled selected>Choose your option</option>
-                          <!-- <option>Prescott</option>
-                      <option>Portsmouth</option> -->
-                        </select>
-                        <label>Location</label>
+                   
+                      <div class="form-group">
+                        <div class="input-field col s6">
+                          <select id="myDropdown" class="materialSelect">
+                            <option>Moscow</option>
+                          </select>
+                          <label>Location</label>
+                        </div>
+                        
+                    
                       </div>
-                    </div>
+                  
+                    
 
 
                     <button type="submit" class="btn btn-default"
                       id="submit-new-game">Submit</button>
                     <p id="display-message"></p>
                   </form>
+                  <div id="test-field"></div>
                   <div class="col s6">
 
                   </div>
