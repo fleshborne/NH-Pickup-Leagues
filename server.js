@@ -21,7 +21,9 @@ const htmlRoutes = require('./routes/htmlRoutes');
 // creating express app and configuring middleware needed for authentication
 
 const app = express();
-app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+app.use(
+  session({ secret: 'keyboard cat', resave: true, saveUninitialized: true })
+);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // app.use(expressValidator);

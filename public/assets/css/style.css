@@ -42,9 +42,6 @@
   src: url(../fonts/TrueType/SFSportsNightNS.ttf);
 }
 
-
-
-
 body {
   background-image: url('../images/vball.jpg');
   background-size: cover !important;
@@ -69,8 +66,6 @@ h1 {
 h5 {
   font-family: sports;
 }
-<<<<<<< HEAD
-=======
 #map {
   height: 150px;
   width: 150px;
@@ -78,4 +73,3 @@ h5 {
 .hideMap {
   visibility: hidden;
 }
->>>>>>> 2e743fba128e74d47b5712e495d3a03cebf0ab9c

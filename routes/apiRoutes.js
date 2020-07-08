@@ -70,8 +70,9 @@ router.get('/locations', (req, res) => {
 });
 
 router.get('/user_schedule', (req, res) => {
-  db.
-    res.json('get all games from schedule');
+  db.GameTypes.findAll().then((schedule) => res.json(schedule));
+  console.log(res);
+  // res.json('get all games from schedule');
 });
 
 router.get('/user_schedule/:id', (req, res) => {
