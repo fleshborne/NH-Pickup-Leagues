@@ -15,39 +15,39 @@ $(document).ready(() => {
 });
 /* eslint-disable eol-last */
 /* eslint-disable no-undef */
-// const mapDiv = $('#map');
-// const SearchBtn = $('#searchBtn');
+const mapDiv = $('#map');
+const SearchBtn = $('#searchBtn');
 
-// const portsmouth = {
-//   lat: 43.071568,
-//   lng: -70.762245,
-//   name: 'Portsmouth Park',
-// };
-// const allLocations = [portsmouth];
+const portsmouth = {
+  lat: 43.071568,
+  lng: -70.762245,
+  name: 'Portsmouth Park',
+};
+const allLocations = [portsmouth];
 
-// function initMap() {
-//   const newHampshire = {
-//     lat: 44.0,
-//     lng: -71.5,
-//   };
-//   const map = new google.maps.Map(document.getElementById('map'), {
-//     center: newHampshire,
-//     zoom: 4,
-//   });
+function initMap() {
+  const newHampshire = {
+    lat: 44.0,
+    lng: -71.5,
+  };
+  const map = new google.maps.Map(document.getElementById('map'), {
+    center: newHampshire,
+    zoom: 8,
+  });
 
-//   allLocations.forEach((location) => {
-//     // eslint-disable-next-line no-unused-vars
-//     const marker = new google.maps.Marker({
-//       position: {
-//         lat: location.lat,
-//         lng: location.lng,
-//       },
-//       map,
-//       title: location.name,
-//     });
-//     // will call marker when we establish what we want to show
-//   });
-// }
+  allLocations.forEach((location) => {
+    // eslint-disable-next-line no-unused-vars
+    const marker = new google.maps.Marker({
+      position: {
+        lat: location.lat,
+        lng: location.lng,
+      },
+      map,
+      title: location.name,
+    });
+    // will call marker when we establish what we want to show
+  });
+}
 // Handles the dropdown logic
 $(document).ready(() => {
   $('select').formSelect();
@@ -58,7 +58,7 @@ $(document).ready(() => {
   $('.dropdown-trigger').dropdown();
   SearchBtn.on('click', () => {
     initMap();
-    mapDiv.removeClass('.hideMap');
+    mapDiv.removeClass('hideMap');
   });
 });
 
@@ -85,8 +85,7 @@ axios.get('/api//user_schedule').then((schedule) => {
     } else if (game.gameTypesName === 'Volleyball') {
       imageCardPath = `${imageCardPath}vball.jpg`;
       // eslint-disable-next-line no-empty
-    } else {
-    }
+    } else {}
     $rowCardTable.append(
       ` <div class="col s12 m7">
               <div class="card horizontal">
