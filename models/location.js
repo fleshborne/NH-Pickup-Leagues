@@ -1,4 +1,6 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable eol-last */
+
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable indent */
 // eslint-disable-next-line linebreak-style
@@ -13,10 +15,6 @@ module.exports = (sequelize, DataTypes) => {
         // eslint-disable-next-line linebreak-style
       },
     },
-    // gameType: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
   });
   Location.associate = (models) => {
     Location.hasMany(models.Game, {
@@ -28,4 +26,4 @@ module.exports = (sequelize, DataTypes) => {
   return Location;
 };
 
-// api call to data base, render inside dropdowns
+// api call to data base, render inside drop downs
