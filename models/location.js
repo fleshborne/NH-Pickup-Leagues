@@ -13,10 +13,10 @@ module.exports = (sequelize, DataTypes) => {
         // eslint-disable-next-line linebreak-style
       },
     },
-    gameType: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    // gameType: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
   });
   Location.associate = (models) => {
     Location.hasMany(models.Game, {

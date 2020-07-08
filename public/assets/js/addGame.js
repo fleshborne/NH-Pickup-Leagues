@@ -11,19 +11,30 @@
 
 // On click "Create", the new "game" is added to the table, to your games.
 function displaySaved() {
-  document.getElementById('display-message').innerHTML = 'Game Saved to My Schedule!';
+  document.getElementById('display-message').innerHTML =
+    'Game Saved to My Schedule!';
   setTimeout(() => {
     document.getElementById('display-message').innerHTML = ' ';
   }, 1000);
 }
 $(document).ready(() => {
-  $.get('/api/locations').then((data) => {
-    console.log(data);
-    console.log('This is data');
-  });
   const newGameForm = $('.add-game');
   const gameTypeInput = $('#game-type');
   const locationInput = $('#game-location');
+  $.get('/api/locations').then((data) => {
+
+
+    
+
+
+
+    console.log(data);
+    console.log(data[0].title);
+    // const option = document.createElement('<option>');
+    // option.innerHTML(data[0].title);
+    locationInput.append(`<option>${data[0].title}</option>`);
+    // locationInput.append(`<option> `);
+  });
   newGameForm.on('submit', (event) => {
     event.preventDefault();
     console.log(gameTypeInput.val());
@@ -32,4 +43,3 @@ $(document).ready(() => {
     displaySaved();
   });
 });
-// locationInput.append(`<option> `);
