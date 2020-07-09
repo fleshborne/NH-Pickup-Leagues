@@ -9,7 +9,7 @@
 
 // After entering data, it is appended to the page, and after the "Create" button appears.
 
-// function to display messages (could be used for entry validation) 
+// function to display messages (could be used for entry validation)
 function displaySaved() {
   document.getElementById('display-message').innerHTML = 'Game Saved to My Schedule!';
   setTimeout(() => {
