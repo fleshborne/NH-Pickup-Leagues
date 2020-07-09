@@ -11,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
     // A Game can't be created without an User due to the foreign key constraint
     Game.belongsToMany(models.User, {
       through: 'UserGame',
-
     });
     Game.belongsTo(models.GameTypes, {
       foreignKey: {

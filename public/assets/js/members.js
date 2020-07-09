@@ -21,9 +21,19 @@ const SearchBtn = $('#searchBtn');
 const portsmouth = {
   lat: 43.071568,
   lng: -70.762245,
-  name: 'Portsmouth Park',
+  name: 'Portsmouth',
 };
-const allLocations = [portsmouth];
+
+const PrescottPark = {
+  lat: 43.0773108,
+  lng: -70.7519975,
+  name: 'Prescott Park'
+};
+
+const allLocations = [
+  portsmouth,
+  PrescottPark,
+];
 
 function initMap() {
   const newHampshire = {

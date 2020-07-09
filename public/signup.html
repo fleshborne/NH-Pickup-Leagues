@@ -8,24 +8,25 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css"
     />
-     <!-- CSS  -->
-     <link
-     href="https://fonts.googleapis.com/icon?family=Material+Icons"
-     rel="stylesheet"
-   />
-   <link
-     href="./assets/css/materialize.css"
-     type="text/css"
-     rel="stylesheet"
-     media="screen,projection"
-   />
-   <!-- <link
+    <!-- CSS  -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <link
+      href="./assets/css/materialize.css"
+      type="text/css"
+      rel="stylesheet"
+      media="screen,projection"
+    />
+    <link href="./assets/css/style.css" rel="stylesheet" />
+    <!-- <link
      href="./assets/css/style.css"
      type="text/css"
      rel="stylesheet"
      media="screen,projection"
    /> -->
-    <link href="assets/css/style.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -44,31 +45,47 @@
         >
       </div>
     </nav>
-    <div class="container">
+    <div class="container regform">
       <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-6 col-md-offset-3 main">
           <h2>Sign Up Form</h2>
           <form class="signup">
             <div class="form-group">
-              
-              <input placeholder="username" id="username-input" type="text" class="validate" required>
+              <input
+                placeholder="username"
+                id="username-input"
+                type="text"
+                class="validate"
+                required
+              />
               <label for="first_name">Username</label>
-                  
             </div>
             <div class="form-group">
-              <input id="email-input" type="email" class="validate">
-              <label for="email" data-error="wrong" data-success="right">Email</label>
-              
+              <input
+                placeholder="email"
+                id="email-input"
+                type="email"
+                class="validate"
+                required
+              />
+              <label for="email" data-error="wrong" data-success="right"
+                >Email</label
+              >
             </div>
             <div class="form-group">
-              <input placeholder="password" id="password-input" type="text" class="validate" required>
-              <label for="first_name">Password</label>
-              
+              <input
+                placeholder="password"
+                id="password-input"
+                type="text"
+                class="validate"
+                required
+              />
+              <label for="password">Password</label>
             </div>
             <button type="submit" class="btn btn-default">Sign Up</button>
           </form>
-          <br />
-          <a href="/login">Sign In --></a></p>
+          <!-- <br />
+          <a href="/login">Sign In</a></p> -->
         </div>
       </div>
     </div>
@@ -77,6 +94,7 @@
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
     <script type="text/javascript" src="assets/js/signup.js"></script>
   </body>
