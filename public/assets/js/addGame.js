@@ -30,49 +30,19 @@ $(document).ready(() => {
   const newGameForm = $('.add-game');
   const gameTypeInput = $('#game-type');
   const locationInput = $('#myDropdown');
-  $(() => {
-    // initialize
-    $('.materialSelect').formSelect();
 
-    // setup listener for custom event to re-initialize on change
-    $('.materialSelect').on('contentChanged', () => {
-      $(this).formSelect();
+  $.get('/api/locations').then((data) => {
+
+    console.log(data);
+
+    data.forEach((park) => {
+      console.log(park.title);
+      const newOpt = $('<option>').attr('value', 1).text(park.title);
+      $('#myDropdown').append(newOpt);
     });
 
-    // update function for demo purposes
-
-    // add new value
-    const newOpt = $('<option>').attr('value', 1).text('newValue');
-
-    console.log(newOpt);
-    $('#myDropdown').append(newOpt);
-
-    // fire custom event anytime you've updated select
-    $('#myDropdown').trigger('contentChanged');
+    $('#myDropdown').formSelect();
   });
-
-  // initiateClick.on('click', () => {
-  //   // eslint-disable-next-line no-alert
-
-  //   // add new value
-  //   const newValue = 'this a-hole works!';
-  //   const $newOpt = $('<option>').attr('value', newValue).text(newValue);
-  //   locationInput.append($newOpt);
-
-  //   // fire custom event anytime you've updated select
-  //   locationInput.trigger('contentChanged');
-
-  //   // $.get('/api/locations').then((data) => {
-  //   //   console.log(data);
-  //   //   console.log(data[0].title);
-  //   //   // add new value
-  //   //   const newValue = 'this a-hole works!';
-  //   //   const $newOpt = $('<option>').text(newValue);
-  //   //   locationInput.append($newOpt);
-
-  //   // });
-  // });
-
   newGameForm.on('submit', (event) => {
     event.preventDefault();
     console.log(gameTypeInput.val());
