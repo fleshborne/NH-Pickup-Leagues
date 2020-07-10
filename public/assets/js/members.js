@@ -8,9 +8,13 @@ $(document).ready(() => {
   // and updates the HTML on the page
   $.get('/api/user_data').then((data) => {
     $('.member-name').text(data.username);
+    console.log(data);
     const userid = data.id;
-    console.log(userid);
+    console.log(userid, 'user id');
     sessionStorage.setItem('id', JSON.stringify(userid));
+    // cass the game schedule and passes user ID ID
+    // eslint-disable-next-line no-use-before-define
+    callGameSchedule(userid);
   });
 });
 /* eslint-disable eol-last */
@@ -49,13 +53,14 @@ $(document).ready(() => {
 //   });
 // }
 // Handles the dropdown logic
-$(document).ready(() => {
-  $('select').formSelect();
-});
+// $(document).ready(() => {
+//   $('select').formSelect();
+// });
 
 $(document).ready(() => {
   $('.collapsible').collapsible();
   $('.dropdown-trigger').dropdown();
+  $('select').formSelect();
   SearchBtn.on('click', () => {
     initMap();
     mapDiv.removeClass('.hideMap');
@@ -64,50 +69,27 @@ $(document).ready(() => {
 
 // get all the games
 // eslint-disable-next-line no-undef
-axios.get('/api//user_schedule').then((schedule) => {
-  // code goes here
-  console.log(schedule);
-  schedule.data.forEach((game) => {
-    console.log(game);
-    const $table = $('#schedule-table tbody');
-    const $rowCardTable = $('#rowCardAppend');
-    let imageCardPath = './assets/images/';
-    $table.append(`<tr>
-      <td>${game.gameTypesName}</td>
+const callGameSchedule = (userid) => {
+  console.log(userid, 'inside pass game schedule');
+  axios.get(`/api/user_schedule/${userid}`).then((schedule) => {
+    // code goes here
+    console.log(schedule);
+    console.log(schedule.data);
+    console.log(schedule.data.Games[0].GameType.gameTypesName);
+
+    schedule.data.Games.forEach((game) => {
+      console.log(game);
+      const $table = $('#schedule-table tbody');
+      // const $rowCardTable = $('#rowCardAppend');
+      let imageCardPath = './assets/images/';
+      imageCardPath = `${imageCardPath}${game.GameType.gameTypesName}.jpg`;
+      $table.append(`<tr>
+      <td><div class = "container containerimg"><div class="centered"><img src="${imageCardPath}" id="tablePic"><span>${game.GameType.gameTypesName}</span></div></div></td>
       <td>${game.updatedAt}</td>
-      <td>Prescott Park</td>
-      <td>${game.minPlayers}</td>
-      <td>${game.maxPlayers}</td>
+      <td>${game.Location.title}</td>
+      <td>${game.numOfPlayersSignedUp}</td>
+      <td>${game.GameType.minPlayers}</td>
     </tr>`);
-    // try card
-    if (game.gameTypesName === 'Soccer') {
-      imageCardPath = `${imageCardPath}soccer.jpg`;
-    } else if (game.gameTypesName === 'Volleyball') {
-      imageCardPath = `${imageCardPath}vball.jpg`;
-      // eslint-disable-next-line no-empty
-    } else {
-    }
-    $rowCardTable.append(
-      ` <div class="col s12 m7">
-              <div class="card horizontal">
-                <div class="card-image">
-                  <img src="${imageCardPath}">
-                  <a class="btn-floating halfway-fab waves-effect waves-light red"><i
-                      class="material-icons">delete</i></a>
-                  <span class="card-title">${game.gameTypesName}</span>
-                </div>
-                <div class="card-stacked">
-                  <div class="card-content grey darken-3 card-font">
-                    <p>Date: Sunday July 2
-                    </p>
-                    <p>Time: ${game.time}
-                    </p>
-                    <p>Players: ${game.minPlayers}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              </div>`
-    );
+    });
   });
-});
+};
