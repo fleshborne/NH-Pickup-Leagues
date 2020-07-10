@@ -69,6 +69,24 @@ router.get('/locations', (req, res) => {
   });
 });
 
+
+
+router.get('/gametypes', (req, res) => {
+  db.GameTypes.findAll().then((response) => {
+    res.json(response);
+  });
+});
+
+
+// ********************************************************
+
+router.get('/user_schedule', (req, res) => {
+  db.GameTypes.findAll().then((schedule) => res.json(schedule));
+  console.log(res);
+  // res.json('get all games from schedule');
+});
+
+
 router.get('/user_schedule/:id', (req, res) => {
   db.User.findOne({
     include: [

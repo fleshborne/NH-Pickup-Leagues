@@ -143,10 +143,8 @@
                   <form class="add-game">
                     <div class="form-group">
                       <div class="input-field col s6">
-                        <select id="game-type">
+                        <select id="type-dropdown" class="materialSelect">
                           <option value="" disabled selected>Choose your option</option>
-                          <option>Volleyball</option>
-                          <option value="2">Soccer</option>
                         </select>
                         <label>Game Type</label>
                       </div>
@@ -155,7 +153,7 @@
 
                     <div class="form-group">
                       <div class="input-field col s6">
-                        <select>
+                        <select id="date-dropdown">
                           <option value="" disabled selected>Choose your option</option>
                           <option value="1">7/25</option>
                           <option value="2">7/26</option>
@@ -166,7 +164,7 @@
 
                     <div class="form-group">
                       <div class="input-field col s6">
-                        <select>
+                        <select id="time-dropdown">
                           <option value="" disabled selected>Choose your option</option>
                           <option value="1">13:00</option>
                           <option value="2">14:00</option>
@@ -174,24 +172,21 @@
                         <label>Time</label>
                       </div>
                     </div>
-
-                    <div class="form-group">
-
-                      <div class="input-field col s6">
-                        <select id="game-location">
-                          <option value="" disabled selected>Choose your option</option>
-                          <!-- <option>Prescott</option>
-                      <option>Portsmouth</option> -->
-                        </select>
-                        <label>Location</label>
+                   
+                      <div class="form-group">
+                        <div class="input-field col s6">
+                          <select id="location-dropdown" class="materialSelect">
+                            <option value="" disabled selected>Choose your option</option>
+                          </select>
+                          <label>Location</label>
+                        </div>
                       </div>
-                    </div>
-
 
                     <button type="submit" class="btn btn-default"
                       id="submit-new-game">Submit</button>
                     <p id="display-message"></p>
                   </form>
+                  <div id="test-field"></div>
                   <div class="col s6">
 
                   </div>
