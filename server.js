@@ -22,6 +22,7 @@ const htmlRoutes = require('./routes/htmlRoutes');
 
 const app = express();
 app.use(
+  // eslint-disable-next-line comma-dangle
   session({ secret: 'keyboard cat', resave: true, saveUninitialized: true })
 );
 app.use(express.urlencoded({ extended: true }));

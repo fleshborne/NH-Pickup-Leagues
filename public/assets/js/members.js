@@ -87,8 +87,8 @@ const callGameSchedule = (userid) => {
       <td><div class = "container containerimg"><div class="centered"><img src="${imageCardPath}" id="tablePic"><span>${game.GameType.gameTypesName}</span></div></div></td>
       <td>${game.updatedAt}</td>
       <td>${game.Location.title}</td>
-      <td>${game.minPlayers}</td>
-      <td>${game.maxPlayers}</td>
+      <td>${game.numOfPlayersSignedUp}</td>
+      <td>${game.GameType.minPlayers}</td>
     </tr>`);
     });
   });
