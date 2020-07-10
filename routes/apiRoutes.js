@@ -89,7 +89,7 @@ router.get('/user_schedule/:id', (req, res) => {
     include: [{
       model: db.Game,
       include: [db.GameTypes, db.Location, db.User],
-    }, ],
+    }],
     where: {
       id: req.params.id,
     },
