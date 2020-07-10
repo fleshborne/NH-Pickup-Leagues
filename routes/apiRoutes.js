@@ -94,32 +94,7 @@ router.get('/user_schedule/:id', (req, res) => {
     where: {
       id: req.params.id,
     },
-    // include: [
-    //   {
-    //     model: db.User,
-    //     as: 'Users',
-    //     attributes: ['id'],
-    //     through: {
-    //       model: db.UserGame,
-    //       attributes: ['userId', 'GameId'],
-    //     },
-    //   },
-    //   {
-    //     model: db.GameTypes,
-    //     as: 'GameTypes',
-    //     attributes: ['GameTypeeId'],
-    //     // through: {
-    //     //   model: db.Location,
-    //     //   attributes: ['GameTypesName', 'minPlayers', 'maxPlayers'],
-    //     // },
-    //   },
-    // ],
   }).then((schedule) => res.json(schedule));
 });
-
-// router.get('/user_schedule/:id', (req, res) => {
-//   // console.log(res);
-//   res.json('get schedule by id');
-// });
 
 module.exports = router;
