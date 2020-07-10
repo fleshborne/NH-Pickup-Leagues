@@ -5,6 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     date: {
       type: DataTypes.DATE,
     },
+    // time: {
+    //   type: DataTypes.TIME,
+    // },
   });
   Game.associate = (models) => {
     // We're saying that a Game should belong to an User
@@ -13,6 +16,11 @@ module.exports = (sequelize, DataTypes) => {
       through: 'UserGame',
     });
     Game.belongsTo(models.GameTypes, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+    Game.belongsTo(models.Location, {
       foreignKey: {
         allowNull: false,
       },
