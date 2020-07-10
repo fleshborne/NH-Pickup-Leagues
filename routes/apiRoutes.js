@@ -74,16 +74,12 @@ router.get('/gametypes', (req, res) => {
     res.json(response);
   });
 });
-router.post('/signup', (req, res) => {
+router.post('/games', (req, res) => {
   db.Game.create({
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password,
+   date: req.body.date,
   })
     .then(function () {
-      //res.json(req.body);
-      //console.log('createduser' + res.body);
-      res.redirect(307, '/api/login');
+      res.json(req.user);
     })
     .catch((err) => {
       res.status(401).json(err);

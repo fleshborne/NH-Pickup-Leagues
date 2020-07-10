@@ -11,10 +11,21 @@
 
 // function to display messages (could be used for entry validation)
 function displaySaved() {
-  document.getElementById('display-message').innerHTML = 'Game Saved to My Schedule!';
+  document.getElementById('display-message').innerHTML =
+    'Game Saved to My Schedule!';
   setTimeout(() => {
     document.getElementById('display-message').innerHTML = ' ';
   }, 1000);
+}
+function addGame(date) {
+  $.post('/api/games', { date })
+    .then((res) => {
+      console.log('res' + res);
+      window.location.replace('/members');
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 $(document).ready(() => {
@@ -46,9 +57,19 @@ $(document).ready(() => {
     locationInput.formSelect();
   });
 
-
   newGameForm.on('submit', (event) => {
+
+
     event.preventDefault();
+
+    const gameData = {
+      date: dateInput.val().trim(),
+    };
+    // console.log('OVJ', userData);
+    // If we have an email and password, run the signUpUser function
+    addGame(gameData.date);
+    // emailInput.val('');
+
     console.log(gameTypeInput.val());
     console.log(locationInput.val());
     console.log(timeInput.val());
