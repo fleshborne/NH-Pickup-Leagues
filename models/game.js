@@ -5,6 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     date: {
       type: DataTypes.DATE,
     },
+    numOfPlayersSignedUp: {
+      type: DataTypes.INTEGER,
+    },
     // time: {
     //   type: DataTypes.TIME,
     // },

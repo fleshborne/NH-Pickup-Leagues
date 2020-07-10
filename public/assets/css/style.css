@@ -76,8 +76,8 @@ h5 {
 .hideMap {
   visibility: hidden;
 }
-h2{
-  color:wheat;
+h2 {
+  color: wheat;
 }
 
 .regform {
@@ -96,4 +96,12 @@ h2{
 }
 form  {
   padding: 50px;
+}
+#tablePic {
+  height: 75px;
+}
+.containerimg {
+  position: relative;
+  text-align: center;
+  color: white;
 }
