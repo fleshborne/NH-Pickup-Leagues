@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable eol-last */
 /* eslint-disable no-useless-return */
 /* eslint-disable linebreak-style */
 /* eslint-disable prefer-template */
@@ -25,10 +26,10 @@ router.post('/login', passport.authenticate('local'), function (req, res) {
 // otherwise send back an error
 router.post('/signup', (req, res) => {
   db.User.create({
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password,
-  })
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+    })
     .then(function () {
       //res.json(req.body);
       //console.log('createduser' + res.body);
@@ -76,8 +77,33 @@ router.get('/user_schedule', (req, res) => {
 });
 
 router.get('/user_schedule/:id', (req, res) => {
-  // console.log(res);
-  res.json('get schedule by id');
+  db.Game.findAll({
+    where: {
+      id: req.params.id,
+      date: req.params.DATE,
+      GameTypeId: req.params.GameTypeId,
+      LocationsId: req.params.LocationsId,
+    },
+    include: {
+      model: db.User,
+      as: 'Users',
+      attributes: ['id'],
+      through: {
+        model: db.UserGame,
+        attributes: ['userId', 'GameId'],
+      },
+    },
+    // {
+    //   model: db.GameTypes,
+    //   as: 'GameTypes',
+    //   attributes: ['GameTypeId'],
+    //   // through: {
+    //   //   model: db.Location,
+    //   //   attributes: ['GameTypesName', 'minPlayers', 'maxPlayers'],
+    //   // },
+    // },
+
+  }).then((schedule) => res.json(schedule));
 });
 
 module.exports = router;

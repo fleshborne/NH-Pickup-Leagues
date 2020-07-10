@@ -17,6 +17,8 @@ $(document).ready(() => {
 /* eslint-disable no-undef */
 const mapDiv = $('#map');
 const SearchBtn = $('#searchBtn');
+const searchByGame = $('#searchByGame');
+
 
 const portsmouth = {
   lat: 43.071568,
@@ -36,13 +38,13 @@ const allLocations = [
 ];
 
 function initMap() {
-  const newHampshire = {
-    lat: 44.0,
-    lng: -71.5,
-  };
+  // const newHampshire = {
+  //   lat: 44.0,
+  //   lng: -71.5,
+  // };
   const map = new google.maps.Map(document.getElementById('map'), {
-    center: newHampshire,
-    zoom: 8,
+    center: portsmouth,
+    zoom: 10,
   });
 
   allLocations.forEach((location) => {
@@ -66,6 +68,13 @@ $(document).ready(() => {
 $(document).ready(() => {
   $('.collapsible').collapsible();
   $('.dropdown-trigger').dropdown();
+  // const findGameDropDwn = $('#findGameDropDwn');
+  // findGameDropDwn.empty();
+  // findGameDropDwn.html(' ');
+  // const
+  searchByGame.on('change', () => {
+    console.log('game selected');
+  });
   SearchBtn.on('click', () => {
     initMap();
     mapDiv.removeClass('hideMap');
