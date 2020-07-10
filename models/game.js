@@ -17,6 +17,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     });
+    Game.belongsTo(models.Location, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
   };
   return Game;
 };
