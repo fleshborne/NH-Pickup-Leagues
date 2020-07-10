@@ -18,18 +18,21 @@ $(document).ready(() => {
 const mapDiv = $('#map');
 const SearchBtn = $('#searchBtn');
 const searchByGame = $('#searchByGame');
-
+// const popup;
+// const Popup;
 
 const portsmouth = {
   lat: 43.071568,
   lng: -70.762245,
   name: 'Portsmouth',
+  title: 'Portsmouth Park'
 };
 
 const PrescottPark = {
   lat: 43.0773108,
   lng: -70.7519975,
-  name: 'Prescott Park'
+  name: 'Prescott Park',
+  title: 'Prescott Park'
 };
 
 const allLocations = [
@@ -60,6 +63,83 @@ function initMap() {
     // will call marker when we establish what we want to show
   });
 }
+
+// Popup = createPopupClass();
+// // eslint-disable-next-line prefer-const
+// popup = new Popup(
+//   new google.maps.LatLng(43.071, -70.762),
+//   document.getElementById('content')
+// );
+// popup.setMap(map);
+
+// function createPopupClass() {
+//   /**
+//    * A customized popup on the map.
+//    * @param {!google.maps.LatLng} position
+//    * @param {!Element} content The bubble div.
+//    * @constructor
+//    * @extends {google.maps.OverlayView}
+//    */
+//   initMap();
+
+//   class Popup {
+//     constructor(position, content) {
+//       this.position = position;
+
+//       content.classList.add('popup-bubble');
+
+//       // This zero-height div is positioned at the bottom of the bubble.
+//       const bubbleAnchor = document.createElement('div');
+//       bubbleAnchor.classList.add('popup-bubble-anchor');
+//       bubbleAnchor.appendChild(content);
+
+//       // This zero-height div is positioned at the bottom of the tip.
+//       this.containerDiv = document.createElement('div');
+//       this.containerDiv.classList.add('popup-container');
+//       this.containerDiv.appendChild(bubbleAnchor);
+
+//       // Optionally stop clicks, etc., from bubbling up to the map.
+//       google.maps.OverlayView.preventMapHitsAndGesturesFrom(this.containerDiv);
+//     }
+
+//     /** Called when the popup is added to the map. */
+//     onAdd() {
+//       this.getPanes().floatPane.appendChild(this.containerDiv);
+//     }
+
+//     /** Called when the popup is removed from the map. */
+//     onRemove() {
+//       if (this.containerDiv.parentElement) {
+//         this.containerDiv.parentElement.removeChild(this.containerDiv);
+//       }
+//     }
+
+//     /** Called each frame when the popup needs to draw itself. */
+//     draw() {
+//       const divPosition = this.getProjection().fromLatLngToDivPixel(this.position);
+
+//       // Hide the popup when it is far out of view.
+//       const display = Math.abs(divPosition.x) < 4000 && Math.abs(divPosition.y) < 4000 ?
+//         // eslint-disable-next-line operator-linebreak
+//         'block' :
+//         'none';
+
+//       if (display === 'block') {
+//         this.containerDiv.style.left = `${divPosition.x}px`;
+//         this.containerDiv.style.top = `${divPosition.y}px`;
+//       }
+//       if (this.containerDiv.style.display !== display) {
+//         this.containerDiv.style.display = display;
+//       }
+//     }
+//   }
+//   // ES5 magic to extend google.maps.OverlayView.
+//   Popup.prototype = Object.create(google.maps.OverlayView.prototype);
+
+
+//   return Popup;
+// }
+
 // Handles the dropdown logic
 $(document).ready(() => {
   $('select').formSelect();
