@@ -13,7 +13,8 @@ $(document).ready(() => {
     console.log(userid, 'user id');
     sessionStorage.setItem('id', JSON.stringify(userid));
     // cass the game schedule and passes user ID ID
-    callGameScheudle(userid);
+    // eslint-disable-next-line no-use-before-define
+    callGameSchedule(userid);
   });
 });
 /* eslint-disable eol-last */
@@ -68,9 +69,9 @@ $(document).ready(() => {
 
 // get all the games
 // eslint-disable-next-line no-undef
-const callGameScheudle = (userid) => {
+const callGameSchedule = (userid) => {
   console.log(userid, 'inside pass game schedule');
-  axios.get('/api//user_schedule').then((schedule) => {
+  axios.get(`'/api//user_schedule/${userid}'`).then((schedule) => {
     // code goes here
     console.log(schedule);
     schedule.data.forEach((game) => {
