@@ -68,10 +68,19 @@ $(document).ready(() => {
 $(document).ready(() => {
   $('.collapsible').collapsible();
   $('.dropdown-trigger').dropdown();
-  // const findGameDropDwn = $('#findGameDropDwn');
-  // findGameDropDwn.empty();
-  // findGameDropDwn.html(' ');
-  // const
+  const gameTypeInput = $('#search-game-type');
+
+  $.get('/api/gametypes').then((data) => {
+    console.log(data);
+    // loop over the names
+    data.forEach((game) => {
+      console.log(game.gameTypesName);
+      // append them as select options
+      const newGame = $('<option>').attr('value', 1).text(game.gameTypesName);
+      gameTypeInput.append(newGame);
+    });
+    gameTypeInput.formSelect();
+  });
   searchByGame.on('change', () => {
     console.log('game selected');
   });
