@@ -67,10 +67,10 @@ router.get('/gametypes', (req, res) => {
 });
 router.post('/games', (req, res) => {
   db.Game.create({
-   date: req.body.date,
-   LocationId: req.body.LocationId,
-   GameTypeId: req.body.GameTypeId,
-   numOfPlayersSignedUp: req.body.numOfPlayersSignedUp,
+    date: req.body.date,
+    time: req.body.time,
+    LocationId: req.body.LocationId,
+    GameTypeId: req.body.GameTypeId,
   })
     .then(function (Game) {
       Game.addUser(req.user.UserId).then(() => {
