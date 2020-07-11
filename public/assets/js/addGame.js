@@ -1,9 +1,10 @@
+
 // const moment = require('moment');
 /* eslint-disable linebreak-style */
 /* eslint-disable operator-linebreak */
 /* eslint-disable linebreak-style */
 // On click "Game type", I request the list of game types from thw db.
-console.log('add game');
+
 // On click "Date", I pull up a calendar for this month
 
 // On click "Time", I can enter time.
@@ -21,7 +22,7 @@ function displaySaved() {
   }, 1000);
 }
 // add game request
-function addGame(date, numOfPlayersSignedUp, LocationId, GameTypeId) {
+function addGame(date, numOfPlayersSignedUp, LocationId, GameTypeId, user) {
   console.log(
     `inside POST - date:${date} numOfPlayers ${numOfPlayersSignedUp} Location ${LocationId} Type: ${GameTypeId}`,
   );
@@ -30,6 +31,7 @@ function addGame(date, numOfPlayersSignedUp, LocationId, GameTypeId) {
     numOfPlayersSignedUp,
     LocationId,
     GameTypeId,
+    user,
   })
     .then((res) => {
       console.log(res);
@@ -39,18 +41,6 @@ function addGame(date, numOfPlayersSignedUp, LocationId, GameTypeId) {
       console.log(err);
     });
 }
-
-// function formatDate(date) {
-//   const d = new Date(date),
-//     month = '' + (d.getMonth() + 1),
-//     day = '' + d.getDate(),
-//     year = d.getFullYear();
-
-//   if (month.length < 2) month = '0' + month;
-//   if (day.length < 2) day = '0' + day;
-
-//   return [year, month, day].join('-');
-// }
 
 $(document).ready(() => {
   const newGameForm = $('.add-game');
@@ -90,9 +80,6 @@ $(document).ready(() => {
   let now = moment().format('YYYY-MM-DD');
   console.log(now);
   // eslint-disable-next-line no-undef
-  // const tomorrow = moment().add(1, 'days');
-  // console.log(tomorrow);
-
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < 7; i++) {
     // eslint-disable-next-line no-undef
@@ -106,18 +93,6 @@ $(document).ready(() => {
   dateInput.formSelect();
   // current time
 
-  // const now = new Date();
-  // console.log(`console time ${now}`);
-  // const first = now.getDate();
-  // const firstDay = new Date(now.setDate(first)).toString();
-  // let dateOptions = '';
-  // for (let i = 0; i < 7; i++) {
-  //   const next = new Date(now.getTime());
-  //   next.setDate(first + i);
-  //   dateOptions += '<option>' + formatDate(next.toString()) + '</option>';
-  // }
-  // dateInput.append(dateOptions);
-  // dateInput.formSelect();
 
   newGameForm.on('submit', (event) => {
     event.preventDefault();
@@ -128,20 +103,33 @@ $(document).ready(() => {
     // eslint-disable-next-line no-undef
     const dateTime = moment(`${date} ${time}`, 'YYYY-MM-DD HH:mm:ss').format();
     console.log(dateTime);
-    const gameData = {
-      date: dateTime,
-      numOfPlayersSignedUp: 1,
-      LocationId: locationInput.val(),
-      GameTypeId: gameTypeInput.val(),
-    };
-    console.log(`game data ${gameData.date} ${gameData.GameTypeId}`);
-    // console.log(req.user.UserId)
-    addGame(
-      gameData.date,
-      gameData.numOfPlayersSignedUp,
-      gameData.LocationId,
-      gameData.GameTypeId,
-    );
-    displaySaved();
+    // Get user ID
+    $.get('/api/user_data').then((data) => {
+      $('.member-name').text(data.username);
+      // console.log(data);
+      const userid = data.id;
+      // console.log(userid, 'user id');
+      sessionStorage.setItem('id', JSON.stringify(userid));
+      // cass the game schedule and passes user ID ID
+      // eslint-disable-next-line no-use-before-define
+
+      const gameData = {
+        date: dateTime,
+        numOfPlayersSignedUp: 1,
+        LocationId: locationInput.val(),
+        GameTypeId: gameTypeInput.val(),
+        user: userid,
+      };
+      console.log(`game data ${gameData.date} ${gameData.GameTypeId}`);
+      // console.log(req.user.UserId)
+      addGame(
+        gameData.date,
+        gameData.numOfPlayersSignedUp,
+        gameData.LocationId,
+        gameData.GameTypeId,
+        gameData.user,
+      );
+      displaySaved();
+    });
   });
 });

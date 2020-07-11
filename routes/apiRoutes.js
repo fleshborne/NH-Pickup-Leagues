@@ -73,11 +73,12 @@ router.post('/games', (req, res) => {
       time: req.body.time,
       LocationId: req.body.LocationId,
       GameTypeId: req.body.GameTypeId,
+      user: req.body.user,
     })
       .then(function (Game) {
-        Game.addUser(req.body.UserId).then(() => {
+        Game.addUser(req.body.user).then(() => {
           res.json(Game);
-          console.log(req.body.UserId);
+          console.log(req.body);
         });
       })
       .catch((err) => {
