@@ -23,7 +23,7 @@ function displaySaved() {
 // add game request
 function addGame(date, numOfPlayersSignedUp, LocationId, GameTypeId) {
   console.log(
-    `inside POST - date:${date} numOfPlayers ${numOfPlayersSignedUp} Location ${LocationId} Type: ${GameTypeId}`
+    `inside POST - date:${date} numOfPlayers ${numOfPlayersSignedUp} Location ${LocationId} Type: ${GameTypeId}`,
   );
   $.post('/api/games', {
     date,
@@ -140,7 +140,7 @@ $(document).ready(() => {
       gameData.date,
       gameData.numOfPlayersSignedUp,
       gameData.LocationId,
-      gameData.GameTypeId
+      gameData.GameTypeId,
     );
     displaySaved();
   });
