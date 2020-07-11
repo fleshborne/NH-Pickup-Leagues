@@ -20,7 +20,7 @@ $(document).ready(() => {
   const userNameInput = $('#username-input');
   const emailInput = $('#email-input');
   const passwordInput = $('#password-input');
-  const errorElement = $('#error');
+  const Alert = new Poperror();
 
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on('submit', (event) => {
@@ -50,11 +50,32 @@ $(document).ready(() => {
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch((err) => {
-        console.log(err);
+        console.log('create user error' + err);
+        Alert.render();
       });
   }
-  function handleLoginErr(err) {
-    $('#alert .msg').text(err.responseJSON);
-    $('#alert').fadeIn(500);
+  function Poperror() {
+    // eslint-disable-next-line func-names
+    // eslint-disable-next-line spaced-comment
+    //var WinW = window.innerWidth;
+    // eslint-disable-next-line operator-linebreak
+    // eslint-disable-next-line spaced-comment
+    //document.getElementById('dialogbox').style.left=100px;
+    //  2000 / 2 - 550 * 0.5 + 'px';
+    // eslint-disable-next-line func-names
+    this.render = function () {
+      document.getElementById('dialogbox').style.display = 'block';
+      document.getElementById('headermessage').innerHTML = 'Signup Invalid ';
+      // eslint-disable-next-line operator-linebreak
+      document.getElementById('bodymessage').innerHTML =
+        'Username and Email Exists, SignUp with a new Username and Email';
+      // eslint-disable-next-line operator-linebreak
+      document.getElementById('footermessage').innerHTML =
+        '<button id="okbutton" onclick="boxclose()">OK</button>';
+    };
   }
 });
+function boxclose() {
+  console.log('in boxclose');
+  document.getElementById('dialogbox').style.display = 'none';
+}

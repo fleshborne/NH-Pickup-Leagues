@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 $(document).ready(() => {
   $('#demo-carousel-auto').carousel();
   setInterval(() => {
