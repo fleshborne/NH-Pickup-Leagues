@@ -1,6 +1,6 @@
 /* eslint-disable linebreak-style */
 // On click "Game type", I request the list of game types from thw db.
-
+console.log('add game');
 // On click "Date", I pull up a calendar for this month
 
 // On click "Time", I can enter time.
@@ -11,7 +11,8 @@
 
 // function to display messages (could be used for entry validation)
 function displaySaved() {
-  document.getElementById('display-message').innerHTML = 'Game Saved to My Schedule!';
+  document.getElementById('display-message').innerHTML =
+    'Game Saved to My Schedule!';
   setTimeout(() => {
     document.getElementById('display-message').innerHTML = ' ';
   }, 1000);
@@ -48,6 +49,7 @@ $(document).ready(() => {
   // get the Locations from db
   $.get('/api/locations').then((data) => {
     // loop over the titles
+    console.log(data);
     data.forEach((park) => {
       // append them as select options
       const newLoc = $('<option>').text(park.title);
