@@ -19,6 +19,7 @@ const passport = require('../config/passport');
 // If the user has valid login credentials, send them to the members page.
 // Otherwise the user will be sent an error
 router.post('/login', passport.authenticate('local'), function (req, res) {
+  console.log('check for invalid user' + res.message);
   res.json(req.user);
 });
 
@@ -35,8 +36,13 @@ router.post('/signup', (req, res) => {
       res.redirect(307, '/api/login');
     })
     .catch((err) => {
-      res.status(401).json(err);
+      console.log('create user error' + err);
+      res.status(406).json(err);
     });
+  // .catch((Sequelize.) => {
+  //   //console.log('create user error' + err);
+  //   res.status(401).json(UniqueConstraintError);
+  // });
 });
 
 // // Route for logging user out
@@ -45,21 +51,6 @@ router.post('/signup', (req, res) => {
 //   res.redirect('/');
 // });
 
-// Route for getting some data about our user to be used client side
-router.get('/user_data', (req, res) => {
-  if (!req.user) {
-    // The user is not logged in, send back an empty object
-    res.json({});
-  } else {
-    // Otherwise send back the user's email and id
-    // Sending back a password, even a hashed password, isn't a good idea
-    res.json({
-      username: req.user.username,
-      email: req.user.email,
-      id: req.user.id,
-    });
-  }
-});
 // ****************LUBA ADD GAME***************************
 router.get('/locations', (req, res) => {
   // Here we add an "include" property to our options in our findAll query
@@ -71,16 +62,16 @@ router.get('/locations', (req, res) => {
 
 router.get('/gametypes', (req, res) => {
   db.GameTypes.findAll().then((response) => {
-    res.json(response);
+    res.json(response, 'this response');
   });
 });
 router.post('/games', (req, res) => {
   db.Game.create({
-   date: req.body.date,
-   userId: req.params.id,
+    date: req.body.date,
+    userId: req.params.id,
   })
     .then(function () {
-      res.json(req.user);
+      res.json(req.user.userId);
       console.log(req.params.id);
     })
     .catch((err) => {
@@ -105,6 +96,26 @@ router.get('/user_schedule', (req, res) => {
   // res.json('get all games from schedule');
 });
 
+// *************************USER SCHEDULE &DATA AND SIGNEDUP PLAYERS *******************************
+
+// Route for getting some data about our user to be used client side
+router.get('/user_data', (req, res) => {
+  if (!req.user) {
+    // The user is not logged in, send back an empty object
+    res.json({});
+  } else {
+    // Otherwise send back the user's email and id
+    // Sending back a password, even a hashed password, isn't a good idea
+    res.json({
+      username: req.user.username,
+      email: req.user.email,
+      id: req.user.id,
+    });
+  }
+});
+
+// router to get the list of players signed up for a game so far
+
 router.get('/user_schedule/:id', (req, res) => {
   db.User.findOne({
     include: [
@@ -118,10 +129,5 @@ router.get('/user_schedule/:id', (req, res) => {
     },
   }).then((schedule) => res.json(schedule));
 });
-
-// router.get('/user_schedule/:id', (req, res) => {
-//   // console.log(res);
-//   res.json('get schedule by id');
-// });
 
 module.exports = router;
