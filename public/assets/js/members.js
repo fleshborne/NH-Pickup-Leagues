@@ -73,8 +73,8 @@ const callGameSchedule = (userid) => {
   // console.log(userid, 'inside pass game schedule');
   axios.get(`/api/user_schedule/${userid}`).then((schedule) => {
     // code goes here
-    // console.log(schedule);
-    // console.log(schedule.data);
+    console.log(schedule);
+    console.log(schedule.data);
     // console.log(schedule.data.Games[0].GameType.gameTypesName);
 
     schedule.data.Games.forEach((game) => {

@@ -67,12 +67,16 @@ router.get('/gametypes', (req, res) => {
 });
 router.post('/games', (req, res) => {
   db.Game.create({
-    date: req.body.date,
-    userId: req.params.id,
+   date: req.body.date,
+   time: req.body.time,
+   LocationId: req.body.LocationId,
+   GameTypeId: req.body.GameTypeId,
   })
-    .then(function () {
-      res.json(req.user.userId);
-      console.log(req.params.id);
+    .then(function (Game) {
+      Game.addUser(req.user.UserId).then(() => {
+        res.json(Game);
+        // console.log(req.params.id);
+      });
     })
     .catch((err) => {
       res.status(401).json(err);
