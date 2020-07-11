@@ -1,10 +1,16 @@
-/* Custom Stylesheet */
-/**
- * Use this file to override Materialize files so you can update
- * the core Materialize files in the future
- *
- * Made By MaterializeCSS.com
- */
+@media only screen and (max-width: 601px) {
+  .planet-game {
+    /* width: 85%; */
+    width: 300px;
+    height: 150px;
+  }
+
+}
+@media only screen and (min-width: 602px) {
+  .h5 {
+    font-size: 200px;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -68,6 +74,14 @@ body {
 h1 {
   font-family: sketchcollege;
   margin: 0;
+  font-size:4vw;
+  /* text-shadow: 1px 1px 2px orange; */
+}
+h5 {
+  font-family: sketchcollege;
+  margin: 0;
+  font-size:1.5vw;
+  
   /* text-shadow: 1px 1px 2px orange; */
 }
 

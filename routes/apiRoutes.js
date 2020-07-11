@@ -66,16 +66,19 @@ router.get('/gametypes', (req, res) => {
   });
 });
 router.post('/games', (req, res) => {
+  // ************add request
+
   db.Game.create({
       date: req.body.date,
       time: req.body.time,
       LocationId: req.body.LocationId,
       GameTypeId: req.body.GameTypeId,
+      user: req.body.user,
     })
     .then(function (Game) {
-      Game.addUser(req.user.UserId).then(() => {
+      Game.addUser(req.body.user).then(() => {
         res.json(Game);
-        // console.log(req.params.id);
+        console.log(req.body);
       });
     })
     .catch((err) => {
@@ -84,19 +87,6 @@ router.post('/games', (req, res) => {
 });
 
 // ********************************************************
-
-// ************************ GET GAMES **********************
-router.get('/games', (req, res) => {
-  db.Game.findAll().then((response) => {
-    res.json(response);
-  }).then((Game) => {
-    Game.addUser(req.user.UserId).then(() => {
-      res.json(Game);
-    });
-  }).catch((err) => {
-    res.status(401).json(err);
-  });
-});
 
 router.get('/user_schedule', (req, res) => {
   // db.GameTypes.findAll().then((schedule) => res.json(schedule));
