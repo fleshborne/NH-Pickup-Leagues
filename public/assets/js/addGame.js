@@ -11,8 +11,7 @@
 
 // function to display messages (could be used for entry validation)
 function displaySaved() {
-  document.getElementById('display-message').innerHTML =
-    'Game Saved to My Schedule!';
+  document.getElementById('display-message').innerHTML = 'Game Saved to My Schedule!';
   setTimeout(() => {
     document.getElementById('display-message').innerHTML = ' ';
   }, 1000);
@@ -20,7 +19,7 @@ function displaySaved() {
 function addGame(date) {
   $.post('/api/games', { date })
     .then((res) => {
-      console.log('res' + res);
+      console.log(res);
       window.location.replace('/members');
     })
     .catch((err) => {
