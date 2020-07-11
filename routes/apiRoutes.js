@@ -75,12 +75,52 @@ router.get('/gametypes', (req, res) => {
     res.json(response);
   });
 });
+router.post('/games', (req, res) => {
+  db.Game.create({
+      date: req.body.date,
+    })
+    .then(function () {
+      res.json(req.user);
+    })
+    .catch((err) => {
+      res.status(401).json(err);
+    });
+});
+router.get('/games', (req, res) => {
+  db.Game.findAll({
+    include: [{
+      include: [db.GameTypes, db.Location, db.User],
+    }],
+  }).then((schedule) => res.json(schedule));
+});
 
-// ********************************************************
+router.get('/user_schedule', (req, res) => {
+  // db.GameTypes.findAll().then((schedule) => res.json(schedule));
+  // console.log(res);
+  console.log(req);
+  db.Game.findAll({
+    // where: {
+    //   userId: req.params.id,
+    //   // include: User,
+    // },
+    // include: Animal,
+  }).then((schedule) => res.json(schedule));
+  // console.log(res);
+  // res.json('get all games from schedule');
+});
 
-// router.get('/user_schedule', (req, res) => {
-//   db.GameTypes.findAll().then((schedule) => res.json(schedule));
-//   console.log(res
+// router.get('/user_schedule/:id', (req, res) => {
+//   // db.GameTypes.findAll().then((schedule) => res.json(schedule));
+//   // console.log(res);
+//   console.log(req);
+//   db.UserGame.findAll({
+//     where: {
+//       Userid: req.params.id,
+//       //   // include: User,
+//     },
+//     // include: Animal,
+//   }).then((schedule) => res.json(schedule));
+//   // console.log(res);
 //   // res.json('get all games from schedule');
 // });
 
