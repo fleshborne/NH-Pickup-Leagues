@@ -62,16 +62,16 @@ router.get('/locations', (req, res) => {
 
 router.get('/gametypes', (req, res) => {
   db.GameTypes.findAll().then((response) => {
-    res.json(response);
+    res.json(response, 'this response');
   });
 });
 router.post('/games', (req, res) => {
   db.Game.create({
-   date: req.body.date,
-   userId: req.params.id,
+    date: req.body.date,
+    userId: req.params.id,
   })
     .then(function () {
-      res.json(req.user);
+      res.json(req.user.userId);
       console.log(req.params.id);
     })
     .catch((err) => {
