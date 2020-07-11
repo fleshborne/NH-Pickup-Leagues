@@ -66,21 +66,23 @@ router.get('/gametypes', (req, res) => {
   });
 });
 router.post('/games', (req, res) => {
-  db.Game.create({
-    date: req.body.date,
-    time: req.body.time,
-    LocationId: req.body.LocationId,
-    GameTypeId: req.body.GameTypeId,
-  })
-    .then(function (Game) {
-      Game.addUser(req.user.UserId).then(() => {
-        res.json(Game);
-        // console.log(req.params.id);
-      });
+  // ************add request
+
+    db.Game.create({
+      date: req.body.date,
+      time: req.body.time,
+      LocationId: req.body.LocationId,
+      GameTypeId: req.body.GameTypeId,
     })
-    .catch((err) => {
-      res.status(401).json(err);
-    });
+      .then(function (Game) {
+        Game.addUser(req.body.UserId).then(() => {
+          res.json(Game);
+          console.log(req.body.UserId);
+        });
+      })
+      .catch((err) => {
+        res.status(401).json(err);
+      });
 });
 
 // ********************************************************

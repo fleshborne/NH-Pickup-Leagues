@@ -39,7 +39,7 @@ function addGame(date, numOfPlayersSignedUp, LocationId, GameTypeId) {
       console.log(err);
     });
 }
-// get 7 days function
+
 // function formatDate(date) {
 //   const d = new Date(date),
 //     month = '' + (d.getMonth() + 1),
@@ -84,6 +84,26 @@ $(document).ready(() => {
     locationInput.formSelect();
   });
   // get the dates for 7 days
+  // get 7 days function
+
+  // eslint-disable-next-line no-undef
+  let now = moment().format('YYYY-MM-DD');
+  console.log(now);
+  // eslint-disable-next-line no-undef
+  // const tomorrow = moment().add(1, 'days');
+  // console.log(tomorrow);
+
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < 7; i++) {
+    // eslint-disable-next-line no-undef
+    now = moment().add(i, 'days').format('YYYY-MM-DD');
+
+    // eslint-disable-next-line no-underscore-dangle
+    const dateOpt = $('<option>').attr('value', now).text(now);
+    dateInput.append(dateOpt);
+    console.log(now);
+  }
+  dateInput.formSelect();
   // current time
 
   // const now = new Date();
@@ -101,22 +121,6 @@ $(document).ready(() => {
 
   newGameForm.on('submit', (event) => {
     event.preventDefault();
-
-    // eslint-disable-next-line no-undef
-    let now = moment().format('MMM Do YY');
-    console.log(now);
-    // eslint-disable-next-line no-undef
-    const tomorrow = moment().add(1, 'days');
-    console.log(tomorrow);
-
-    // eslint-disable-next-line no-plusplus
-    for (let i = 1; i < 6; i++) {
-      // eslint-disable-next-line no-undef
-      now = moment().format().add(i, 'days');
-      // now = moment().format();
-      // eslint-disable-next-line no-underscore-dangle
-      console.log(now._d);
-    }
 
     // convert date and time
     const date = dateInput.val();
