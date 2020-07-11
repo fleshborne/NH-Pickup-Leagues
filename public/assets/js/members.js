@@ -61,11 +61,61 @@ $(document).ready(() => {
   $('.collapsible').collapsible();
   $('.dropdown-trigger').dropdown();
   $('select').formSelect();
+  $('.findGame').on('click', () => {
+    // eslint-disable-next-line no-use-before-define
+    searchAllGames();
+  });
+
   // SearchBtn.on('click', () => {
   //   initMap();
   //   mapDiv.removeClass('.hideMap');
   // });
 });
+const searchAllGames = () => {
+  axios.get('/api/games').then((games) => {
+    console.log(games);
+    console.log(games.data);
+    games.data.forEach((game) => {
+      console.log(game);
+
+      // eslint-disable-next-line no-use-before-define
+      const checkGameStatus = checkMinRequiredPlayers(
+        game.GameType.minPlayers,
+        game.GameType.maxPlayers,
+        game.GameType.neededToPlay,
+        game.numOfPlayersSignedUp
+      );
+      // eslint-disable-next-line no-unused-vars
+      let gameStatIcon;
+      if (checkGameStatus === true) {
+        gameStatIcon = 'check_box';
+        gameStatIconColor = 'green';
+      } else {
+        gameStatIcon = 'hourglass_empty';
+        gameStatIconColor = 'yellow accent-4';
+      }
+      console.log(checkGameStatus);
+    });
+    const checkMinRequiredPlayers = (
+      minPlayers,
+      maxPlayers,
+      boolean,
+      numOfPlayerSignedUp
+    ) => {
+      let gameOn;
+      if (boolean === true && numOfPlayerSignedUp === maxPlayers) {
+        gameOn = true;
+      } else if (boolean === false && numOfPlayerSignedUp === minPlayers) {
+        gameOn = true;
+      } else {
+        gameOn = false;
+      }
+      return gameOn;
+    };
+  }).catch((err) => {
+    console.log(err);
+  });
+};
 
 // get all the games
 // eslint-disable-next-line no-undef

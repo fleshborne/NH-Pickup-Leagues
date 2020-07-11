@@ -87,6 +87,16 @@ router.post('/games', (req, res) => {
 });
 
 // ********************************************************
+// *************** search for games************************
+router.get('/games', (req, res) => {
+  db.Game.findAll({
+    include: [db.GameTypes, db.Location],
+  }).then((response) => {
+    res.json(response);
+  }).catch((err) => {
+    res.status(401).json(err);
+  });
+});
 
 router.get('/user_schedule', (req, res) => {
   // db.GameTypes.findAll().then((schedule) => res.json(schedule));
