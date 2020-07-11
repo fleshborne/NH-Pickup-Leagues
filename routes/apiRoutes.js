@@ -1,5 +1,4 @@
 /* eslint-disable linebreak-style */
-/* eslint-disable eol-last */
 /* eslint-disable no-useless-return */
 /* eslint-disable linebreak-style */
 /* eslint-disable prefer-template */
@@ -62,9 +61,10 @@ router.get('/locations', (req, res) => {
 });
 
 router.get('/gametypes', (req, res) => {
-  db.GameTypes.findAll().then((response) => res.json(response, 'this response'));
+  db.GameTypes.findAll().then((response) => {
+    res.json(response);
+  });
 });
-
 router.post('/games', (req, res) => {
   db.Game.create({
       date: req.body.date,
@@ -82,14 +82,8 @@ router.post('/games', (req, res) => {
       res.status(401).json(err);
     });
 });
-router.get('/games', (req, res) => {
-  db.Game.findAll({
-    // include: [{
-    //   model: db.Game,
-    //   include: [db.GameTypes, db.Location, db.User],
-    // }],
-  }).then((schedule) => res.json(schedule));
-});
+
+// ********************************************************
 
 router.get('/user_schedule', (req, res) => {
   // db.GameTypes.findAll().then((schedule) => res.json(schedule));
@@ -131,7 +125,7 @@ router.get('/user_schedule/:id', (req, res) => {
     include: [{
       model: db.Game,
       include: [db.GameTypes, db.Location, db.User],
-    }],
+    }, ],
     where: {
       id: req.params.id,
     },
