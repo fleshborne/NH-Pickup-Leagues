@@ -46,9 +46,10 @@
           <ul class="collapsible">
             <li class="active">
               <div class="collapsible-header grey darken-3">
+                <!-- <div class="collapsible-header grey darken-3"> -->
                 <i class="material-icons">home</i>My Schedule
               </div>
-              <div class="collapsible-body blue-grey">
+              <div class="collapsible-body blue-grey darken-4">
                 <!-- table begin -->
                 <table class="responsive-table" id="schedule-table">
                   <thead>
@@ -56,8 +57,9 @@
                       <th>Sport/Game</th>
                       <th>Time</th>
                       <th>Place</th>
-                      <th>Signed Up</th>
+                      <th>Playing</th>
                       <th>Required</th>
+                      <th>Status</th>
                     </tr>
                   </thead>
 
@@ -66,8 +68,8 @@
                   </tbody>
                 </table>
                 <!-- cards begin -->
-                <div class="row" id="rowCardAppend">
-        
+                <div class="row">
+
                 </div>
               </div>
             </li>
@@ -75,7 +77,7 @@
               <div class="collapsible-header grey darken-3">
                 <i class="material-icons">group_add</i>Find a Game
               </div>
-              <div class="collapsible-body blue-grey">
+              <div class="collapsible-body blue-grey darken-4">
                 <span>Add a Game stuff.</span>
               </div>
             </li>
@@ -83,14 +85,17 @@
               <div class="collapsible-header grey darken-3">
                 <i class="material-icons">location_on</i>Add a Game
               </div>
-              <div class="collapsible-body blue-grey darken-1">
+              <div class="collapsible-body blue-grey darken-4">
                 <span><a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Game Type</a>
+                  <td>
+                    <div></a class="btn-floating halfway-fab waves-effect waves-light red"><i
+                        class="material-icons">add</i></a>
 
-                  <!-- Dropdown Structure -->
-                  <ul id='dropdown1' class='dropdown-content'>
-                    <li><a href="#!">Volleyball</a></li>
-                    <li><a href="#!">Soccer</a></li>
-                  </ul>
+                      <!-- Dropdown Structure -->
+                      <ul id='dropdown1' class='dropdown-content'>
+                        <li><a href="#!">Volleyball</a></li>
+                        <li><a href="#!">Soccer</a></li>
+                      </ul>
                 </span>
                 <span><a class='dropdown-trigger btn' href='#' data-target='dropdown2'>Date</a>
 
