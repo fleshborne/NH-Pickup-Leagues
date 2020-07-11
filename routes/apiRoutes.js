@@ -85,6 +85,19 @@ router.post('/games', (req, res) => {
 
 // ********************************************************
 
+// ************************ GET GAMES **********************
+router.get('/games', (req, res) => {
+  db.Game.findAll().then((response) => {
+    res.json(response);
+  }).then((Game) => {
+    Game.addUser(req.user.UserId).then(() => {
+      res.json(Game);
+    });
+  }).catch((err) => {
+    res.status(401).json(err);
+  });
+});
+
 router.get('/user_schedule', (req, res) => {
   // db.GameTypes.findAll().then((schedule) => res.json(schedule));
   // console.log(res);
@@ -125,11 +138,12 @@ router.get('/user_schedule/:id', (req, res) => {
     include: [{
       model: db.Game,
       include: [db.GameTypes, db.Location, db.User],
-    }, ],
+    }],
     where: {
       id: req.params.id,
     },
   }).then((schedule) => res.json(schedule));
 });
 
+// eslint-disable-next-line eol-last
 module.exports = router;
