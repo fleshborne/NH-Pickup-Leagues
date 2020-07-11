@@ -97,27 +97,30 @@ form  {
 #dialogbox {
   display: none;
   position: fixed;
-  background: rgb(1, 0, 0, 0.6);
   border-radius: 2px;
   width: 500 px;
-  height: 50 px;
+  height: 500 px;
+  left: 550px;
 }
 #dialogbox > div {
-  background: #fff;
-  margin: 8px;
+  background: black;
 }
 #dialogbox > div > #headermessage {
-  background: #666;
-  font-size: 20px;
+  background: black;
   padding: 10px;
   color: #ccc;
-  text-align: left;
+  text-align: center;
   padding: 6px 1px 6px 1px;
 }
 #dialogbox > div > #bodymessage {
-  background: rgb(245, 241, 241);
+  background: black;
   font-size: 15px;
   padding: 25px;
-  color: #000;
+  color: orange;
   padding: 10px 3px 10px 3px;
+}
+#okbutton {
+  color: black;
+  background-color: red;
+  padding: 5px;
 }

@@ -71,7 +71,7 @@ $(document).ready(() => {
         'Username and Email Exists, SignUp with a new Username and Email';
       // eslint-disable-next-line operator-linebreak
       document.getElementById('footermessage').innerHTML =
-        '<button onclick="boxclose()">OK</button>';
+        '<button id="okbutton" onclick="boxclose()">OK</button>';
     };
   }
 });
