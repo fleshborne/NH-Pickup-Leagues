@@ -16,22 +16,30 @@ function displaySaved() {
     document.getElementById('display-message').innerHTML = ' ';
   }, 1000);
 }
+function addGame(date) {
+  $.post('/api/games', { date })
+    .then((res) => {
+      console.log(res);
+      window.location.replace('/members');
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
 $(document).ready(() => {
   const newGameForm = $('.add-game');
   const gameTypeInput = $('#type-dropdown');
   const locationInput = $('#location-dropdown');
-  const timeInput = $('time-dropdown');
-  const dateInput = $('date-dropdown');
+  const timeInput = $('#time-dropdown');
+  const dateInput = $('#date-dropdown');
 
   // get the Gametype info
   $.get('/api/gametypes').then((data) => {
-    console.log(data);
     // loop over the names
     data.forEach((game) => {
-      console.log(game.gameTypesName);
       // append them as select options
-      const newGame = $('<option>').attr('value', 1).text(game.gameTypesName);
+      const newGame = $('<option>').text(game.gameTypesName);
       gameTypeInput.append(newGame);
     });
     gameTypeInput.formSelect();
@@ -41,17 +49,22 @@ $(document).ready(() => {
   $.get('/api/locations').then((data) => {
     // loop over the titles
     data.forEach((park) => {
-      console.log(park.title);
       // append them as select options
-      const newLoc = $('<option>').attr('value', 1).text(park.title);
+      const newLoc = $('<option>').text(park.title);
       locationInput.append(newLoc);
     });
     locationInput.formSelect();
   });
 
-
   newGameForm.on('submit', (event) => {
     event.preventDefault();
+
+    const gameData = {
+      date: dateInput.val().trim(),
+      time: timeInput.val().trim(),
+    };
+
+    addGame(gameData.date);
     console.log(gameTypeInput.val());
     console.log(locationInput.val());
     console.log(timeInput.val());
