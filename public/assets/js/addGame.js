@@ -21,14 +21,15 @@ function displaySaved() {
   }, 1000);
 }
 // add game request
-function addGame(date, numOfPlayersSignedUp, LocationId, GameTypeID) {
+function addGame(date, numOfPlayersSignedUp, LocationId, GameTypeId) {
   console.log(
-    `inside POST - date:${date} numOfPlayers ${numOfPlayersSignedUp} Location ${LocationId} Type: ${GameTypeID}`);
+    `inside POST - date:${date} numOfPlayers ${numOfPlayersSignedUp} Location ${LocationId} Type: ${GameTypeId}`
+  );
   $.post('/api/games', {
     date,
     numOfPlayersSignedUp,
     LocationId,
-    GameTypeID,
+    GameTypeId,
   })
     .then((res) => {
       console.log(res);
@@ -95,8 +96,6 @@ $(document).ready(() => {
   // }
   // dateInput.append(dateOptions);
 
-
-
   // const now = moment().format('MMM Do YY');
   // console.log(now);
   // const tomorrow = moment().add(1, 'days');
@@ -120,7 +119,7 @@ $(document).ready(() => {
       gameData.date,
       gameData.numOfPlayersSignedUp,
       gameData.LocationId,
-      gameData.GameTypeId,
+      gameData.GameTypeId
     );
     displaySaved();
   });
