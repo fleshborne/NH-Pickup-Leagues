@@ -15,14 +15,14 @@ module.exports = (sequelize, DataTypes) => {
         // eslint-disable-next-line linebreak-style
       },
     },
-    lat: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: false,
-    },
-    lng: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: false,
-    },
+    // lat: {
+    //   type: DataTypes.DECIMAL(10, 2),
+    //   allowNull: false,
+    // },
+    // lng: {
+    //   type: DataTypes.DECIMAL(10, 2),
+    //   allowNull: false,
+    // },
   });
   Location.associate = (models) => {
     Location.hasMany(models.Game, {
