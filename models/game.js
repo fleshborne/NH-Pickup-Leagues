@@ -5,6 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     date: {
       type: DataTypes.DATE,
     },
+    numOfPlayersSignedUp: {
+      type: DataTypes.INTEGER,
+    },
     // time: {
     //   type: DataTypes.TIME,
     // },
@@ -16,6 +19,11 @@ module.exports = (sequelize, DataTypes) => {
       through: 'UserGame',
     });
     Game.belongsTo(models.GameTypes, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+    Game.belongsTo(models.Location, {
       foreignKey: {
         allowNull: false,
       },

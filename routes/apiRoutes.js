@@ -89,14 +89,72 @@ router.post('/games', (req, res) => {
 // ********************************************************
 
 router.get('/user_schedule', (req, res) => {
-  db.GameTypes.findAll().then((schedule) => res.json(schedule));
-  console.log(res);
+  // db.GameTypes.findAll().then((schedule) => res.json(schedule));
+  // console.log(res);
+  console.log(req);
+  db.Game.findAll({
+    // where: {
+    //   userId: req.params.id,
+    //   // include: User,
+    // },
+    // include: Animal,
+  }).then((schedule) => res.json(schedule));
+  // console.log(res);
   // res.json('get all games from schedule');
 });
 
+// router.get('/user_schedule/:id', (req, res) => {
+//   // db.GameTypes.findAll().then((schedule) => res.json(schedule));
+//   // console.log(res);
+//   console.log(req);
+//   db.UserGame.findAll({
+//     where: {
+//       Userid: req.params.id,
+//       //   // include: User,
+//     },
+//     // include: Animal,
+//   }).then((schedule) => res.json(schedule));
+//   // console.log(res);
+//   // res.json('get all games from schedule');
+// });
+
 router.get('/user_schedule/:id', (req, res) => {
-  // console.log(res);
-  res.json('get schedule by id');
+  db.User.findOne({
+    include: [
+      {
+        model: db.Game,
+        include: [db.GameTypes, db.Location, db.User],
+      },
+    ],
+    where: {
+      id: req.params.id,
+    },
+    // include: [
+    //   {
+    //     model: db.User,
+    //     as: 'Users',
+    //     attributes: ['id'],
+    //     through: {
+    //       model: db.UserGame,
+    //       attributes: ['userId', 'GameId'],
+    //     },
+    //   },
+    //   {
+    //     model: db.GameTypes,
+    //     as: 'GameTypes',
+    //     attributes: ['GameTypeeId'],
+    //     // through: {
+    //     //   model: db.Location,
+    //     //   attributes: ['GameTypesName', 'minPlayers', 'maxPlayers'],
+    //     // },
+    //   },
+    // ],
+  }).then((schedule) => res.json(schedule));
 });
+
+// router.get('/user_schedule/:id', (req, res) => {
+//   // console.log(res);
+//   res.json('get schedule by id');
+// });
 
 module.exports = router;
