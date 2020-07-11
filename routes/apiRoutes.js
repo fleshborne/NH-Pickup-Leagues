@@ -60,10 +60,19 @@ router.get('/locations', (req, res) => {
   });
 });
 
-router.get('/gametypes', (req, res) => {
-  db.GameTypes.findAll().then((response) => {
-    res.json(response);
-  });
+router.get('/user_schedule', (req, res) => {
+  // db.GameTypes.findAll().then((schedule) => res.json(schedule));
+  // console.log(res);
+  console.log(req);
+  db.Game.findAll({
+    // where: {
+    //   userId: req.params.id,
+    //   // include: User,
+    // },
+    // include: Animal,
+  }).then((schedule) => res.json(schedule));
+  // console.log(res);
+  // res.json('get all games from schedule');
 });
 
 // *************************USER SCHEDULE &DATA AND SIGNEDUP PLAYERS *******************************

@@ -40,6 +40,10 @@
   font-family: 'Enfaticaob';
   src: url(../fonts/TrueType/Enfaticaob.otf);
 }
+@font-face {
+  font-family: 'sfsports';
+  src: url(../fonts/TrueType/SFSportsNightNS.ttf);
+}
 
 body {
   background-image: url('../images/vball.jpg');
@@ -123,4 +127,19 @@ form  {
   color: black;
   background-color: red;
   padding: 5px;
+}
+#tablePic {
+  height: 75px;
+}
+.containerimg {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+#iconColor {
+  color: black;
+}
+
+.logoimg {
+  height: 64px;
 }

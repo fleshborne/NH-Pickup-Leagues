@@ -74,6 +74,7 @@ const callGameSchedule = (userid) => {
   axios.get(`/api/user_schedule/${userid}`).then((schedule) => {
     // code goes here
     console.log(schedule);
+<<<<<<< HEAD
     // schedule.data.forEach((game) => {
     //   console.log(game);
     //   const $table = $('#schedule-table tbody');
@@ -120,3 +121,60 @@ const callGameSchedule = (userid) => {
     // });
   });
 };
+=======
+    console.log(schedule.data);
+    console.log(schedule.data.Games[0].GameType.gameTypesName);
+
+    schedule.data.Games.forEach((game) => {
+      console.log(game);
+      // eslint-disable-next-line no-use-before-define
+      const checkGameStatus = checkMinRequiredPlayers(
+        game.GameType.minPlayers,
+        game.GameType.maxPlayers,
+        game.GameType.neededToPlay,
+        game.numOfPlayersSignedUp
+      );
+      let gameStatIcon;
+      if (checkGameStatus === true) {
+        gameStatIcon = 'check_box';
+        gameStatIconColor = 'green';
+      } else {
+        gameStatIcon = 'hourglass_empty';
+        gameStatIconColor = 'yellow accent-4';
+      }
+      console.log(checkGameStatus);
+      const $table = $('#schedule-table tbody');
+      // const $rowCardTable = $('#rowCardAppend');
+      let imageCardPath = './assets/images/';
+      imageCardPath = `${imageCardPath}${game.GameType.gameTypesName}.jpg`;
+      $table.append(`<tr>
+      
+      <td><div class = "container containerimg"><div class="centered"><img src="${imageCardPath}" id="tablePic"><span>${game.GameType.gameTypesName}</span></div></td>
+      <td>${game.updatedAt}</td>
+      <td>${game.Location.title}</td>
+      <td>${game.numOfPlayersSignedUp}</td>
+      <td>${game.GameType.minPlayers}</td>
+      <td><a class="btn waves-effect waves-light ${gameStatIconColor} id="iconColor""><i class="material-icons id="iconColor">${gameStatIcon}</i></a></td>
+      <td><a class="btn waves-effect waves-light red darken-4"><i class="material-icons">delete</i></a></td>
+    </tr>`);
+    });
+  });
+};
+// Checks if the minium number of players is met
+const checkMinRequiredPlayers = (
+  minPlayers,
+  maxPlayers,
+  boolean,
+  numOfPlayerSignedUp
+) => {
+  let gameOn;
+  if (boolean === true && numOfPlayerSignedUp === maxPlayers) {
+    gameOn = true;
+  } else if (boolean === false && numOfPlayerSignedUp === minPlayers) {
+    gameOn = true;
+  } else {
+    gameOn = false;
+  }
+  return gameOn;
+};
+>>>>>>> 7445973064de19899d0c28273bc69cff84492f87
