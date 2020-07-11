@@ -8,9 +8,9 @@ $(document).ready(() => {
   // and updates the HTML on the page
   $.get('/api/user_data').then((data) => {
     $('.member-name').text(data.username);
-    console.log(data);
+    // console.log(data);
     const userid = data.id;
-    console.log(userid, 'user id');
+    // console.log(userid, 'user id');
     sessionStorage.setItem('id', JSON.stringify(userid));
     // cass the game schedule and passes user ID ID
     // eslint-disable-next-line no-use-before-define
@@ -70,7 +70,7 @@ $(document).ready(() => {
 // get all the games
 // eslint-disable-next-line no-undef
 const callGameSchedule = (userid) => {
-  console.log(userid, 'inside pass game schedule');
+  // console.log(userid, 'inside pass game schedule');
   axios.get(`/api/user_schedule/${userid}`).then((schedule) => {
     // code goes here
     console.log(schedule);

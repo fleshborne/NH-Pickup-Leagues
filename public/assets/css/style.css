@@ -97,6 +97,37 @@ h2 {
 form  {
   padding: 50px;
 }
+
+#dialogbox {
+  display: none;
+  position: fixed;
+  border-radius: 2px;
+  width: 500 px;
+  height: 500 px;
+  left: 550px;
+}
+#dialogbox > div {
+  background: black;
+}
+#dialogbox > div > #headermessage {
+  background: black;
+  padding: 10px;
+  color: #ccc;
+  text-align: center;
+  padding: 6px 1px 6px 1px;
+}
+#dialogbox > div > #bodymessage {
+  background: black;
+  font-size: 15px;
+  padding: 25px;
+  color: orange;
+  padding: 10px 3px 10px 3px;
+}
+#okbutton {
+  color: black;
+  background-color: red;
+  padding: 5px;
+}
 #tablePic {
   height: 75px;
 }
