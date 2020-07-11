@@ -63,11 +63,11 @@ $(document).ready(() => {
 
     const gameData = {
       date: dateInput.val().trim(),
+      time: timeInput.val().trim(),
     };
-    // console.log('OVJ', userData);
-    // If we have an email and password, run the signUpUser function
+
     addGame(gameData.date);
-    // emailInput.val('');
+
 
     console.log(gameTypeInput.val());
     console.log(locationInput.val());
