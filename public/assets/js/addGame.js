@@ -33,7 +33,7 @@ function addGame(date, numOfPlayersSignedUp, LocationId, GameTypeId) {
   })
     .then((res) => {
       console.log(res);
-      window.location.replace('/members');
+      // window.location.replace('/members');
     })
     .catch((err) => {
       console.log(err);
@@ -51,6 +51,7 @@ function addGame(date, numOfPlayersSignedUp, LocationId, GameTypeId) {
 
 //   return [year, month, day].join('-');
 // }
+
 $(document).ready(() => {
   const newGameForm = $('.add-game');
   const gameTypeInput = $('#type-dropdown');
@@ -61,7 +62,6 @@ $(document).ready(() => {
   // get the Gametype info
   $.get('/api/gametypes').then((data) => {
     // loop over the names
-    console.log('data from addgame', data);
     data.forEach((game) => {
       // append them as select options
       const newGame = $('<option>')
@@ -86,6 +86,7 @@ $(document).ready(() => {
   // current time
 
   // const now = new Date();
+  // console.log(`console time ${now}`);
   // const first = now.getDate();
   // const firstDay = new Date(now.setDate(first)).toString();
   // let dateOptions = '';
@@ -95,20 +96,29 @@ $(document).ready(() => {
   //   dateOptions += '<option>' + formatDate(next.toString()) + '</option>';
   // }
   // dateInput.append(dateOptions);
-
-  // const now = moment().format('MMM Do YY');
-  // console.log(now);
-  // const tomorrow = moment().add(1, 'days');
-  // console.log(tomorrow);
-  // for (let i = 0; i < 6; i++) {
-  //   now = now;
-  // }
+  // dateInput.formSelect();
 
   newGameForm.on('submit', (event) => {
     event.preventDefault();
 
+    let now = moment().format('MMM Do YY');
+    console.log(now);
+    let tomorrow = moment().add(1, 'days');
+    console.log(tomorrow);
+
+    for (let i = 1; i < 6; i++) {
+      now = moment().format().add(i, 'days');
+      // now = moment().format();
+      console.log(now._d);
+    }
+
+    // convert date and time
+    const date = dateInput.val();
+    const time = timeInput.val();
+    const dateTime = moment(`${date} ${time}`, 'YYYY-MM-DD HH:mm:ss').format();
+    console.log(dateTime);
     const gameData = {
-      date: dateInput.val().trim(),
+      date: dateTime,
       numOfPlayersSignedUp: 1,
       LocationId: locationInput.val(),
       GameTypeId: gameTypeInput.val(),
