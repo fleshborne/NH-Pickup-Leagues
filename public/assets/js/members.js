@@ -75,7 +75,7 @@ const callGameSchedule = (userid) => {
     // code goes here
     console.log(schedule);
     console.log(schedule.data);
-    console.log(schedule.data.Games[0].GameType.gameTypesName);
+    // console.log(schedule.data.Games[0].GameType.gameTypesName);
 
     schedule.data.Games.forEach((game) => {
       console.log(game);

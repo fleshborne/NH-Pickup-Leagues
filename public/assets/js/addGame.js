@@ -17,7 +17,7 @@ function displaySaved() {
   }, 1000);
 }
 function addGame(date) {
-  $.post('/api/games', { date })
+  $.post('/api/games', { date, numOfPlayersSignedUp, locationId, gameTypeID})
     .then((res) => {
       console.log(res);
       window.location.replace('/members');
@@ -31,8 +31,8 @@ $(document).ready(() => {
   const newGameForm = $('.add-game');
   const gameTypeInput = $('#type-dropdown');
   const locationInput = $('#location-dropdown');
-  const timeInput = $('#time-dropdown');
-  const dateInput = $('#date-dropdown');
+  // const timeInput = $('#time-dropdown');
+  // const dateInput = $('#date-dropdown');
 
   // get the Gametype info
   $.get('/api/gametypes').then((data) => {
@@ -47,6 +47,7 @@ $(document).ready(() => {
 
   // get the Locations from db
   $.get('/api/locations').then((data) => {
+    console.log("MY ID" + req.params.id);
     // loop over the titles
     data.forEach((park) => {
       // append them as select options
