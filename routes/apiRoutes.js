@@ -82,7 +82,7 @@ router.post('/games', (req, res) => {
    GameTypeId: req.body.GameTypeId,
   })
     .then(function (Game) {
-      Game.addUser(req.body.UserId).then(() => {
+      Game.addUser(req.user.UserId).then(() => {
         res.json(Game);
         // console.log(req.params.id);
       });
