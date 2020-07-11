@@ -105,3 +105,10 @@ form  {
   text-align: center;
   color: white;
 }
+#iconColor {
+  color: black;
+}
+
+.logoimg {
+  height: 64px;
+}
