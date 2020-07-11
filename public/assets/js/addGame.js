@@ -23,7 +23,7 @@ function displaySaved() {
 // add game request
 function addGame(date, numOfPlayersSignedUp, LocationId, GameTypeId) {
   console.log(
-    `inside POST - date:${date} numOfPlayers ${numOfPlayersSignedUp} Location ${LocationId} Type: ${GameTypeId}`
+    `inside POST - date:${date} numOfPlayers ${numOfPlayersSignedUp} Location ${LocationId} Type: ${GameTypeId}`,
   );
   $.post('/api/games', {
     date,
@@ -101,20 +101,26 @@ $(document).ready(() => {
   newGameForm.on('submit', (event) => {
     event.preventDefault();
 
+    // eslint-disable-next-line no-undef
     let now = moment().format('MMM Do YY');
     console.log(now);
-    let tomorrow = moment().add(1, 'days');
+    // eslint-disable-next-line no-undef
+    const tomorrow = moment().add(1, 'days');
     console.log(tomorrow);
 
+    // eslint-disable-next-line no-plusplus
     for (let i = 1; i < 6; i++) {
+      // eslint-disable-next-line no-undef
       now = moment().format().add(i, 'days');
       // now = moment().format();
+      // eslint-disable-next-line no-underscore-dangle
       console.log(now._d);
     }
 
     // convert date and time
     const date = dateInput.val();
     const time = timeInput.val();
+    // eslint-disable-next-line no-undef
     const dateTime = moment(`${date} ${time}`, 'YYYY-MM-DD HH:mm:ss').format();
     console.log(dateTime);
     const gameData = {
@@ -129,7 +135,7 @@ $(document).ready(() => {
       gameData.date,
       gameData.numOfPlayersSignedUp,
       gameData.LocationId,
-      gameData.GameTypeId
+      gameData.GameTypeId,
     );
     displaySaved();
   });
