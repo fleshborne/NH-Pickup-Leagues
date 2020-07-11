@@ -1,6 +1,6 @@
 $(document).ready(() => {
-    $('#demo-carousel-auto').carousel();
-    setInterval(() => {
-        $('#demo-carousel-auto').carousel('next');
-    }, 1500);
+  $('#demo-carousel-auto').carousel();
+  setInterval(() => {
+    $('#demo-carousel-auto').carousel('next');
+  }, 1500);
 });
