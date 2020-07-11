@@ -19,6 +19,7 @@ const passport = require('../config/passport');
 // If the user has valid login credentials, send them to the members page.
 // Otherwise the user will be sent an error
 router.post('/login', passport.authenticate('local'), function (req, res) {
+  console.log('check for invalid user' + res.message);
   res.json(req.user);
 });
 
@@ -35,8 +36,13 @@ router.post('/signup', (req, res) => {
       res.redirect(307, '/api/login');
     })
     .catch((err) => {
-      res.status(401).json(err);
+      console.log('create user error' + err);
+      res.status(406).json(err);
     });
+  // .catch((Sequelize.) => {
+  //   //console.log('create user error' + err);
+  //   res.status(401).json(UniqueConstraintError);
+  // });
 });
 
 // // Route for logging user out
@@ -44,6 +50,23 @@ router.post('/signup', (req, res) => {
 //   req.logout();
 //   res.redirect('/');
 // });
+
+// ****************LUBA ADD GAME***************************
+router.get('/locations', (req, res) => {
+  // Here we add an "include" property to our options in our findAll query
+  // In this case, just db.Post
+  db.Location.findAll().then((response) => {
+    res.json(response);
+  });
+});
+
+router.get('/gametypes', (req, res) => {
+  db.GameTypes.findAll().then((response) => {
+    res.json(response);
+  });
+});
+
+// *************************USER SCHEDULE &DATA AND SIGNEDUP PLAYERS *******************************
 
 // Route for getting some data about our user to be used client side
 router.get('/user_data', (req, res) => {
@@ -60,28 +83,8 @@ router.get('/user_data', (req, res) => {
     });
   }
 });
-// ****************LUBA ADD GAME***************************
-router.get('/locations', (req, res) => {
-  // Here we add an "include" property to our options in our findAll query
-  // In this case, just db.Post
-  db.Location.findAll().then((response) => {
-    res.json(response);
-  });
-});
 
-router.get('/gametypes', (req, res) => {
-  db.GameTypes.findAll().then((response) => {
-    res.json(response);
-  });
-});
-
-// ********************************************************
-
-// router.get('/user_schedule', (req, res) => {
-//   db.GameTypes.findAll().then((schedule) => res.json(schedule));
-//   console.log(res
-//   // res.json('get all games from schedule');
-// });
+// router to get the list of players signed up for a game so far
 
 router.get('/user_schedule/:id', (req, res) => {
   db.User.findOne({

@@ -5,9 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     date: {
       type: DataTypes.DATE,
     },
-    // time: {
-    //   type: DataTypes.TIME,
-    // },
+    numOfPlayersSignedUp: {
+      type: DataTypes.INTEGER,
+    },
   });
   Game.associate = (models) => {
     // We're saying that a Game should belong to an User

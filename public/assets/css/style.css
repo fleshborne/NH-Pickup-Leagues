@@ -72,8 +72,8 @@ h5 {
 .hideMap {
   visibility: hidden;
 }
-h2{
-  color:wheat;
+h2 {
+  color: wheat;
 }
 
 .regform {
@@ -92,4 +92,32 @@ h2{
 }
 form  {
   padding: 50px;
+}
+
+#dialogbox {
+  display: none;
+  position: fixed;
+  background: rgb(1, 0, 0, 0.6);
+  border-radius: 2px;
+  width: 500 px;
+  height: 50 px;
+}
+#dialogbox > div {
+  background: #fff;
+  margin: 8px;
+}
+#dialogbox > div > #headermessage {
+  background: #666;
+  font-size: 20px;
+  padding: 10px;
+  color: #ccc;
+  text-align: left;
+  padding: 6px 1px 6px 1px;
+}
+#dialogbox > div > #bodymessage {
+  background: rgb(245, 241, 241);
+  font-size: 15px;
+  padding: 25px;
+  color: #000;
+  padding: 10px 3px 10px 3px;
 }
