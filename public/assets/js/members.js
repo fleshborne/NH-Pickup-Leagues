@@ -79,7 +79,8 @@ const callGameSchedule = (userid) => {
 
     schedule.data.Games.forEach((game) => {
       console.log(game);
-      let checkGameStatus = checkMinRequiredPlayers(
+      // eslint-disable-next-line no-use-before-define
+      const checkGameStatus = checkMinRequiredPlayers(
         game.GameType.minPlayers,
         game.GameType.maxPlayers,
         game.GameType.neededToPlay,
