@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 
 // const moment = require('moment');
 /* eslint-disable linebreak-style */
