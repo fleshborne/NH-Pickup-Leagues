@@ -78,9 +78,11 @@ router.get('/gametypes', (req, res) => {
 router.post('/games', (req, res) => {
   db.Game.create({
       date: req.body.date,
+      userId: req.params.id,
     })
     .then(function () {
       res.json(req.user);
+      console.log(req.params.id);
     })
     .catch((err) => {
       res.status(401).json(err);
@@ -88,9 +90,10 @@ router.post('/games', (req, res) => {
 });
 router.get('/games', (req, res) => {
   db.Game.findAll({
-    include: [{
-      include: [db.GameTypes, db.Location, db.User],
-    }],
+    // include: [{
+    //   model: db.Game,
+    //   include: [db.GameTypes, db.Location, db.User],
+    // }],
   }).then((schedule) => res.json(schedule));
 });
 

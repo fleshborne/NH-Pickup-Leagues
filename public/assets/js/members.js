@@ -165,6 +165,10 @@ $(document).ready(() => {
 $(document).ready(() => {
   $('.collapsible').collapsible();
   $('.dropdown-trigger').dropdown();
+  $('.findGame').on('click', () => {
+    // eslint-disable-next-line no-use-before-define
+    searchAllGames();
+  });
   // TO DOS: get map to dynamically create markers on new game
   // const gameTypeInput = $('#search-game-type');
   // $.get('/api/gametypes').then((data) => {
@@ -187,6 +191,11 @@ $(document).ready(() => {
   // });
 });
 
+const searchAllGames = () => {
+  axios.get('/api/games').then((schedule) => {
+    console.log(schedule);
+  });
+};
 
 // get all the games
 // eslint-disable-next-line no-undef
@@ -196,7 +205,7 @@ const callGameSchedule = (userid) => {
     // code goes here
     console.log(schedule);
     console.log(schedule.data);
-    console.log(schedule.data.Games[0].GameType.gameTypesName);
+    // console.log(schedule.data.Games[0].GameType.gameTypesName);
 
     schedule.data.Games.forEach((game) => {
       console.log(game);

@@ -136,7 +136,7 @@
               Find a Game
             </div>
             <div class="collapsible-body grey darken-3">
-              <table class="responsive-table" id="schedule-table">
+              <table class="responsive-table" id="find-schedule-table">
                 <thead>
                   <tr>
                     <th>Sport/Game</th>
@@ -145,6 +145,7 @@
                     <th>Playing</th>
                     <th>Required</th>
                     <th>Status</th>
+                    <th>Join Game</th>
                   </tr>
                 </thead>
 
@@ -155,58 +156,72 @@
               <br>
               <br>
               <!-- <div class="container" style="height: 500px;">
-                    <div id="map" style="width: 100%; height: 100%"
-                      class="hideMap"></div>
-                  </div> -->
+                      <div id="map" style="width: 100%; height: 100%"
+                        class="hideMap"></div>
+                    </div> -->
             </div>
 
           </li>
-          <li>
-            <div class="collapsible-body blue-grey darken-4">
-              <span>Add a Game stuff.</span>
-            </div>
+          <div class="collapsible-body blue-grey darken-4">
+            <span>Add a Game stuff.</span>
+          </div>
           </li>
           <li>
             <div class="collapsible-header grey darken-3">
               <i class="material-icons">location_on</i>Add a Game
             </div>
-            <div class="collapsible-body blue-grey darken-4">
-              <span><a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Game Type</a>
-                <td>
-                  <div></a class="btn-floating halfway-fab waves-effect waves-light red"><i
-                      class="material-icons">add</i></a>
+            <div class="collapsible-body blue-grey darken-1">
 
-                    <!-- Dropdown Structure -->
-                    <ul id='dropdown1' class='dropdown-content'>
-                      <li><a href="#!">Volleyball</a></li>
-                      <li><a href="#!">Soccer</a></li>
-                    </ul>
-              </span>
-              <span><a class='dropdown-trigger btn' href='#' data-target='dropdown2'>Date</a>
 
-                <!-- Dropdown Structure -->
-                <ul id='dropdown2' class='dropdown-content'>
-                  <li><a href="#!">7/24/2010</a></li>
-                  <li><a href="#!">7/25/2010</a></li>
-                </ul>
-              </span>
-              <span><a class='dropdown-trigger btn' href='#' data-target='dropdown3'>Time</a>
+              <form class="add-game">
+                <div class="form-group">
+                  <div class="input-field col s6">
+                    <select id="type-dropdown" class="materialSelect">
+                      <option value="" disabled selected>Choose your option</option>
+                    </select>
+                    <label>Game Type</label>
+                  </div>
+                </div>
 
-                <!-- Dropdown Structure -->
-                <ul id='dropdown3' class='dropdown-content'>
-                  <li><a href="#!">8:30pm</a></li>
-                  <li><a href="#!">10:00pm</a></li>
-                </ul>
-              </span>
-              <span><a class='dropdown-trigger btn' href='#' data-target='dropdown4'>Location</a>
 
-                <!-- Dropdown Structure -->
-                <ul id='dropdown4' class='dropdown-content'>
-                  <li><a href="#!">Prescott Park</a></li>
-                  <li><a href="#!">Rock Street</a></li>
-                </ul>
-              </span>
-            </div>
+                <div class="form-group">
+                  <div class="input-field col s6">
+                    <select id="date-dropdown">
+                      <option value="" disabled selected>Choose your option</option>
+                      <option value="1">7/25</option>
+                      <option value="2">7/26</option>
+                    </select>
+                    <label>Date</label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-field col s6">
+                    <select id="time-dropdown">
+                      <option value="" disabled selected>Choose your option</option>
+                      <option value="1">13:00</option>
+                      <option value="2">14:00</option>
+                    </select>
+                    <label>Time</label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-field col s6">
+                    <select id="location-dropdown" class="materialSelect">
+                      <option value="" disabled selected>Choose your option</option>
+                    </select>
+                    <label>Location</label>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-default" id="submit-new-game">Submit</button>
+                <p id="display-message"></p>
+              </form>
+              <div id="test-field"></div>
+              <div class="col s6">
+
+              </div>
           </li>
           <li>
             <div class="collapsible-header grey darken-3">
@@ -219,6 +234,7 @@
         </ul>
       </div>
     </div>
+  </div>
   </div>
   <div class="container">
     <div class="row">
