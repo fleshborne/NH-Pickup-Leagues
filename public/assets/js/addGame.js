@@ -57,8 +57,6 @@ $(document).ready(() => {
   });
 
   newGameForm.on('submit', (event) => {
-
-
     event.preventDefault();
 
     const gameData = {
@@ -67,8 +65,6 @@ $(document).ready(() => {
     };
 
     addGame(gameData.date);
-
-
     console.log(gameTypeInput.val());
     console.log(locationInput.val());
     console.log(timeInput.val());
