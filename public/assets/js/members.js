@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-unused-vars */
 /* eslint-disable comma-dangle */
 /* eslint-disable linebreak-style */
 /* eslint-disable no-undef */
@@ -85,7 +86,6 @@ const searchAllGames = () => {
         game.GameType.neededToPlay,
         game.numOfPlayersSignedUp
       );
-      // eslint-disable-next-line no-unused-vars
       let gameStatIcon;
       if (checkGameStatus === true) {
         gameStatIcon = 'check_box';
@@ -95,23 +95,19 @@ const searchAllGames = () => {
         gameStatIconColor = 'yellow accent-4';
       }
       console.log(checkGameStatus);
+      const $table = $('#find-schedule-table');
+      let imageCardPath = './assets/images/';
+      imageCardPath = `${imageCardPath}${game.GameType.gameTypesName}.jpg`;
+      $table.append(`<tr>
+      <td><div class = "container containerimg"><div class="centered"><img src="${imageCardPath}" id="tablePic"><span>${game.GameType.gameTypesName}</span></div></td>
+      <td>${game.updatedAt}</td>
+      <td>${game.Location.title}</td>
+      <td>${game.numOfPlayersSignedUp}</td>
+      <td>${game.GameType.minPlayers}</td>
+      <td><a class="btn waves-effect waves-light ${gameStatIconColor} id="iconColor""><i class="material-icons id="iconColor">${gameStatIcon}</i></a></td>
+      <td><a class="btn waves-effect waves-light green"><i class="material-icons">add</i></a></td>
+    </tr>`);
     });
-    const checkMinRequiredPlayers = (
-      minPlayers,
-      maxPlayers,
-      boolean,
-      numOfPlayerSignedUp
-    ) => {
-      let gameOn;
-      if (boolean === true && numOfPlayerSignedUp === maxPlayers) {
-        gameOn = true;
-      } else if (boolean === false && numOfPlayerSignedUp === minPlayers) {
-        gameOn = true;
-      } else {
-        gameOn = false;
-      }
-      return gameOn;
-    };
   }).catch((err) => {
     console.log(err);
   });
