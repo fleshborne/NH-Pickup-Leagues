@@ -62,9 +62,13 @@ $(document).ready(() => {
   $('.collapsible').collapsible();
   $('.dropdown-trigger').dropdown();
   $('select').formSelect();
-  $('.findGame').on('click', () => {
+  $('.findGame').one('click', () => {
     // eslint-disable-next-line no-use-before-define
     searchAllGames();
+  });
+  $('#join-button').on('click', () => {
+    // call addUser to join new User to an existing game
+
   });
 
   // SearchBtn.on('click', () => {
@@ -105,7 +109,7 @@ const searchAllGames = () => {
       <td>${game.numOfPlayersSignedUp}</td>
       <td>${game.GameType.minPlayers}</td>
       <td><a class="btn waves-effect waves-light ${gameStatIconColor} id="iconColor""><i class="material-icons id="iconColor">${gameStatIcon}</i></a></td>
-      <td><a class="btn waves-effect waves-light green"><i class="material-icons">add</i></a></td>
+      <td><a class="btn waves-effect waves-light green" id="join-button"><i class="material-icons">add</i></a></td>
     </tr>`);
     });
   }).catch((err) => {
