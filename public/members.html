@@ -25,7 +25,8 @@
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br /><br />
-      <h1 class="header center orange-text" id="headerMembers">Portsmouth NH Pickup</h1>
+      <h1 class="header center orange-text" id="headerMembers">Portsmouth NH
+        Pickup</h1>
       <h5 class="header col s12 light center">
         Check out your schedule and find and or create a game
       </h5>
@@ -34,7 +35,7 @@
       </div>
 
       <div class="row">
-        <div class="col s3 ">
+        <div class="col s3">
           <h5>Welcome <span class="member-name"></span></h5>
 
           <img src="./assets/images/avatar.png" id="avatar" alt="avatarimage">
@@ -71,11 +72,33 @@
               </div>
             </li>
             <li>
-              <div class="collapsible-header grey darken-3">
+              <div class="collapsible-header blue-grey darken-3 findGame" id="findGameDropDwn">
                 <i class="material-icons">group_add</i>Find a Game
               </div>
-              <div class="collapsible-body blue-grey darken-4">
-                <span>Add a Game stuff.</span>
+              <div class="collapsible-body grey darken-3">
+                <table class="responsive-table" id="find-schedule-table">
+                  <thead>
+                    <tr>
+                      <th>Sport/Game</th>
+                      <th>Time</th>
+                      <th>Place</th>
+                      <th>Playing</th>
+                      <th>Required</th>
+                      <br>
+                      <th>Status</th>
+                      <br>
+                      <th>Join</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+
+                  </tbody>
+                </table>
+                <!-- <div class="container" style="height: 500px;">
+                          <div id="map" style="width: 100%; height: 100%"
+                            class="hideMap"></div>
+                        </div> -->
               </div>
             </li>
             <li>
@@ -100,8 +123,6 @@
                     <div class="input-field col s6">
                       <select id="date-dropdown">
                         <option value="" disabled selected>Choose your option</option>
-            
-                     
                       </select>
                       <label>Date</label>
                     </div>
@@ -139,7 +160,8 @@
               <div class="collapsible-header grey darken-3">
                 <i class="material-icons">child_care</i>Update profile
               </div>
-              <div class="collapsible-body teal accent-2" style="color: #37474f;">
+              <div class="collapsible-body teal accent-2" style="color:
+                    #37474f;">
                 <span>Update profile stuff.</span>
               </div>
             </li>

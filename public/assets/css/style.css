@@ -15,28 +15,35 @@
   margin: 0;
   padding: 0;
 }
+
 .icon-block {
   padding: 0 15px;
 }
+
 .icon-block .material-icons {
   font-size: inherit;
 }
+
 @font-face {
   font-family: 'sports';
   src: url(../fonts/TrueType/SFSportsNightNS.ttf);
 }
+
 @font-face {
   font-family: 'teamspirit';
   src: url(../fonts/TrueType/TeamSpiritNF.otf);
 }
+
 @font-face {
   font-family: 'fightnight';
   src: url(../fonts/TrueType/FightNight.otf);
 }
+
 @font-face {
   font-family: 'sketchcollege';
   src: url(../fonts/TrueType/SketchCollege.ttf);
 }
+
 @font-face {
   font-family: 'Enfatica';
   src: url(../fonts/TrueType/Enfatica.otf);
@@ -46,6 +53,7 @@
   font-family: 'Enfaticaob';
   src: url(../fonts/TrueType/Enfaticaob.otf);
 }
+
 @font-face {
   font-family: 'sfsports';
   src: url(../fonts/TrueType/SFSportsNightNS.ttf);
@@ -62,6 +70,7 @@ body {
   /* font-family: sports; */
   margin: 0;
 }
+
 h1 {
   font-family: sketchcollege;
   margin: 0;
@@ -75,21 +84,27 @@ h5 {
   
   /* text-shadow: 1px 1px 2px orange; */
 }
+
 #avatar {
   width: 100%;
   /* text-shadow: 1px 1px 2px orange; */
   /* TODO: fix this class for profile pic */
 }
+
 h5 {
   font-family: sports;
 }
+
 #map {
-  height: 150px;
-  width: 150px;
+  height: 500px;
+  width: 500px;
+  padding: 50px;
 }
+
 .hideMap {
   visibility: hidden;
 }
+
 h2 {
   color: wheat;
 }
@@ -101,14 +116,16 @@ h2 {
   color: #ffffff;
   padding: 10px 0px 10px 0px;
   text-align: center;
-  border-radius: 15px 15px 0px 0px;
+  border-radius: 15px 15px 0px 0px;
 }
-.main  {
+
+.main {
   background-color: rgb(0, 0, 0, 0.5);
   width: 800px;
   margin: auto;
 }
-form  {
+
+form {
   padding: 50px;
 }
 
@@ -120,36 +137,43 @@ form  {
   height: 500 px;
   left: 550px;
 }
-#dialogbox > div {
+
+#dialogbox>div {
   background: black;
 }
-#dialogbox > div > #headermessage {
+
+#dialogbox>div>#headermessage {
   background: black;
   padding: 10px;
   color: #ccc;
   text-align: center;
   padding: 6px 1px 6px 1px;
 }
-#dialogbox > div > #bodymessage {
+
+#dialogbox>div>#bodymessage {
   background: black;
   font-size: 15px;
   padding: 25px;
   color: orange;
   padding: 10px 3px 10px 3px;
 }
+
 #okbutton {
   color: black;
   background-color: red;
   padding: 5px;
 }
+
 #tablePic {
   height: 75px;
 }
+
 .containerimg {
   position: relative;
   text-align: center;
   color: white;
 }
+
 #iconColor {
   color: black;
 }

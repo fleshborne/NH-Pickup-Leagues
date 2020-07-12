@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-unused-vars */
 /* eslint-disable comma-dangle */
 /* eslint-disable linebreak-style */
 /* eslint-disable no-undef */
@@ -61,11 +62,56 @@ $(document).ready(() => {
   $('.collapsible').collapsible();
   $('.dropdown-trigger').dropdown();
   $('select').formSelect();
-  SearchBtn.on('click', () => {
-    initMap();
-    mapDiv.removeClass('.hideMap');
+  $('.findGame').on('click', () => {
+    // eslint-disable-next-line no-use-before-define
+    searchAllGames();
   });
+
+  // SearchBtn.on('click', () => {
+  //   initMap();
+  //   mapDiv.removeClass('.hideMap');
+  // });
 });
+const searchAllGames = () => {
+  axios.get('/api/games').then((games) => {
+    console.log(games);
+    console.log(games.data);
+    games.data.forEach((game) => {
+      console.log(game);
+
+      // eslint-disable-next-line no-use-before-define
+      const checkGameStatus = checkMinRequiredPlayers(
+        game.GameType.minPlayers,
+        game.GameType.maxPlayers,
+        game.GameType.neededToPlay,
+        game.numOfPlayersSignedUp
+      );
+      let gameStatIcon;
+      if (checkGameStatus === true) {
+        gameStatIcon = 'check_box';
+        gameStatIconColor = 'green';
+      } else {
+        gameStatIcon = 'hourglass_empty';
+        gameStatIconColor = 'yellow accent-4';
+      }
+      console.log(checkGameStatus);
+      const $table = $('#find-schedule-table');
+      let imageCardPath = './assets/images/';
+      imageCardPath = `${imageCardPath}${game.GameType.gameTypesName}.jpg`;
+      $table.append(`<tr>
+      <td><div class = "container containerimg"><div class="centered"><img src="${imageCardPath}" id="tablePic"><span>${game.GameType.gameTypesName}</span></div></td>
+      <td>${game.updatedAt}</td>
+      <td>${game.Location.title}</td>
+      <td>${game.numOfPlayersSignedUp}</td>
+      <td>${game.GameType.minPlayers}</td>
+      <td><a class="btn waves-effect waves-light ${gameStatIconColor} id="iconColor""><i class="material-icons id="iconColor">${gameStatIcon}</i></a></td>
+      <td><a class="btn waves-effect waves-light green"><i class="material-icons">add</i></a></td>
+    </tr>`);
+    });
+  }).catch((err) => {
+    console.log(err);
+  });
+};
 
 // get all the games
 // eslint-disable-next-line no-undef

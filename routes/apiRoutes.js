@@ -26,10 +26,10 @@ router.post('/login', passport.authenticate('local'), function (req, res) {
 // otherwise send back an error
 router.post('/signup', (req, res) => {
   db.User.create({
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password,
-  })
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+    })
     .then(function () {
       //res.json(req.body);
       //console.log('createduser' + res.body);
@@ -68,25 +68,35 @@ router.get('/gametypes', (req, res) => {
 router.post('/games', (req, res) => {
   // ************add request
 
-    db.Game.create({
+  db.Game.create({
       date: req.body.date,
       time: req.body.time,
       LocationId: req.body.LocationId,
       GameTypeId: req.body.GameTypeId,
       user: req.body.user,
     })
-      .then(function (Game) {
-        Game.addUser(req.body.user).then(() => {
-          res.json(Game);
-          console.log(req.body);
-        });
-      })
-      .catch((err) => {
-        res.status(401).json(err);
+    .then(function (Game) {
+      Game.addUser(req.body.user).then(() => {
+        res.json(Game);
+        console.log(req.body);
       });
+    })
+    .catch((err) => {
+      res.status(401).json(err);
+    });
 });
 
 // ********************************************************
+// *************** search for games************************
+router.get('/games', (req, res) => {
+  db.Game.findAll({
+    include: [db.GameTypes, db.Location],
+  }).then((response) => {
+    res.json(response);
+  }).catch((err) => {
+    res.status(401).json(err);
+  });
+});
 
 router.get('/user_schedule', (req, res) => {
   // db.GameTypes.findAll().then((schedule) => res.json(schedule));
@@ -125,16 +135,15 @@ router.get('/user_data', (req, res) => {
 
 router.get('/user_schedule/:id', (req, res) => {
   db.User.findOne({
-    include: [
-      {
-        model: db.Game,
-        include: [db.GameTypes, db.Location, db.User],
-      },
-    ],
+    include: [{
+      model: db.Game,
+      include: [db.GameTypes, db.Location, db.User],
+    }],
     where: {
       id: req.params.id,
     },
   }).then((schedule) => res.json(schedule));
 });
 
+// eslint-disable-next-line eol-last
 module.exports = router;
