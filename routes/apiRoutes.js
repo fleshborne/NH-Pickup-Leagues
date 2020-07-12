@@ -26,10 +26,10 @@ router.post('/login', passport.authenticate('local'), function (req, res) {
 // otherwise send back an error
 router.post('/signup', (req, res) => {
   db.User.create({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password,
-    })
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+  })
     .then(function () {
       //res.json(req.body);
       //console.log('createduser' + res.body);
@@ -69,12 +69,12 @@ router.post('/games', (req, res) => {
   // ************add request
 
   db.Game.create({
-      date: req.body.date,
-      time: req.body.time,
-      LocationId: req.body.LocationId,
-      GameTypeId: req.body.GameTypeId,
-      user: req.body.user,
-    })
+    date: req.body.date,
+    time: req.body.time,
+    LocationId: req.body.LocationId,
+    GameTypeId: req.body.GameTypeId,
+    user: req.body.user,
+  })
     .then(function (Game) {
       Game.addUser(req.body.user).then(() => {
         res.json(Game);
@@ -98,6 +98,7 @@ router.get('/games', (req, res) => {
   });
 });
 
+
 router.get('/user_schedule', (req, res) => {
   // db.GameTypes.findAll().then((schedule) => res.json(schedule));
   // console.log(res);
@@ -107,7 +108,6 @@ router.get('/user_schedule', (req, res) => {
     //   userId: req.params.id,
     //   // include: User,
     // },
-    // include: Animal,
   }).then((schedule) => res.json(schedule));
   // console.log(res);
   // res.json('get all games from schedule');
@@ -131,8 +131,8 @@ router.get('/user_data', (req, res) => {
   }
 });
 
-// router to get the list of players signed up for a game so far
-
+// ********************************************************
+// *************** Grab user schedule ************************
 router.get('/user_schedule/:id', (req, res) => {
   db.User.findOne({
     include: [{

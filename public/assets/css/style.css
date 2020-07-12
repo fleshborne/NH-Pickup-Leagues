@@ -58,7 +58,11 @@
   font-family: 'sfsports';
   src: url(../fonts/TrueType/SFSportsNightNS.ttf);
 }
-
+.btnspacing {
+  margin-right: 15px;
+  font-size:1.2vw;
+  font-family: sfsports;
+  }
 
 body {
   background-image: url('../images/vball.jpg');
@@ -76,9 +80,17 @@ h1 {
   font-family: sketchcollege;
   margin: 0;
   font-size:4vw;
+  /* text-shado
+  w: 1px 1px 2px orange; */
+}
+.sfsports {
+  font-family: sfsports;
+  margin: 0;
+  font-size:1.5vw;
+  
   /* text-shadow: 1px 1px 2px orange; */
 }
-h5 {
+.sketchcollege {
   font-family: sketchcollege;
   margin: 0;
   font-size:1.5vw;
@@ -188,7 +200,19 @@ form {
   position: fixed; 
   top: 0; 
   left: 0; 
-width: 100%;
-height: 100%;
+  width: 100%;
+  height: 100%;
 }
-* {cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo38.cur), auto !important;} /* End http://www.cursors-4u.com */
+
+  .btnhoover:hover {
+    -webkit-animation: anim ease-out 0.5s 1;
+    animation: anim 1.5s 2;
+    transform: translateZ(100px);
+    box-sizing: content-box 10px;
+    box-shadow: 0 10px 10px rgba(254, 165, 0, 0.66);
+    opacity: 1;
+    position: relative;
+    transform: scale(1.1);
+  }
+/* * {cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo38.cur), auto !important;}  */
+/* End http://www.cursors-4u.com */
