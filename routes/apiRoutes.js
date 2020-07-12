@@ -97,7 +97,15 @@ router.get('/games', (req, res) => {
     res.status(401).json(err);
   });
 });
+router.put('/games', (req, res) => {
+  db.Game.update(req.user, {
+    where: {
+      id: req.user.id,
+    },
+  }).then((response) => {
 
+  });
+});
 router.get('/user_schedule', (req, res) => {
   // db.GameTypes.findAll().then((schedule) => res.json(schedule));
   // console.log(res);
