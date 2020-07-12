@@ -59,16 +59,18 @@
   src: url(../fonts/TrueType/SFSportsNightNS.ttf);
 }
 
+
 body {
   background-image: url('../images/vball.jpg');
-  background-size: cover !important;
-  min-height: 100vh;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
   color: white;
-  /* font-family: sports; */
-  margin: 0;
+  background-image: url('../images/vball.jpg');
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+	
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
 }
 
 h1 {
@@ -181,3 +183,4 @@ form {
 .logoimg {
   height: 64px;
 }
+
