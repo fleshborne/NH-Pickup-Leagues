@@ -19,13 +19,6 @@ $(document).ready(() => {
   });
 });
 
-$(document).on("click", ".delete-button", function (event) {
-  const id = $(this).data('id');
-  axios.delete(`/api/remove_game_user/${id}`)
-    .then((response) => {
-      removeGame();
-    });
-});
 
 
 /* eslint-disable eol-last */
@@ -77,6 +70,15 @@ $(document).ready(() => {
     searchAllGames();
   });
 
+  $(document).on("click", ".delete-button", function (event) {
+    const id = $(this).data('id');
+    axios.delete(`/api/remove_game_user/${id}`)
+      .then((response) => {
+        callGameSchedule();
+      });
+  });
+
+
   // SearchBtn.on('click', () => {
   //   initMap();
   //   mapDiv.removeClass('.hideMap');
@@ -86,6 +88,7 @@ const searchAllGames = () => {
   axios.get('/api/games').then((games) => {
     console.log(games);
     console.log(games.data);
+
     games.data.forEach((game) => {
       console.log(game);
 
@@ -131,7 +134,8 @@ const callGameSchedule = (userid) => {
     // code goes here
     console.log(schedule);
     console.log(schedule.data);
-    // console.log(schedule.data.Games[0].GameType.gameTypesName);
+    const $table = $('#schedule-table tbody');
+    $table.empty();
 
     schedule.data.Games.forEach((game) => {
       console.log(game);
