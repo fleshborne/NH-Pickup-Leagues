@@ -97,13 +97,20 @@ router.get('/games', (req, res) => {
     res.status(401).json(err);
   });
 });
-router.put('/games', (req, res) => {
-  db.Game.update(req.user, {
+router.put('/games/:id', (req, res) => {
+  db.Game.update(req.game.id, req.game.numOfPlayersSignedUp, {
     where: {
       id: req.user.id,
+      numOfPlayersSignedUp: req.body.numOfPlayersSignedUp,
     },
-  }).then((response) => {
-
+  }).then((Game) => {
+    Game.addUser(req.body.user).then(() => {
+      res.json(Game);
+      console.log(req.body);
+    });
+  }).catch((err) => {
+    res.status(401).json(err);
+    console.log(err);
   });
 });
 router.get('/user_schedule', (req, res) => {
