@@ -18,6 +18,16 @@ $(document).ready(() => {
     callGameSchedule(userid);
   });
 });
+
+$(document).on("click", ".delete-button", function (event) {
+  const id = $(this).data('id');
+  axios.delete(`/api/remove_game_user/${id}`)
+    .then((response) => {
+      removeGame();
+    });
+});
+
+
 /* eslint-disable eol-last */
 /* eslint-disable no-undef */
 // const mapDiv = $('#map');
@@ -144,6 +154,7 @@ const callGameSchedule = (userid) => {
       const $table = $('#schedule-table tbody');
       // const $rowCardTable = $('#rowCardAppend');
       let imageCardPath = './assets/images/';
+      console.log(game.id)
       imageCardPath = `${imageCardPath}${game.GameType.gameTypesName}.jpg`;
       $table.append(`<tr>
       
@@ -153,7 +164,7 @@ const callGameSchedule = (userid) => {
       <td>${game.numOfPlayersSignedUp}</td>
       <td>${game.GameType.minPlayers}</td>
       <td><a class="btn waves-effect waves-light ${gameStatIconColor} id="iconColor""><i class="material-icons id="iconColor">${gameStatIcon}</i></a></td>
-      <td><a class="btn waves-effect waves-light red darken-4"><i class="material-icons">delete</i></a></td>
+      <td><button data-id="${game.id}"<a class="btn waves-effect waves-light red darken-4 delete-button"><i class="material-icons">delete</i></a></td>
     </tr>`);
     });
   }).catch((err) => {

@@ -146,4 +146,18 @@ router.get('/user_schedule/:id', (req, res) => {
 });
 
 // eslint-disable-next-line eol-last
+// *************** Destroy Game ************************
+router.delete('/remove_game_user/:id', (req, res) => {
+  db.Game.destroy({
+    where: {
+      id: req.params.id,
+    },
+  }).then((response) => {
+    res.json({
+      success: true,
+    });
+  });
+});
+
+
 module.exports = router;
