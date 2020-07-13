@@ -83,6 +83,13 @@ h1 {
   /* text-shado
   w: 1px 1px 2px orange; */
 }
+h2 {
+  font-family: sketchcollege;
+  margin: 0;
+  font-size:4vw;
+  /* text-shado
+  w: 1px 1px 2px orange; */
+}
 .sfsports {
   font-family: sfsports;
   margin: 0;
@@ -179,6 +186,10 @@ form {
 
 #tablePic {
   height: 75px;
+  border-radius: 20%;
+  border-style: solid 2px;
+  border-color: white;
+  box-shadow: 0 10% 10% black(254, 165, 0, 0.66);
 }
 
 .containerimg {
@@ -193,10 +204,21 @@ form {
 
 .logoimg {
   height: 64px;
+  
 }
  
 .caroimg{
   border-radius: 20%;
+}
+.btnhoover:hover {
+  -webkit-animation: anim ease-out 0.5s 1;
+  animation: anim 1.5s 2;
+  transform: translateZ(100px);
+  box-sizing: content-box 10px;
+  box-shadow: 0 10px 10px rgba(254, 165, 0, 0.66);
+  opacity: 1;
+  position: relative;
+  transform: scale(1.1);
 }
 
 
