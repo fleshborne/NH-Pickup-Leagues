@@ -17,7 +17,7 @@ $(document).ready(() => {
     // eslint-disable-next-line no-use-before-define
     callGameSchedule(userid);
   });
-  $(document).on("click", ".delete-button", function (event) {
+  $(document).on('click', '.delete-button', function (event) {
     $.get('/api/user_data').then((data) => {
       $('.member-name').text(data.username);
       // console.log(data);
@@ -31,17 +31,19 @@ $(document).ready(() => {
     const id = $(this).data('id');
     axios.delete(`/api/remove_game_user/${id}`)
       .then((response) => {
-        console.log(response)
-        console.log('calling call game scehdule after delete')
+        console.log(response);
+        console.log('calling call game scehdule after delete');
+        // eslint-disable-next-line no-use-before-define
         callGameSchedule(userid);
       });
   });
-  $(document).on("click", "#submit-new-game", () => {
+  $(document).on('click', '#submit-new-game', () => {
     console.log(user.userid);
     console.log('this is being called');
     $.get('/api/user_data').then((data) => {
       $('.member-name').text(data.username);
       const userid = data.id;
+      // eslint-disable-next-line no-use-before-define
       callGameSchedule(userid);
     });
   });
@@ -78,9 +80,9 @@ $(document).ready(() => {
         console.log(checkGameStatus);
         // const $table = $('#schedule-table tbody');
         // const $rowCardTable = $('#rowCardAppend');
-        let gameDate = game.date;
-        let day = moment(gameDate).format('dddd');
-        let time = moment(gameDate).format('h:mm');
+        const gameDate = game.date;
+        const day = moment(gameDate).format('dddd');
+        const time = moment(gameDate).format('h:mm');
         console.log(day);
         // gameDate = moment().format('dddd, h:mm');
         // console.log(gameDay);

@@ -174,7 +174,7 @@ router.delete('/remove_game_user/:id', (req, res) => {
     where: {
       id: req.params.id,
     },
-  }).then((response) => {
+  }).then(() => {
     res.json({
       success: true,
     });
