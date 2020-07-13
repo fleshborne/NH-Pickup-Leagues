@@ -37,7 +37,6 @@ $(document).ready(() => {
   const newGameForm = $('.add-game');
   const gameTypeInput = $('#type-dropdown');
   const locationInput = $('#location-dropdown');
-  const timeInput = $('#time-dropdown');
   const dateInput = $('#date-dropdown');
 
   // get the Gametype info
@@ -102,7 +101,6 @@ $(document).ready(() => {
         user: userid,
       };
       console.log(`game data ${gameData.date} ${gameData.GameTypeId}`);
-      // console.log(req.user.UserId)
       addGame(
         gameData.date,
         gameData.numOfPlayersSignedUp,
