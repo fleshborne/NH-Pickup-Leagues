@@ -1,3 +1,10 @@
+/* @media only screen and (max-width: 601px) {
+  .regform {
+    width: 300px;
+    height: 150px;
+  }
+} */
+
 @media only screen and (max-width: 601px) {
   .planet-game {
     /* width: 85%; */
@@ -6,11 +13,13 @@
   }
 
 }
+
 @media only screen and (min-width: 602px) {
   .h5 {
     font-size: 200px;
   }
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -58,19 +67,20 @@
   font-family: 'sfsports';
   src: url(../fonts/TrueType/SFSportsNightNS.ttf);
 }
+
 .btnspacing {
   margin-right: 15px;
-  font-size:1.2vw;
+  font-size: 1.2vw;
   font-family: sfsports;
-  }
+}
 
 body {
   background-image: url('../images/vball.jpg');
   color: white;
-  position: fixed; 
-  top: 0; 
-  left: 0; 
-	
+  position: fixed;
+  top: 0;
+  left: 0;
+
   /* Preserve aspet ratio */
   min-width: 100%;
   min-height: 100%;
@@ -79,22 +89,24 @@ body {
 h1 {
   font-family: sketchcollege;
   margin: 0;
-  font-size:4vw;
+  font-size: 4vw;
   /* text-shado
   w: 1px 1px 2px orange; */
 }
+
 .sfsports {
   font-family: sfsports;
   margin: 0;
-  font-size:1.5vw;
-  
+  font-size: 1.5vw;
+
   /* text-shadow: 1px 1px 2px orange; */
 }
+
 .sketchcollege {
   font-family: sketchcollege;
   margin: 0;
-  font-size:1.5vw;
-  
+  font-size: 1.5vw;
+
   /* text-shadow: 1px 1px 2px orange; */
 }
 
@@ -194,8 +206,8 @@ form {
 .logoimg {
   height: 64px;
 }
- 
-.caroimg{
+
+.caroimg {
   border-radius: 20%;
 }
 
