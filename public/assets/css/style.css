@@ -72,9 +72,9 @@ body {
   left: 0; 
 	
   /* Preserve aspet ratio */
-  min-width: 100%;
-  min-height: 100%;
-}
+  /* /* min-width: 100%;
+  min-height: 100%; */
+} */
 
 h1 {
   font-family: sketchcollege;
