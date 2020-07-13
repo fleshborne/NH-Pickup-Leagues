@@ -60,6 +60,7 @@ function userSignedcount(date, LocationId, GameTypeId) {
     );
   });
 }
+// Maximum number of players for the game
 function gamemaxplayerCount(GameTypeId) {
   return new Promise((resolve, reject) => {
     $.get(`/api/gametypes/${GameTypeId}`).then(
@@ -166,6 +167,7 @@ $(document).ready(() => {
       };
       console.log(`game data ${gameData.date} ${gameData.GameTypeId}`);
       // console.log(req.user.UserId)
+
       // Check if the max number of players have reached to add game
       console.log('1+', numofplayerssigned, '2+ ', maxnumofplayers);
       if (numofplayerssigned < maxnumofplayers) {
@@ -181,7 +183,7 @@ $(document).ready(() => {
 
         alert('Event Booked ! Select a different Time slot For The Game');
       }
-
+      // When the users for a game/timeslot/location is reached alert is displayed
       displaySaved();
     });
   });
