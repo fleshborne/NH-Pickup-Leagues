@@ -17,7 +17,7 @@ $(document).ready(() => {
     // eslint-disable-next-line no-use-before-define
     callGameSchedule(userid);
   });
-  $(document).on('click', '.delete-button', function (event) {
+  $(document).on('click', '.delete-button', function () {
     $.get('/api/user_data').then((data) => {
       $('.member-name').text(data.username);
       // console.log(data);
@@ -48,7 +48,7 @@ $(document).ready(() => {
     });
   });
   const callGameSchedule = (userid) => {
-    console.log('callGameScheduleCalled')
+    console.log('callGameScheduleCalled');
     // const $table = $('#schedule-table tbody');
     // $table.empty();
     // console.log(userid, 'inside pass game schedule');
