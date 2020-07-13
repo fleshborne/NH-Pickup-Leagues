@@ -94,10 +94,11 @@ $(document).ready(() => {
     }).catch((err) => {
       console.log(err);
     });
+    $('#dropit').on('click', () => {
+      callGameSchedule(userid);
+    });
   };
 });
-
-
 
 /* eslint-disable eol-last */
 /* eslint-disable no-undef */
@@ -147,14 +148,6 @@ $(document).ready(() => {
     // eslint-disable-next-line no-use-before-define
     searchAllGames();
   });
-
-
-
-
-  // SearchBtn.on('click', () => {
-  //   initMap();
-  //   mapDiv.removeClass('.hideMap');
-  // });
 });
 
 
