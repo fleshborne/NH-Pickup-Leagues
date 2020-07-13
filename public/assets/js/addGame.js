@@ -193,8 +193,7 @@ $(document).ready(() => {
         console.log('ELSE');
         // alert('choose a different time');
         // alert('Select a different time slot');
-        const errorstr =
-          'Username and Email Exists, SignUp with a new Username and Email';
+        const errorstr = 'Choose a Different Game /Location';
         Alert.render(errorstr);
 
         // alert('Event Booked ! Select a different Time slot For The Game');
