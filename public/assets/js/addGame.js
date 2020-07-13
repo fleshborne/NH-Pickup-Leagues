@@ -46,7 +46,7 @@ function addGame(date, numOfPlayersSignedUp, LocationId, GameTypeId, user) {
       console.log(err);
     });
 }
-
+// Number Of Players Signed
 function userSignedcount(date, LocationId, GameTypeId) {
   return new Promise((resolve, reject) => {
     $.get(`/api/games/${date}/${LocationId}/${GameTypeId}`).then(
@@ -139,12 +139,14 @@ $(document).ready(() => {
     // .tz('America/Toronto');
     console.log('Date/Time', dateTime);
 
+    // Number of Signed Up Players and Maximun Players For the Game
     const numofplayerssigned = await userSignedcount(
       dateTime,
       locationInput.val(),
       gameTypeInput.val()
     );
     const maxnumofplayers = await gamemaxplayerCount(gameTypeInput.val());
+
     // Get user ID
     $.get('/api/user_data').then((data) => {
       $('.member-name').text(data.username);
@@ -164,7 +166,7 @@ $(document).ready(() => {
       };
       console.log(`game data ${gameData.date} ${gameData.GameTypeId}`);
       // console.log(req.user.UserId)
-
+      // Check if the max number of players have reached to add game
       console.log('1+', numofplayerssigned, '2+ ', maxnumofplayers);
       if (numofplayerssigned < maxnumofplayers) {
         addGame(
@@ -176,7 +178,8 @@ $(document).ready(() => {
         );
       } else {
         // alert('choose a different time');
-        alert('Select a different time slot');
+
+        alert('Event Booked ! Select a different Time slot For The Game');
       }
 
       displaySaved();

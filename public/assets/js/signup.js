@@ -85,27 +85,6 @@ $(document).ready(() => {
         '<button id="okbutton" onclick="boxclose()">OK</button>';
     };
   }
-
-  function Poperrorpassword() {
-    // eslint-disable-next-line func-names
-    // eslint-disable-next-line spaced-comment
-    //var WinW = window.innerWidth;
-    // eslint-disable-next-line operator-linebreak
-    // eslint-disable-next-line spaced-comment
-    //document.getElementById('dialogbox').style.left=100px;
-    //  2000 / 2 - 550 * 0.5 + 'px';
-    // eslint-disable-next-line func-names
-    this.render = function () {
-      document.getElementById('dialogbox').style.display = 'block';
-      document.getElementById('headermessage').innerHTML = 'Signup Invalid ';
-      // eslint-disable-next-line operator-linebreak
-      document.getElementById('bodymessage').innerHTML =
-        'Username and Email Exists, SignUp with a new Username and Email';
-      // eslint-disable-next-line operator-linebreak
-      document.getElementById('footermessage').innerHTML =
-        '<button id="okbutton" onclick="boxclose()">OK</button>';
-    };
-  }
 });
 function boxclose() {
   console.log('in boxclose');
