@@ -2,8 +2,6 @@
 
 DROP DATABASE IF EXISTS pickup_league;
 CREATE DATABASE pickup_league;
-USE pickup_league;
-
 
 
 -- CREATE TABLE users (
@@ -30,6 +28,8 @@ USE pickup_league;
 
 -- ALTER TABLE gamesToBePlayed
 -- ADD location_id integer not null;
+USE pickup_league;
+
 
 insert into locations
     (title,createdAt,updatedAt)
@@ -117,6 +117,12 @@ values('Ultimate Frisbee', '8', '16', '1', '2020-01-06 20:34:38', '2020-01-06 20
 insert into GameTypes
     (gameTypesName, minPlayers, maxPlayers, neededToPlay, createdAt, updatedAt)
 values('Cornhole', '4', '4', '0', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
+insert into GameTypes
+   (gameTypesName, minPlayers, maxPlayers, neededToPlay, createdAt, updatedAt)
+values('Pickelball', '4', '4', '0', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
+insert into GameTypes
+   (gameTypesName, minPlayers, maxPlayers, neededToPlay, createdAt, updatedAt)
+values('Tennis', '2', '2', '0', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
 
 
 CREATE TABLE gamesToBePlayed
