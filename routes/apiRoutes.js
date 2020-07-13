@@ -97,7 +97,28 @@ router.get('/games', (req, res) => {
     res.status(401).json(err);
   });
 });
+// ************************* Get Game by Game ID *******************************
+router.get('/games/:id', (req, res) => {
+  db.Game.findOne({
+    include: [db.GameTypes, db.Location],
+  }).then((response) => {
+    res.json(response);
+  }).catch((err) => {
+    res.status(401).json(err);
+  });
+});
 
+router.put('/games/:id', (req, res) => {
+  db.Game.update({
+    include: [{
+      model: db.Game,
+      include: [db.GameTypes, db.Location, db.User],
+    }],
+    where: {
+      id: req.params.id,
+    },
+  }).then((schedule) => res.json(schedule));
+});
 
 router.get('/user_schedule', (req, res) => {
   // db.GameTypes.findAll().then((schedule) => res.json(schedule));
@@ -146,4 +167,29 @@ router.get('/user_schedule/:id', (req, res) => {
 });
 
 // eslint-disable-next-line eol-last
+// *************** Destroy Game ************************
+router.delete('/remove_game_user/:id', (req, res) => {
+  console.log(req.params.id);
+  db.Game.destroy({
+    where: {
+      id: req.params.id,
+    },
+  }).then(() => {
+    res.json({
+      success: true,
+    });
+  });
+});
+// router.delete('/remove_game_user/:id', (req, res) => {
+//   console.log(req.params.id);
+//   db.Game.destroy({
+//     where: {
+//       id: req.params.id,
+//     },
+//   }).then((response) => {
+//     res.json({
+//       success: true,
+//     });
+//   });
+// });
 module.exports = router;
