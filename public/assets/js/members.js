@@ -74,6 +74,8 @@ $(document).ready(() => {
     const id = $(this).data('id');
     axios.delete(`/api/remove_game_user/${id}`)
       .then((response) => {
+        const add = "add";
+        addOrRemovePlayerFromGame(add);
         callGameSchedule();
       });
   });
@@ -121,6 +123,44 @@ const searchAllGames = () => {
       <td><a class="btn waves-effect waves-light green"><i class="material-icons">add</i></a></td>
     </tr>`);
     });
+  }).catch((err) => {
+    console.log(err);
+  });
+};//
+
+// pass in either add or subtract into the function to increment the number or subtract
+const addOrRemovePlayerFromGame = (addOrRemove, gameID) => {
+  console.log(add);
+  axios.get(`/api/games/${gameID}`).then((game) => {
+    console.log(game);
+    console.log(game.data);
+    console.log(game.numOfPlayerSignedUp);
+    let numOfPlayers = game.numOfPlayerSignedUp;
+    if (addOrRemove === "add") {
+      // eslint-disable-next-line no-plusplus
+      numOfPlayers++;
+      console.log(numOfPlayers);
+    } else if (addOrRemove === "remove") {
+      // eslint-disable-next-line no-plusplus
+      numOfPlayers--;
+    } else {
+      console.log("there is an error");
+    }
+  }).catch((err) => {
+    console.log(err);
+  });
+  axios.put(`/api/games/${gameID}`).then((game) => {
+    let numOfPlayers = game.numOfPlayerSignedUp;
+    if (addOrRemove === "add") {
+      // eslint-disable-next-line no-plusplus
+      numOfPlayers++;
+      console.log(numOfPlayers);
+    } else if (addOrRemove === "remove") {
+      // eslint-disable-next-line no-plusplus
+      numOfPlayers--;
+    } else {
+      console.log("there is an error");
+    }
   }).catch((err) => {
     console.log(err);
   });
