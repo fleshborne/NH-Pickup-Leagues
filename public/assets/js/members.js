@@ -1,4 +1,4 @@
-// * eslint - disable linebreak - style * 
+
 /* eslint-disable no-unused-vars */
 /* eslint-disable comma-dangle */
 /* eslint-disable linebreak-style */
@@ -17,6 +17,84 @@ $(document).ready(() => {
     // eslint-disable-next-line no-use-before-define
     callGameSchedule(userid);
   });
+  $(document).on("click", ".delete-button", function (event) {
+    $.get('/api/user_data').then((data) => {
+      $('.member-name').text(data.username);
+      // console.log(data);
+      const userid = data.id;
+      // console.log(userid, 'user id');
+      sessionStorage.setItem('id', JSON.stringify(userid));
+      // cass the game schedule and passes user ID ID
+      // eslint-disable-next-line no-use-before-define
+      callGameSchedule(userid);
+    });
+    const id = $(this).data('id');
+    axios.delete(`/api/remove_game_user/${id}`)
+      .then((response) => {
+        console.log(response)
+        console.log('calling call game scehdule after delete')
+        callGameSchedule(userid);
+      });
+  });
+  $(document).on("click", "#submit-new-game", () => {
+    console.log(user.userid);
+    console.log('this is being called');
+    $.get('/api/user_data').then((data) => {
+      $('.member-name').text(data.username);
+      const userid = data.id;
+      callGameSchedule(userid);
+    });
+  });
+  const callGameSchedule = (userid) => {
+    console.log('callGameScheduleCalled')
+    // const $table = $('#schedule-table tbody');
+    // $table.empty();
+    // console.log(userid, 'inside pass game schedule');
+    axios.get(`/api/user_schedule/${userid}`).then((schedule) => {
+      // code goes here
+      const $table = $('#schedule-table tbody');
+      $table.empty();
+      console.log(schedule);
+      console.log(schedule.data);
+
+
+      schedule.data.Games.forEach((game) => {
+        console.log(game);
+        // eslint-disable-next-line no-use-before-define
+        const checkGameStatus = checkMinRequiredPlayers(
+          game.GameType.minPlayers,
+          game.GameType.maxPlayers,
+          game.GameType.neededToPlay,
+          game.numOfPlayersSignedUp
+        );
+        let gameStatIcon;
+        if (checkGameStatus === true) {
+          gameStatIcon = 'check_box';
+          gameStatIconColor = 'green';
+        } else {
+          gameStatIcon = 'hourglass_empty';
+          gameStatIconColor = 'yellow accent-4';
+        }
+        console.log(checkGameStatus);
+        // const $table = $('#schedule-table tbody');
+        // const $rowCardTable = $('#rowCardAppend');
+        let imageCardPath = './assets/images/';
+        console.log(game.id)
+        imageCardPath = `${imageCardPath}${game.GameType.gameTypesName}.jpg`;
+        $table.append(`<tr>
+        <td><div class = "container containerimg"><div class="centered"><img src="${imageCardPath}" id="tablePic"><span>${game.GameType.gameTypesName}</span></div></td>
+        <td>${game.updatedAt}</td>
+        <td>${game.Location.title}</td>
+        <td>${game.numOfPlayersSignedUp}</td>
+        <td>${game.GameType.minPlayers}</td>
+        <td><a class="btn waves-effect waves-light ${gameStatIconColor} id="iconColor""><i class="material-icons id="iconColor">${gameStatIcon}</i></a></td>
+        <td><button data-id="${game.id}"<a class="btn waves-effect waves-light red darken-4 delete-button"><i class="material-icons">delete</i></a></td>
+      </tr>`);
+      });
+    }).catch((err) => {
+      console.log(err);
+    });
+  };
 });
 
 
@@ -70,13 +148,7 @@ $(document).ready(() => {
     searchAllGames();
   });
 
-  $(document).on("click", ".delete-button", function (event) {
-    const id = $(this).data('id');
-    axios.delete(`/api/remove_game_user/${id}`)
-      .then((response) => {
-        callGameSchedule();
-      });
-  });
+
 
 
   // SearchBtn.on('click', () => {
@@ -84,6 +156,8 @@ $(document).ready(() => {
   //   mapDiv.removeClass('.hideMap');
   // });
 });
+
+
 const searchAllGames = () => {
   axios.get('/api/games').then((games) => {
     console.log(games);
@@ -128,53 +202,7 @@ const searchAllGames = () => {
 
 // get all the games
 // eslint-disable-next-line no-undef
-const callGameSchedule = (userid) => {
-  // console.log(userid, 'inside pass game schedule');
-  axios.get(`/api/user_schedule/${userid}`).then((schedule) => {
-    // code goes here
-    console.log(schedule);
-    console.log(schedule.data);
-    const $table = $('#schedule-table tbody');
-    $table.empty();
 
-    schedule.data.Games.forEach((game) => {
-      console.log(game);
-      // eslint-disable-next-line no-use-before-define
-      const checkGameStatus = checkMinRequiredPlayers(
-        game.GameType.minPlayers,
-        game.GameType.maxPlayers,
-        game.GameType.neededToPlay,
-        game.numOfPlayersSignedUp
-      );
-      let gameStatIcon;
-      if (checkGameStatus === true) {
-        gameStatIcon = 'check_box';
-        gameStatIconColor = 'green';
-      } else {
-        gameStatIcon = 'hourglass_empty';
-        gameStatIconColor = 'yellow accent-4';
-      }
-      console.log(checkGameStatus);
-      const $table = $('#schedule-table tbody');
-      // const $rowCardTable = $('#rowCardAppend');
-      let imageCardPath = './assets/images/';
-      console.log(game.id)
-      imageCardPath = `${imageCardPath}${game.GameType.gameTypesName}.jpg`;
-      $table.append(`<tr>
-      
-      <td><div class = "container containerimg"><div class="centered"><img src="${imageCardPath}" id="tablePic"><span>${game.GameType.gameTypesName}</span></div></td>
-      <td>${game.updatedAt}</td>
-      <td>${game.Location.title}</td>
-      <td>${game.numOfPlayersSignedUp}</td>
-      <td>${game.GameType.minPlayers}</td>
-      <td><a class="btn waves-effect waves-light ${gameStatIconColor} id="iconColor""><i class="material-icons id="iconColor">${gameStatIcon}</i></a></td>
-      <td><button data-id="${game.id}"<a class="btn waves-effect waves-light red darken-4 delete-button"><i class="material-icons">delete</i></a></td>
-    </tr>`);
-    });
-  }).catch((err) => {
-    console.log(err);
-  });
-};
 // Checks if the minium number of players is met
 const checkMinRequiredPlayers = (
   minPlayers,
