@@ -17,7 +17,7 @@ $(document).ready(() => {
     // eslint-disable-next-line no-use-before-define
     callGameSchedule(userid);
   });
-  $(document).on('click', '.delete-button', function () {
+  $(document).on('click', '.delete-button', () => {
     $.get('/api/user_data').then((data) => {
       $('.member-name').text(data.username);
       // console.log(data);
