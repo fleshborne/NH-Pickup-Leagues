@@ -98,20 +98,8 @@ router.get('/games', (req, res) => {
   });
 });
 router.put('/games/:id', (req, res) => {
-  db.Game.update(req.game.id, req.game.numOfPlayersSignedUp, {
-    where: {
-      id: req.user.id,
-      numOfPlayersSignedUp: req.body.numOfPlayersSignedUp,
-    },
-  }).then((Game) => {
-    Game.addUser(req.body.user).then(() => {
-      res.json(Game);
-      console.log(req.body);
-    });
-  }).catch((err) => {
-    res.status(401).json(err);
-    console.log(err);
-  });
+  const userId = 'userId =' + req.params.users.userId;
+  console.log(userId);
 });
 router.get('/user_schedule', (req, res) => {
   // db.GameTypes.findAll().then((schedule) => res.json(schedule));

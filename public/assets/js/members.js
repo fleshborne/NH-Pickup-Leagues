@@ -68,11 +68,7 @@ $(document).ready(() => {
   });
   $('#join-button').on('click', () => {
     // call addUser to join new User to an existing game
-    const gameId = $(this).data('id');
-    axios.put(`/api/games/${gameId}`)
-      .then((response) => {
-        updateGames();
-      });
+
   });
 
   // SearchBtn.on('click', () => {
@@ -80,6 +76,15 @@ $(document).ready(() => {
   //   mapDiv.removeClass('.hideMap');
   // });
 });
+
+const updateGames = () => {
+  //  loop over numOfplayers and id, then increment
+  axios.get('/api/games/:id')
+    .then((response) => {
+
+    })
+};
+
 const searchAllGames = () => {
   axios.get('/api/games').then((games) => {
     console.log(games);
