@@ -1,4 +1,8 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-alert */
+/* eslint-disable linebreak-style */
+/* eslint-disable comma-dangle */
+/* eslint-disable linebreak-style */
 
 // const moment = require('moment');
 /* eslint-disable linebreak-style */
@@ -25,7 +29,7 @@ function displaySaved() {
 // add game request
 function addGame(date, numOfPlayersSignedUp, LocationId, GameTypeId, user) {
   console.log(
-    `inside POST - date:${date} numOfPlayers ${numOfPlayersSignedUp} Location ${LocationId} Type: ${GameTypeId}`,
+    `inside POST - date:${date} numOfPlayers ${numOfPlayersSignedUp} Location ${LocationId} Type: ${GameTypeId}`
   );
   $.post('/api/games', {
     date,
@@ -41,6 +45,33 @@ function addGame(date, numOfPlayersSignedUp, LocationId, GameTypeId, user) {
     .catch((err) => {
       console.log(err);
     });
+}
+
+function userSignedcount(date, LocationId, GameTypeId) {
+  return new Promise((resolve, reject) => {
+    $.get(`/api/games/${date}/${LocationId}/${GameTypeId}`).then(
+      (res) => {
+        console.log('count: ', res);
+        resolve(res);
+      },
+      (err) => {
+        reject(err);
+      }
+    );
+  });
+}
+function gamemaxplayerCount(GameTypeId) {
+  return new Promise((resolve, reject) => {
+    $.get(`/api/gametypes/${GameTypeId}`).then(
+      (gametypedata) => {
+        console.log('gametypedata+', gametypedata.maxPlayers);
+        resolve(gametypedata.maxPlayers);
+      },
+      (err) => {
+        reject(err);
+      }
+    );
+  });
 }
 
 $(document).ready(() => {
@@ -94,16 +125,26 @@ $(document).ready(() => {
   dateInput.formSelect();
   // current time
 
-
-  newGameForm.on('submit', (event) => {
+  newGameForm.on('submit', async (event) => {
     event.preventDefault();
 
     // convert date and time
     const date = dateInput.val();
     const time = timeInput.val();
+    console.log('Time', timeInput.val());
     // eslint-disable-next-line no-undef
-    const dateTime = moment(`${date} ${time}`, 'YYYY-MM-DD HH:mm:ss').format();
-    console.log(dateTime);
+    const dateTime = moment(`${date} ${time}`, 'YYYY-MM-DD HH:mm:ss')
+      .local()
+      .format();
+    // .tz('America/Toronto');
+    console.log('Date/Time', dateTime);
+
+    const numofplayerssigned = await userSignedcount(
+      dateTime,
+      locationInput.val(),
+      gameTypeInput.val()
+    );
+    const maxnumofplayers = await gamemaxplayerCount(gameTypeInput.val());
     // Get user ID
     $.get('/api/user_data').then((data) => {
       $('.member-name').text(data.username);
@@ -123,13 +164,21 @@ $(document).ready(() => {
       };
       console.log(`game data ${gameData.date} ${gameData.GameTypeId}`);
       // console.log(req.user.UserId)
-      addGame(
-        gameData.date,
-        gameData.numOfPlayersSignedUp,
-        gameData.LocationId,
-        gameData.GameTypeId,
-        gameData.user,
-      );
+
+      console.log('1+', numofplayerssigned, '2+ ', maxnumofplayers);
+      if (numofplayerssigned < maxnumofplayers) {
+        addGame(
+          gameData.date,
+          gameData.numOfPlayersSignedUp,
+          gameData.LocationId,
+          gameData.GameTypeId,
+          gameData.user
+        );
+      } else {
+        // alert('choose a different time');
+        alert('Select a different time slot');
+      }
+
       displaySaved();
     });
   });
