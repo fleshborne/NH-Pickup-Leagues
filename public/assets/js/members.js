@@ -78,12 +78,20 @@ $(document).ready(() => {
         console.log(checkGameStatus);
         // const $table = $('#schedule-table tbody');
         // const $rowCardTable = $('#rowCardAppend');
+        let gameDate = game.date;
+        let day = moment(gameDate).format('dddd');
+        let time = moment(gameDate).format('h:mm');
+        console.log(day);
+        // gameDate = moment().format('dddd, h:mm');
+        // console.log(gameDay);
+        // console.log(gameDate, ' game date **********')
         let imageCardPath = './assets/images/';
-        console.log(game.id)
+        console.log(game.id);
         imageCardPath = `${imageCardPath}${game.GameType.gameTypesName}.jpg`;
         $table.append(`<tr>
         <td><div class = "container containerimg"><div class="centered"><img src="${imageCardPath}" id="tablePic"><span>${game.GameType.gameTypesName}</span></div></td>
-        <td>${game.updatedAt}</td>
+        <td>${day}</td>
+        <td>${time}</td>
         <td>${game.Location.title}</td>
         <td>${game.numOfPlayersSignedUp}</td>
         <td>${game.GameType.minPlayers}</td>
