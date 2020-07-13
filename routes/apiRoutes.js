@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-shadow */
 /* eslint-disable no-useless-return */
 /* eslint-disable linebreak-style */
 /* eslint-disable prefer-template */
@@ -26,10 +27,10 @@ router.post('/login', passport.authenticate('local'), function (req, res) {
 // otherwise send back an error
 router.post('/signup', (req, res) => {
   db.User.create({
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password,
-  })
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+    })
     .then(function () {
       //res.json(req.body);
       //console.log('createduser' + res.body);
@@ -69,12 +70,12 @@ router.post('/games', (req, res) => {
   // ************add request
 
   db.Game.create({
-    date: req.body.date,
-    time: req.body.time,
-    LocationId: req.body.LocationId,
-    GameTypeId: req.body.GameTypeId,
-    user: req.body.user,
-  })
+      date: req.body.date,
+      time: req.body.time,
+      LocationId: req.body.LocationId,
+      GameTypeId: req.body.GameTypeId,
+      user: req.body.user,
+    })
     .then(function (Game) {
       Game.addUser(req.body.user).then(() => {
         res.json(Game);
@@ -97,8 +98,34 @@ router.get('/games', (req, res) => {
     res.status(401).json(err);
   });
 });
+// ************************* Get Game by Game ID *******************************
+router.get('/games/:id', (req, res) => {
+  db.Game.findOne({
+    include: [db.GameTypes, db.Location],
+  }).then((response) => {
+    res.json(response);
+  }).catch((err) => {
+    res.status(401).json(err);
+  });
+});
 
-
+router.post('/user_schedule/:id', (req, res) => {
+  db.Game.findOne({
+    where: {
+      id: req.body.GameId,
+      // UserId: req.body.UserId,
+    },
+  }).then((Game) => {
+    console.log(Game);
+    Game.addUser(
+      req.body.UserId,
+      res.json(Game),
+      console.log(req.body.UserId),
+    ).catch((err) => {
+      console.log(err);
+    });
+  });
+});
 router.get('/user_schedule', (req, res) => {
   // db.GameTypes.findAll().then((schedule) => res.json(schedule));
   // console.log(res);
@@ -181,5 +208,31 @@ router.get('/user_schedule/:id', (req, res) => {
   }).then((schedule) => res.json(schedule));
 });
 
+// eslint-disable-next-line eol-last
+// *************** Destroy Game ************************
+router.delete('/remove_game_user/:id', (req, res) => {
+  console.log(req.params.id);
+  db.Game.destroy({
+    where: {
+      id: req.params.id,
+    },
+  }).then(() => {
+    res.json({
+      success: true,
+    });
+  });
+});
+// router.delete('/remove_game_user/:id', (req, res) => {
+//   console.log(req.params.id);
+//   db.Game.destroy({
+//     where: {
+//       id: req.params.id,
+//     },
+//   }).then((response) => {
+//     res.json({
+//       success: true,
+//     });
+//   });
+// });
 // eslint-disable-next-line eol-last
 module.exports = router;
