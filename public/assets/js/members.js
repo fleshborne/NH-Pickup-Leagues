@@ -1,8 +1,8 @@
-
+/* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
 /* eslint-disable comma-dangle */
-/* eslint-disable linebreak-style */
 /* eslint-disable no-undef */
+/* eslint-disable indent */
 /* eslint-disable linebreak-style */
 $(document).ready(() => {
   // This file just does a GET request to figure out which user is logged in
@@ -154,10 +154,34 @@ $(document).ready(() => {
   $('.collapsible').collapsible();
   $('.dropdown-trigger').dropdown();
   $('select').formSelect();
-  $('.findGame').on('click', () => {
+  $('.findGame').one('click', () => {
     // eslint-disable-next-line no-use-before-define
     searchAllGames();
   });
+  // SearchBtn.on('click', () => {
+  //   initMap();
+  //   mapDiv.removeClass('.hideMap');
+  // });
+});
+
+$(document).on('click', '.join-class', (event) => {
+  $.get('/api/user_data').then((data) => {
+    $('.member-name').text(data.username);
+    // console.log(data);
+    const UserId = data.id;
+    console.log(UserId);
+    const GameId = event.target.id;
+    console.log(GameId);
+    $.post('/api/user_schedule/:id', {
+      UserId,
+      GameId,
+    }).then((res) => {
+      console.log(res);
+    }).catch((err) => {
+      console.log(err);
+    });
+  });
+  window.location.reload();
 });
 
 
@@ -195,7 +219,7 @@ const searchAllGames = () => {
       <td>${game.numOfPlayersSignedUp}</td>
       <td>${game.GameType.minPlayers}</td>
       <td><a class="btn waves-effect waves-light ${gameStatIconColor} id="iconColor""><i class="material-icons id="iconColor">${gameStatIcon}</i></a></td>
-      <td><a class="btn waves-effect waves-light green"><i class="material-icons">add</i></a></td>
+      <td><a class="btn waves-effect waves-light green join-class" id="${game.id}"><i class="material-icons" id="${game.id}">add</i></a></td>
     </tr>`);
     });
   }).catch((err) => {
