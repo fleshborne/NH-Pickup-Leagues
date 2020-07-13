@@ -99,18 +99,23 @@ router.get('/games', (req, res) => {
   });
 });
 
-router.put('/user_schedule/:id', (req, res) => {
-  db.Game.addUser(
-    req.body, {
-      where: {
-        id: req.body.id,
-      },
+router.post('/user_schedule/:id', (req, res) => {
+  db.Game.findOne({
+    where: {
+      id: req.body.GameId,
+      // UserId: req.body.UserId,
     },
-  ).then((data) => {
-    res.json(data);
+  }).then((Game) => {
+    console.log(Game);
+    Game.addUser(
+      req.body.UserId,
+      res.json(Game),
+      console.log(req.body.UserId),
+    ).catch((err) => {
+      console.log(err);
+    });
   });
 });
-
 router.get('/user_schedule', (req, res) => {
   // db.GameTypes.findAll().then((schedule) => res.json(schedule));
   // console.log(res);
