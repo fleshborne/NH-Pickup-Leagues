@@ -66,24 +66,21 @@ $(document).ready(() => {
     // eslint-disable-next-line no-use-before-define
     searchAllGames();
   });
-  $('#join-button').on('click', () => {
-    // call addUser to join new User to an existing game
-
-  });
-
   // SearchBtn.on('click', () => {
   //   initMap();
   //   mapDiv.removeClass('.hideMap');
   // });
 });
 
-const updateGames = () => {
-  //  loop over numOfplayers and id, then increment
-  axios.get('/api/games/:id')
-    .then((response) => {
+$(document).on('click', '#join-button', (event) => {
+  const id = $(this).data('id');
+  axios.put(`/api/user_schedule/${id}`)
+    .then((data) => {
+      // eslint-disable-next-line no-use-before-define
+      console.log(data);
+    });
+});
 
-    })
-};
 
 const searchAllGames = () => {
   axios.get('/api/games').then((games) => {
@@ -169,6 +166,8 @@ const callGameSchedule = (userid) => {
       <td><a class="btn waves-effect waves-light red darken-4"><i class="material-icons">delete</i></a></td>
     </tr>`);
     });
+  }).catch((err) => {
+    console.log(err);
   });
 };
 // Checks if the minium number of players is met

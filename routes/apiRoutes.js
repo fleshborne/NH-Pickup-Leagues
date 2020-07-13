@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-shadow */
 /* eslint-disable no-useless-return */
 /* eslint-disable linebreak-style */
 /* eslint-disable prefer-template */
@@ -97,10 +98,19 @@ router.get('/games', (req, res) => {
     res.status(401).json(err);
   });
 });
-router.put('/games/:id', (req, res) => {
-  const userId = 'userId =' + req.params.users.userId;
-  console.log(userId);
+
+router.put('/user_schedule/:id', (req, res) => {
+  db.Game.addUser(
+    req.body, {
+      where: {
+        id: req.body.id,
+      },
+    },
+  ).then((data) => {
+    res.json(data);
+  });
 });
+
 router.get('/user_schedule', (req, res) => {
   // db.GameTypes.findAll().then((schedule) => res.json(schedule));
   // console.log(res);
@@ -110,7 +120,6 @@ router.get('/user_schedule', (req, res) => {
     //   userId: req.params.id,
     //   // include: User,
     // },
-    // include: Animal,
   }).then((schedule) => res.json(schedule));
   // console.log(res);
   // res.json('get all games from schedule');
@@ -134,8 +143,8 @@ router.get('/user_data', (req, res) => {
   }
 });
 
-// router to get the list of players signed up for a game so far
-
+// ********************************************************
+// *************** Grab user schedule ************************
 router.get('/user_schedule/:id', (req, res) => {
   db.User.findOne({
     include: [{
