@@ -6,6 +6,8 @@
 
 // const moment = require('moment');
 /* eslint-disable linebreak-style */
+// const moment = require('moment');
+/* eslint-disable indent */
 /* eslint-disable operator-linebreak */
 /* eslint-disable linebreak-style */
 // On click "Game type", I request the list of game types from thw db.
@@ -32,12 +34,12 @@ function addGame(date, numOfPlayersSignedUp, LocationId, GameTypeId, user) {
     `inside POST - date:${date} numOfPlayers ${numOfPlayersSignedUp} Location ${LocationId} Type: ${GameTypeId}`
   );
   $.post('/api/games', {
-    date,
-    numOfPlayersSignedUp,
-    LocationId,
-    GameTypeId,
-    user,
-  })
+      date,
+      numOfPlayersSignedUp,
+      LocationId,
+      GameTypeId,
+      user,
+    })
     .then((res) => {
       console.log(res);
       // window.location.replace('/members');
@@ -187,4 +189,5 @@ $(document).ready(() => {
       displaySaved();
     });
   });
+  // eslint-disable-next-line eol-last
 });

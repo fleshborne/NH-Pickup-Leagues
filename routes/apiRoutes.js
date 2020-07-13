@@ -87,6 +87,17 @@ router.post('/games', (req, res) => {
 });
 
 // ********************************************************
+// *************** search for games************************
+router.get('/games', (req, res) => {
+  db.Game.findAll({
+    include: [db.GameTypes, db.Location],
+  }).then((response) => {
+    res.json(response);
+  }).catch((err) => {
+    res.status(401).json(err);
+  });
+});
+
 
 router.get('/user_schedule', (req, res) => {
   // db.GameTypes.findAll().then((schedule) => res.json(schedule));
@@ -97,7 +108,6 @@ router.get('/user_schedule', (req, res) => {
     //   userId: req.params.id,
     //   // include: User,
     // },
-    // include: Animal,
   }).then((schedule) => res.json(schedule));
   // console.log(res);
   // res.json('get all games from schedule');
@@ -157,20 +167,19 @@ router.get('/user_data', (req, res) => {
   }
 });
 
-// router to get the list of players signed up for a game so far
-
+// ********************************************************
+// *************** Grab user schedule ************************
 router.get('/user_schedule/:id', (req, res) => {
   db.User.findOne({
-    include: [
-      {
-        model: db.Game,
-        include: [db.GameTypes, db.Location, db.User],
-      },
-    ],
+    include: [{
+      model: db.Game,
+      include: [db.GameTypes, db.Location, db.User],
+    }],
     where: {
       id: req.params.id,
     },
   }).then((schedule) => res.json(schedule));
 });
 
+// eslint-disable-next-line eol-last
 module.exports = router;
