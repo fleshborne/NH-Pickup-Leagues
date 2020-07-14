@@ -31,64 +31,64 @@ CREATE DATABASE pickup_league;
 USE pickup_league;
 
 
-insert into locations
+insert into Locations
     (title,createdAt,updatedAt)
 values('Hanscom Park', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
-insert into locations
+insert into Locations
     (title,createdAt,updatedAt)
 values('Atlantic Heights Playground', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
-insert into locations
+insert into Locations
     (title,createdAt,updatedAt)
 values('Daniel Street Pocket Park', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
-insert into locations
+insert into Locations
     (title,createdAt,updatedAt)
 values('Hislop Field', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
-insert into locations
+insert into Locations
     (title,createdAt,updatedAt)
 values('Rock Street Park', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
-insert into locations
+insert into Locations
     (title,createdAt,updatedAt)
 values('Aldrich Park', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
-insert into locations
+insert into Locations
     (title,createdAt,updatedAt)
 values('Haven Park', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
-insert into locations
+insert into Locations
     (title,createdAt,updatedAt)
 values('Peirce Island Playground', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
-insert into locations
+insert into Locations
     (title,createdAt,updatedAt)
 values('South Street Playground', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
-insert into locations
+insert into Locations
     (title,createdAt,updatedAt)
 values('Langdon Park', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
-insert into locations
+insert into Locations
     (title,createdAt,updatedAt)
 values('Clough Field', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
-insert into locations
+insert into Locations
     (title,createdAt,updatedAt)
 values('Pine Street Playground', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
-insert into locations
+insert into Locations
     (title,createdAt,updatedAt)
 values('Goodwin Park', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
-insert into locations
+insert into Locations
     (title,createdAt,updatedAt)
 values('Cater Park', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
-insert into locations
+insert into Locations
     (title,createdAt,updatedAt)
 values('Alumni Field', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
-insert into locations
+insert into Locations
     (title,createdAt,updatedAt)
 values('Leary Field and Central L.L.', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
-insert into locations
+insert into Locations
     (title,createdAt,updatedAt)
 values('Lafayette Playground', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
-insert into locations
+insert into Locations
     (title,createdAt,updatedAt)
 values('Portsmouth Plains Playground', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
-insert into locations
+insert into Locations
     (title,createdAt,updatedAt)
 values('Pannaway Playground', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
-insert into locations
+insert into Locations
     (title,createdAt,updatedAt)
 values('Portsmouth Plains Field', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
 
@@ -118,10 +118,10 @@ insert into GameTypes
     (gameTypesName, minPlayers, maxPlayers, neededToPlay, createdAt, updatedAt)
 values('Cornhole', '4', '4', '0', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
 insert into GameTypes
-   (gameTypesName, minPlayers, maxPlayers, neededToPlay, createdAt, updatedAt)
+    (gameTypesName, minPlayers, maxPlayers, neededToPlay, createdAt, updatedAt)
 values('Pickelball', '4', '4', '0', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
 insert into GameTypes
-   (gameTypesName, minPlayers, maxPlayers, neededToPlay, createdAt, updatedAt)
+    (gameTypesName, minPlayers, maxPlayers, neededToPlay, createdAt, updatedAt)
 values('Tennis', '2', '2', '0', '2020-01-06 20:34:38', '2020-01-06 20:34:38');
 
 
