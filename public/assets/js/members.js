@@ -28,7 +28,7 @@ $(document).ready(() => {
       // sessionStorage.setItem('id', JSON.stringify(userid));
       // cass the game schedule and passes user ID ID
       // eslint-disable-next-line no-use-before-define
-      callGameSchedule(userid);
+      callGameSchedule(UserId);
       console.log(UserId);
       // const id = $(this).data('id');
     axios.put('/api/remove_game_user/:id', { UserId, GameId })
@@ -36,7 +36,7 @@ $(document).ready(() => {
         console.log(response);
         console.log('calling call game scehdule after delete');
         // eslint-disable-next-line no-use-before-define
-        callGameSchedule(userid);
+        callGameSchedule(UserId);
       }).catch((err) => {
         console.log(err);
       });
@@ -186,7 +186,7 @@ $(document).on('click', '.join-class', (event) => {
       console.log(err);
     });
   });
-  window.location.reload();
+  // window.location.reload();
 });
 
 
