@@ -27,10 +27,10 @@ router.post('/login', passport.authenticate('local'), function (req, res) {
 // otherwise send back an error
 router.post('/signup', (req, res) => {
   db.User.create({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password,
-    })
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+  })
     .then(function () {
       //res.json(req.body);
       //console.log('createduser' + res.body);
@@ -70,12 +70,12 @@ router.post('/games', (req, res) => {
   // ************add request
 
   db.Game.create({
-      date: req.body.date,
-      time: req.body.time,
-      LocationId: req.body.LocationId,
-      GameTypeId: req.body.GameTypeId,
-      user: req.body.user,
-    })
+    date: req.body.date,
+    time: req.body.time,
+    LocationId: req.body.LocationId,
+    GameTypeId: req.body.GameTypeId,
+    user: req.body.user,
+  })
     .then(function (Game) {
       Game.addUser(req.body.user).then(() => {
         res.json(Game);

@@ -17,7 +17,8 @@ $(document).ready(() => {
     // eslint-disable-next-line no-use-before-define
     callGameSchedule(userid);
   });
-  $(document).on('click', '.delete-button', () => {
+  // eslint-disable-next-line func-names
+  $(document).on('click', '.delete-button', function () {
     $.get('/api/user_data').then((data) => {
       $('.member-name').text(data.username);
       // console.log(data);
@@ -58,6 +59,7 @@ $(document).ready(() => {
       $table.empty();
       console.log(schedule);
       console.log(schedule.data);
+      console.log(schedule.data.Games.id);
 
 
       schedule.data.Games.forEach((game) => {
@@ -211,6 +213,7 @@ const searchAllGames = () => {
       console.log(checkGameStatus);
       const $table = $('#find-schedule-table');
       let imageCardPath = './assets/images/';
+      const gameDate = game.date;
       const day = moment(gameDate).format('dddd');
       const time = moment(gameDate).format('h:mm');
       imageCardPath = `${imageCardPath}${game.GameType.gameTypesName}.jpg`;
