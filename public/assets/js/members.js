@@ -31,15 +31,18 @@ $(document).ready(() => {
       callGameSchedule(UserId);
       console.log(UserId);
       // const id = $(this).data('id');
-    axios.put('/api/remove_game_user/:id', { UserId, GameId })
-      .then((response) => {
-        console.log(response);
-        console.log('calling call game scehdule after delete');
-        // eslint-disable-next-line no-use-before-define
-        callGameSchedule(UserId);
-      }).catch((err) => {
-        console.log(err);
-      });
+      axios.put('/api/remove_game_user/:id', {
+          UserId,
+          GameId
+        })
+        .then((response) => {
+          console.log(response);
+          console.log('calling call game scehdule after delete');
+          // eslint-disable-next-line no-use-before-define
+          callGameSchedule(UserId);
+        }).catch((err) => {
+          console.log(err);
+        });
     });
   });
   $(document).on('click', '#submit-new-game', () => {
@@ -156,17 +159,17 @@ $(document).ready(() => {
 // });
 
 
-  $('.collapsible').collapsible();
-  $('.dropdown-trigger').dropdown();
-  $('select').formSelect();
-  $('.findGame').one('click', () => {
-    // eslint-disable-next-line no-use-before-define
-    searchAllGames();
-  });
-  // SearchBtn.on('click', () => {
-  //   initMap();
-  //   mapDiv.removeClass('.hideMap');
-  // });
+$('.collapsible').collapsible();
+$('.dropdown-trigger').dropdown();
+$('select').formSelect();
+$('.findGame').one('click', () => {
+  // eslint-disable-next-line no-use-before-define
+  searchAllGames();
+});
+// SearchBtn.on('click', () => {
+//   initMap();
+//   mapDiv.removeClass('.hideMap');
+// });
 
 
 $(document).on('click', '.join-class', (event) => {
@@ -182,6 +185,7 @@ $(document).on('click', '.join-class', (event) => {
       GameId,
     }).then((res) => {
       console.log(res);
+      window.location.replace('/members');
     }).catch((err) => {
       console.log(err);
     });
