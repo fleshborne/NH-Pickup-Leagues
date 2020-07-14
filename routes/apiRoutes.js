@@ -210,15 +210,20 @@ router.get('/user_schedule/:id', (req, res) => {
 
 // eslint-disable-next-line eol-last
 // *************** Destroy Game ************************
-router.delete('/remove_game_user/:id', (req, res) => {
-  console.log(req.params.id);
-  db.Game.destroy({
+router.put('/remove_game_user/:id', (req, res) => {
+  db.Game.findOne({
     where: {
-      id: req.params.id,
+      id: req.body.GameId,
+      // UserId: req.body.UserId,
     },
-  }).then(() => {
-    res.json({
-      success: true,
+  }).then((Game) => {
+    console.log(Game);
+    Game.removeUser(
+      req.body.UserId,
+      res.json(Game),
+      console.log(req.body.UserId),
+    ).catch((err) => {
+      console.log(err);
     });
   });
 });
