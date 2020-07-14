@@ -11,12 +11,25 @@
     width: 300px;
     height: 150px;
   }
+  #dashboard {
+    width: 100%;
+  }
+  #avatar-group {
+    text-align: center;
+  }
+  #avatar {
+    width: 100px;
+  }
+  h1 {
+    font-size: 40px !important;
+  }
 }
 
 @media only screen and (min-width: 602px) {
   .h5 {
     font-size: 200px;
   }
+  
 }
 
 * {
@@ -31,6 +44,15 @@
 .icon-block .material-icons {
   font-size: inherit;
 }
+
+.scroll-drop {
+  overflow: auto;
+  max-height: 500px
+}
+
+
+
+
 
 @font-face {
   font-family: 'sports';
@@ -119,7 +141,7 @@ h2 {
 }
 
 #avatar {
-  width: 100%;
+  width: 140px;
   /* text-shadow: 1px 1px 2px orange; */
   /* TODO: fix this class for profile pic */
 }
