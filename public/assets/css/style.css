@@ -77,10 +77,6 @@ body {
   background-image: url('../images/vball.jpg');
   background-repeat: no-repeat;
   color: white;
-<<<<<<< HEAD
-  position: fixed;
-=======
->>>>>>> 732f6f5ef41d626dede98f03d0647b5a803a187f
   top: 0;
   left: 0;
 
@@ -209,13 +205,10 @@ form {
 .logoimg {
   height: 64px;
 }
-<<<<<<< HEAD
 
 .caroimg {
   border-radius: 20%;
 }
-=======
->>>>>>> 732f6f5ef41d626dede98f03d0647b5a803a187f
 
 .caroimg {
   color: white;
