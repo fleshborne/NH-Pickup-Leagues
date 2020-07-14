@@ -77,10 +77,6 @@ body {
   background-image: url('../images/vball.jpg');
   background-repeat: no-repeat;
   color: white;
-<<<<<<< HEAD
-  position: fixed;
-=======
->>>>>>> 732f6f5ef41d626dede98f03d0647b5a803a187f
   top: 0;
   left: 0;
 
@@ -166,11 +162,11 @@ form {
   left: 550px;
 }
 
-#dialogbox > div {
+#dialogbox>div {
   background: black;
 }
 
-#dialogbox > div > #headermessage {
+#dialogbox>div>#headermessage {
   background: black;
   padding: 10px;
   color: #ccc;
@@ -178,7 +174,7 @@ form {
   padding: 6px 1px 6px 1px;
 }
 
-#dialogbox > div > #bodymessage {
+#dialogbox>div>#bodymessage {
   background: black;
   font-size: 15px;
   padding: 25px;
@@ -209,15 +205,12 @@ form {
 .logoimg {
   height: 64px;
 }
-<<<<<<< HEAD
 
-.caroimg {
+<<<<<<< HEAD .caroimg {
   border-radius: 20%;
 }
-=======
->>>>>>> 732f6f5ef41d626dede98f03d0647b5a803a187f
 
-.caroimg {
+=======>>>>>>>732f6f5ef41d626dede98f03d0647b5a803a187f .caroimg {
   color: white;
   position: fixed;
   top: 0;
@@ -236,5 +229,6 @@ form {
   position: relative;
   transform: scale(1.1);
 }
+
 /* * {cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo38.cur), auto !important;}  */
 /* End http://www.cursors-4u.com */
