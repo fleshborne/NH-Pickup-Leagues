@@ -155,7 +155,7 @@ $(document).ready(() => {
   $('.collapsible').collapsible();
   $('.dropdown-trigger').dropdown();
   $('select').formSelect();
-  $('.findGame').one('click', () => {
+  $('.findGame').on('click', () => {
     // eslint-disable-next-line no-use-before-define
     searchAllGames();
   });
@@ -182,7 +182,7 @@ $(document).on('click', '.join-class', (event) => {
       console.log(err);
     });
   });
-  window.location.reload();
+  // window.location.reload();
 });
 
 
@@ -190,6 +190,8 @@ const searchAllGames = () => {
   axios.get('/api/games').then((games) => {
     console.log(games);
     console.log(games.data);
+    const $table = $('#find-schedule-table tbody');
+    $table.empty();
 
     games.data.forEach((game) => {
       console.log(game);
