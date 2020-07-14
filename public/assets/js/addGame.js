@@ -27,12 +27,12 @@ $(document).ready(() => {
       `inside POST - date:${date} numOfPlayers ${numOfPlayersSignedUp} Location ${LocationId} Type: ${GameTypeId}`
     );
     $.post('/api/games', {
-      date,
-      numOfPlayersSignedUp,
-      LocationId,
-      GameTypeId,
-      user,
-    })
+        date,
+        numOfPlayersSignedUp,
+        LocationId,
+        GameTypeId,
+        user,
+      })
       .then((res) => {
         console.log(res);
         window.location.replace('/members');
@@ -180,7 +180,7 @@ $(document).ready(() => {
 
       // Check if the max number of players have reached to add game
       console.log('1+', numofplayerssigned, '2+ ', maxnumofplayers);
-      if (numofplayerssigned < maxnumofplayers) {
+      if (numofplayerssigned === 0) {
         addGame(
           gameData.date,
           gameData.numOfPlayersSignedUp,
