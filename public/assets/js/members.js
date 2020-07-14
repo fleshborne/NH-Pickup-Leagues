@@ -17,29 +17,34 @@ $(document).ready(() => {
     // eslint-disable-next-line no-use-before-define
     callGameSchedule(userid);
   });
-  $(document).on('click', '.delete-button', () => {
+  $(document).on('click', '.delete-button', (event) => {
     $.get('/api/user_data').then((data) => {
       $('.member-name').text(data.username);
-      // console.log(data);
-      const userid = data.id;
+      console.log(data);
+      const UserId = data.id;
+      const GameId = event.target.id;
+      console.log(GameId);
       // console.log(userid, 'user id');
-      sessionStorage.setItem('id', JSON.stringify(userid));
+      // sessionStorage.setItem('id', JSON.stringify(userid));
       // cass the game schedule and passes user ID ID
       // eslint-disable-next-line no-use-before-define
       callGameSchedule(userid);
-    });
-    const id = $(this).data('id');
-    axios.delete(`/api/remove_game_user/${id}`)
+      console.log(UserId);
+      // const id = $(this).data('id');
+    axios.put('/api/remove_game_user/:id', { UserId, GameId })
       .then((response) => {
         console.log(response);
         console.log('calling call game scehdule after delete');
         // eslint-disable-next-line no-use-before-define
         callGameSchedule(userid);
+      }).catch((err) => {
+        console.log(err);
       });
+    });
   });
   $(document).on('click', '#submit-new-game', () => {
-    console.log(user.userid);
-    console.log('this is being called');
+    // console.log(user.userid);
+    // console.log('this is being called');
     $.get('/api/user_data').then((data) => {
       $('.member-name').text(data.username);
       const userid = data.id;
@@ -48,7 +53,7 @@ $(document).ready(() => {
     });
   });
   const callGameSchedule = (userid) => {
-    console.log('callGameScheduleCalled');
+    // console.log('callGameScheduleCalled');
     // const $table = $('#schedule-table tbody');
     // $table.empty();
     // console.log(userid, 'inside pass game schedule');
@@ -56,12 +61,12 @@ $(document).ready(() => {
       // code goes here
       const $table = $('#schedule-table tbody');
       $table.empty();
-      console.log(schedule);
-      console.log(schedule.data);
+      // console.log(schedule);
+      // console.log(schedule.data);
 
 
       schedule.data.Games.forEach((game) => {
-        console.log(game);
+        // console.log(game);
         // eslint-disable-next-line no-use-before-define
         const checkGameStatus = checkMinRequiredPlayers(
           game.GameType.minPlayers,
@@ -77,18 +82,18 @@ $(document).ready(() => {
           gameStatIcon = 'hourglass_empty';
           gameStatIconColor = 'yellow accent-4';
         }
-        console.log(checkGameStatus);
+        // console.log(checkGameStatus);
         // const $table = $('#schedule-table tbody');
         // const $rowCardTable = $('#rowCardAppend');
         const gameDate = game.date;
         const day = moment(gameDate).format('dddd');
         const time = moment(gameDate).format('h:mm');
-        console.log(day);
+        // console.log(day);
         // gameDate = moment().format('dddd, h:mm');
         // console.log(gameDay);
         // console.log(gameDate, ' game date **********')
         let imageCardPath = './assets/images/';
-        console.log(game.id);
+        // console.log(game.id);
         imageCardPath = `${imageCardPath}${game.GameType.gameTypesName}.jpg`;
         $table.append(`<tr>
         <td><div class = "container containerimg"><div class="centered"><img src="${imageCardPath}" id="tablePic"><span>${game.GameType.gameTypesName}</span></div></td>
@@ -98,7 +103,7 @@ $(document).ready(() => {
         <td>${game.numOfPlayersSignedUp}</td>
         <td>${game.GameType.minPlayers}</td>
         <td><a class="btn waves-effect waves-light ${gameStatIconColor} id="iconColor""><i class="material-icons id="iconColor">${gameStatIcon}</i></a></td>
-        <td><button data-id="${game.id}"<a class="btn waves-effect waves-light red darken-4 delete-button"><i class="material-icons">delete</i></a></td>
+        <td><button data-id="${game.id}"<a class="btn waves-effect waves-light red darken-4 delete-button"><i class="material-icons" id="${game.id}">delete</i></a></td>
       </tr>`);
       });
     }).catch((err) => {
@@ -150,7 +155,7 @@ $(document).ready(() => {
 //   $('select').formSelect();
 // });
 
-$(document).ready(() => {
+
   $('.collapsible').collapsible();
   $('.dropdown-trigger').dropdown();
   $('select').formSelect();
@@ -162,16 +167,16 @@ $(document).ready(() => {
   //   initMap();
   //   mapDiv.removeClass('.hideMap');
   // });
-});
+
 
 $(document).on('click', '.join-class', (event) => {
   $.get('/api/user_data').then((data) => {
     $('.member-name').text(data.username);
     // console.log(data);
     const UserId = data.id;
-    console.log(UserId);
+    // console.log(UserId);
     const GameId = event.target.id;
-    console.log(GameId);
+    // console.log(GameId);
     $.post('/api/user_schedule/:id', {
       UserId,
       GameId,
@@ -187,11 +192,11 @@ $(document).on('click', '.join-class', (event) => {
 
 const searchAllGames = () => {
   axios.get('/api/games').then((games) => {
-    console.log(games);
-    console.log(games.data);
+    // console.log(games);
+    // console.log(games.data);
 
     games.data.forEach((game) => {
-      console.log(game);
+      // console.log(game);
 
       // eslint-disable-next-line no-use-before-define
       const checkGameStatus = checkMinRequiredPlayers(
@@ -208,7 +213,7 @@ const searchAllGames = () => {
         gameStatIcon = 'hourglass_empty';
         gameStatIconColor = 'yellow accent-4';
       }
-      console.log(checkGameStatus);
+      // console.log(checkGameStatus);
       const $table = $('#find-schedule-table');
       let imageCardPath = './assets/images/';
       const day = moment(gameDate).format('dddd');
