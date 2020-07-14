@@ -67,7 +67,7 @@
 body {
   background-image: url('../images/vball.jpg');
   color: white;
-  position: fixed; 
+  /* position: fixed;  */
   top: 0; 
   left: 0; 
 	

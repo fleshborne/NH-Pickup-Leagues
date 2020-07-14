@@ -17,7 +17,7 @@ $(document).ready(() => {
     // eslint-disable-next-line no-use-before-define
     callGameSchedule(userid);
   });
-  $(document).on('click', '.delete-button', function () {
+  $(document).on('click', '.delete-button', function (event) {
     $.get('/api/user_data').then((data) => {
       $('.member-name').text(data.username);
       // console.log(data);
@@ -48,7 +48,7 @@ $(document).ready(() => {
     });
   });
   const callGameSchedule = (userid) => {
-    console.log('callGameScheduleCalled');
+    console.log('callGameScheduleCalled')
     // const $table = $('#schedule-table tbody');
     // $table.empty();
     // console.log(userid, 'inside pass game schedule');
@@ -82,7 +82,7 @@ $(document).ready(() => {
         // const $rowCardTable = $('#rowCardAppend');
         const gameDate = game.date;
         const day = moment(gameDate).format('dddd');
-        const time = moment(gameDate).format('h:mm');
+        let time = moment(gameDate).format('h:mm');
         console.log(day);
         // gameDate = moment().format('dddd, h:mm');
         // console.log(gameDay);
@@ -154,7 +154,7 @@ $(document).ready(() => {
   $('.collapsible').collapsible();
   $('.dropdown-trigger').dropdown();
   $('select').formSelect();
-  $('.findGame').on('click', () => {
+  $('.findGame').one('click', () => {
     // eslint-disable-next-line no-use-before-define
     searchAllGames();
   });
