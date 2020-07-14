@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-shadow */
 /* eslint-disable no-useless-return */
 /* eslint-disable linebreak-style */
 /* eslint-disable prefer-template */
@@ -26,10 +27,10 @@ router.post('/login', passport.authenticate('local'), function (req, res) {
 // otherwise send back an error
 router.post('/signup', (req, res) => {
   db.User.create({
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password,
-  })
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+    })
     .then(function () {
       //res.json(req.body);
       //console.log('createduser' + res.body);
@@ -51,7 +52,7 @@ router.post('/signup', (req, res) => {
 //   res.redirect('/');
 // });
 
-// ****************LUBA ADD GAME***************************
+// **************** ADD GAME***************************
 router.get('/locations', (req, res) => {
   // Here we add an "include" property to our options in our findAll query
   // In this case, just db.Post
@@ -69,12 +70,12 @@ router.post('/games', (req, res) => {
   // ************add request
 
   db.Game.create({
-    date: req.body.date,
-    time: req.body.time,
-    LocationId: req.body.LocationId,
-    GameTypeId: req.body.GameTypeId,
-    user: req.body.user,
-  })
+      date: req.body.date,
+      time: req.body.time,
+      LocationId: req.body.LocationId,
+      GameTypeId: req.body.GameTypeId,
+      user: req.body.user,
+    })
     .then(function (Game) {
       Game.addUser(req.body.user).then(() => {
         res.json(Game);
@@ -108,18 +109,23 @@ router.get('/games/:id', (req, res) => {
   });
 });
 
-router.put('/games/:id', (req, res) => {
-  db.Game.update({
-    include: [{
-      model: db.Game,
-      include: [db.GameTypes, db.Location, db.User],
-    }],
+router.post('/user_schedule/:id', (req, res) => {
+  db.Game.findOne({
     where: {
-      id: req.params.id,
+      id: req.body.GameId,
+      // UserId: req.body.UserId,
     },
-  }).then((schedule) => res.json(schedule));
+  }).then((Game) => {
+    console.log(Game);
+    Game.addUser(
+      req.body.UserId,
+      res.json(Game),
+      console.log(req.body.UserId),
+    ).catch((err) => {
+      console.log(err);
+    });
+  });
 });
-
 router.get('/user_schedule', (req, res) => {
   // db.GameTypes.findAll().then((schedule) => res.json(schedule));
   // console.log(res);
@@ -135,6 +141,42 @@ router.get('/user_schedule', (req, res) => {
 });
 
 // *************************USER SCHEDULE &DATA AND SIGNEDUP PLAYERS *******************************
+
+router.get('/games/:date/:LocationId/:GameTypeId', (req, res) => {
+  // ************add request
+  // console.log(
+  //   // eslint-disable-next-line comma-dangle
+  //   'inside /games:' +
+  //     req.params.date +
+  //     req.params.LocationId +
+  //     req.params.GameTypeId +
+  //     'Req:' +
+  //     req
+  // );
+  db.Game.count({
+    where: {
+      date: req.params.date,
+      LocationId: req.params.LocationId,
+      GameTypeId: req.params.GameTypeId,
+    },
+  })
+    .then((getgame) => res.json(getgame))
+    .catch((err) => {
+      res.status(401).json(err);
+    });
+});
+
+router.get('/gametypes/:GameTypeId', async (req, res) => {
+  await db.GameTypes.findOne({
+    where: {
+      id: req.params.GameTypeId,
+    },
+  })
+    .then((getgametypes) => res.json(getgametypes))
+    .catch((err) => {
+      res.status(401).json(err);
+    });
+});
 
 // Route for getting some data about our user to be used client side
 router.get('/user_data', (req, res) => {
@@ -192,4 +234,5 @@ router.delete('/remove_game_user/:id', (req, res) => {
 //     });
 //   });
 // });
+// eslint-disable-next-line eol-last
 module.exports = router;
