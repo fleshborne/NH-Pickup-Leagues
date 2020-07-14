@@ -115,6 +115,7 @@ h1 {
   /* text-shado
   w: 1px 1px 2px orange; */
 }
+
 h2 {
   font-family: sketchcollege;
   margin: 0;
@@ -122,6 +123,7 @@ h2 {
   /* text-shado
   w: 1px 1px 2px orange; */
 }
+
 .sfsports {
   font-family: sfsports;
   margin: 0;
@@ -170,6 +172,7 @@ h2 {
   padding: 10px 0px 10px 0px;
   text-align: center;
   border-radius: 15px 15px 0px 0px;
+  position: relative;
 }
 
 .main {
@@ -192,11 +195,11 @@ form {
   left: 550px;
 }
 
-#dialogbox > div {
+#dialogbox>div {
   background: black;
 }
 
-#dialogbox > div > #headermessage {
+#dialogbox>div>#headermessage {
   background: black;
   padding: 10px;
   color: #ccc;
@@ -204,7 +207,7 @@ form {
   padding: 6px 1px 6px 1px;
 }
 
-#dialogbox > div > #bodymessage {
+#dialogbox>div>#bodymessage {
   background: black;
   font-size: 15px;
   padding: 25px;
@@ -243,6 +246,7 @@ form {
 .caroimg {
   border-radius: 20%;
 }
+
 .btnhoover:hover {
   -webkit-animation: anim ease-out 0.5s 1;
   animation: anim 1.5s 2;
@@ -253,7 +257,9 @@ form {
   position: relative;
   transform: scale(1.1);
 }
+
 .caroimg {
+
   color: white;
   position: fixed;
   top: 0;
@@ -272,5 +278,6 @@ form {
   position: relative;
   transform: scale(1.1);
 }
+
 /* * {cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo38.cur), auto !important;}  */
 /* End http://www.cursors-4u.com */

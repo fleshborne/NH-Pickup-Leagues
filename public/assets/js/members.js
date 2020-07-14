@@ -216,6 +216,7 @@ const searchAllGames = () => {
       // console.log(checkGameStatus);
       const $table = $('#find-schedule-table');
       let imageCardPath = './assets/images/';
+      const gameDate = game.date;
       const day = moment(gameDate).format('dddd');
       const time = moment(gameDate).format('h:mm');
       imageCardPath = `${imageCardPath}${game.GameType.gameTypesName}.jpg`;
@@ -223,7 +224,6 @@ const searchAllGames = () => {
       <td><div class = "container containerimg"><div class="centered"><img src="${imageCardPath}" id="tablePic"><span>${game.GameType.gameTypesName}</span></div></td>
       <td>${day}</td>
       <td>${time}</td>
-      <td>${game.updatedAt}</td>
       <td>${game.Location.title}</td>
       <td>${game.numOfPlayersSignedUp}</td>
       <td>${game.GameType.minPlayers}</td>
