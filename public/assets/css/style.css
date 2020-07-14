@@ -100,11 +100,9 @@ body {
   background-repeat: no-repeat;
   color: white;
   /* position: fixed;  */
-  top: 0; 
-  left: 0; 
-  position: fixed;
   top: 0;
   left: 0;
+
   /* Preserve aspet ratio */
   min-width: 100%;
   min-height: 100%;
@@ -120,7 +118,7 @@ h1 {
 h2 {
   font-family: sketchcollege;
   margin: 0;
-  font-size:4vw;
+  font-size: 4vw;
   /* text-shado
   w: 1px 1px 2px orange; */
 }
@@ -188,8 +186,9 @@ form {
   display: none;
   position: fixed;
   border-radius: 2px;
+  top: 400px;
   width: 500 px;
-  height: 500 px;
+  height: 600 px;
   left: 550px;
 }
 
@@ -239,7 +238,6 @@ form {
 
 .logoimg {
   height: 64px;
-  
 }
 
 .caroimg {
@@ -255,7 +253,6 @@ form {
   position: relative;
   transform: scale(1.1);
 }
-
 .caroimg {
   color: white;
   position: fixed;
