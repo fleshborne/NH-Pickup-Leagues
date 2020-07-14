@@ -17,7 +17,6 @@ $(document).ready(() => {
     // eslint-disable-next-line no-use-before-define
     callGameSchedule(userid);
   });
-  // eslint-disable-next-line func-names
   $(document).on('click', '.delete-button', function () {
     $.get('/api/user_data').then((data) => {
       $('.member-name').text(data.username);
@@ -221,7 +220,6 @@ const searchAllGames = () => {
       <td><div class = "container containerimg"><div class="centered"><img src="${imageCardPath}" id="tablePic"><span>${game.GameType.gameTypesName}</span></div></td>
       <td>${day}</td>
       <td>${time}</td>
-      <td>${game.updatedAt}</td>
       <td>${game.Location.title}</td>
       <td>${game.numOfPlayersSignedUp}</td>
       <td>${game.GameType.minPlayers}</td>
