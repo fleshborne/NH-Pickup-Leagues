@@ -52,7 +52,7 @@ router.post('/signup', (req, res) => {
 //   res.redirect('/');
 // });
 
-// ****************LUBA ADD GAME***************************
+// **************** ADD GAME***************************
 router.get('/locations', (req, res) => {
   // Here we add an "include" property to our options in our findAll query
   // In this case, just db.Post
@@ -141,6 +141,42 @@ router.get('/user_schedule', (req, res) => {
 });
 
 // *************************USER SCHEDULE &DATA AND SIGNEDUP PLAYERS *******************************
+
+router.get('/games/:date/:LocationId/:GameTypeId', (req, res) => {
+  // ************add request
+  // console.log(
+  //   // eslint-disable-next-line comma-dangle
+  //   'inside /games:' +
+  //     req.params.date +
+  //     req.params.LocationId +
+  //     req.params.GameTypeId +
+  //     'Req:' +
+  //     req
+  // );
+  db.Game.count({
+    where: {
+      date: req.params.date,
+      LocationId: req.params.LocationId,
+      GameTypeId: req.params.GameTypeId,
+    },
+  })
+    .then((getgame) => res.json(getgame))
+    .catch((err) => {
+      res.status(401).json(err);
+    });
+});
+
+router.get('/gametypes/:GameTypeId', async (req, res) => {
+  await db.GameTypes.findOne({
+    where: {
+      id: req.params.GameTypeId,
+    },
+  })
+    .then((getgametypes) => res.json(getgametypes))
+    .catch((err) => {
+      res.status(401).json(err);
+    });
+});
 
 // Route for getting some data about our user to be used client side
 router.get('/user_data', (req, res) => {
