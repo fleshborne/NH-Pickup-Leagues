@@ -80,9 +80,7 @@ body {
   /* position: fixed;  */
   top: 0;
   left: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
+
   /* Preserve aspet ratio */
   min-width: 100%;
   min-height: 100%;
@@ -169,8 +167,9 @@ form {
   display: none;
   position: fixed;
   border-radius: 2px;
+  top: 400px;
   width: 500 px;
-  height: 500 px;
+  height: 600 px;
   left: 550px;
 }
 
@@ -220,14 +219,13 @@ form {
 
 .logoimg {
   height: 64px;
-
 }
 
-<<<<<<< HEAD .caroimg {
+.caroimg {
   border-radius: 20%;
 }
 
-<<<<<<< HEAD=======.btnhoover:hover {
+.btnhoover:hover {
   -webkit-animation: anim ease-out 0.5s 1;
   animation: anim 1.5s 2;
   transform: translateZ(100px);
@@ -238,7 +236,8 @@ form {
   transform: scale(1.1);
 }
 
->>>>>>>3d3610b925f2faae2f251ba401166057260b5116=======>>>>>>>732f6f5ef41d626dede98f03d0647b5a803a187f .caroimg {
+.caroimg {
+
   color: white;
   position: fixed;
   top: 0;
