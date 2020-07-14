@@ -157,8 +157,9 @@ form {
   display: none;
   position: fixed;
   border-radius: 2px;
+  top: 400px;
   width: 500 px;
-  height: 500 px;
+  height: 600 px;
   left: 550px;
 }
 
