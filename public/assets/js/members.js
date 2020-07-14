@@ -32,9 +32,9 @@ $(document).ready(() => {
       console.log(UserId);
       // const id = $(this).data('id');
       axios.put('/api/remove_game_user/:id', {
-          UserId,
-          GameId
-        })
+        UserId,
+        GameId
+      })
         .then((response) => {
           console.log(response);
           console.log('calling call game scehdule after delete');
@@ -196,8 +196,8 @@ $(document).on('click', '.join-class', (event) => {
 
 const searchAllGames = () => {
   axios.get('/api/games').then((games) => {
-    // console.log(games);
-    // console.log(games.data);
+    console.log(games);
+    console.log(games.data);
 
     // const weekDay = dateFns.format(new Date('7/14/2020'), 'Do dddd');
     // console.log(weekDay);
