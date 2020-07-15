@@ -69,7 +69,6 @@ $(document).ready(() => {
 
 
       schedule.data.Games.forEach((game) => {
-        // console.log(game);
         // eslint-disable-next-line no-use-before-define
         const checkGameStatus = checkMinRequiredPlayers(
           game.GameType.minPlayers,
@@ -89,8 +88,10 @@ $(document).ready(() => {
         // const $table = $('#schedule-table tbody');
         // const $rowCardTable = $('#rowCardAppend');
         const gameDate = game.date;
-        const day = moment(gameDate).format('dddd');
-        const time = moment(gameDate).format('h:mm');
+        const day = dateFns.format(gameDate, 'dddd');
+        // console.log(day);
+        const time = dateFns.format(gameDate, 'h:mm a');
+        // console.log(time);
         // console.log(day);
         // gameDate = moment().format('dddd, h:mm');
         // console.log(gameDay);
@@ -103,7 +104,6 @@ $(document).ready(() => {
         <td>${day}</td>
         <td>${time}</td>
         <td>${game.Location.title}</td>
-        <td>${game.numOfPlayersSignedUp}</td>
         <td>${game.GameType.minPlayers}</td>
         <td><a class="btn waves-effect waves-light ${gameStatIconColor} id="iconColor""><i class="material-icons id="iconColor">${gameStatIcon}</i></a></td>
         <td><button data-id="${game.id}"<a class="btn waves-effect waves-light red darken-4 delete-button"><i class="material-icons" id="${game.id}">delete</i></a></td>
@@ -199,6 +199,8 @@ const searchAllGames = () => {
     console.log(games);
     console.log(games.data);
 
+    // const weekDay = dateFns.format(new Date('7/14/2020'), 'Do dddd');
+    // console.log(weekDay);
     games.data.forEach((game) => {
       // console.log(game);
 
@@ -221,15 +223,16 @@ const searchAllGames = () => {
       const $table = $('#find-schedule-table');
       let imageCardPath = './assets/images/';
       const gameDate = game.date;
-      const day = moment(gameDate).format('dddd');
-      const time = moment(gameDate).format('h:mm');
+      const day = dateFns.format(gameDate, 'dddd');
+      // console.log(day);
+      const time = dateFns.format(gameDate, 'h:mm a');
+      // console.log(time);
       imageCardPath = `${imageCardPath}${game.GameType.gameTypesName}.jpg`;
       $table.append(`<tr>
       <td><div class = "container containerimg"><div class="centered"><img src="${imageCardPath}" id="tablePic"><span>${game.GameType.gameTypesName}</span></div></td>
       <td>${day}</td>
       <td>${time}</td>
       <td>${game.Location.title}</td>
-      <td>${game.numOfPlayersSignedUp}</td>
       <td>${game.GameType.minPlayers}</td>
       <td><a class="btn waves-effect waves-light ${gameStatIconColor} id="iconColor""><i class="material-icons id="iconColor">${gameStatIcon}</i></a></td>
       <td><a class="btn waves-effect waves-light green join-class" id="${game.id}"><i class="material-icons" id="${game.id}">add</i></a></td>

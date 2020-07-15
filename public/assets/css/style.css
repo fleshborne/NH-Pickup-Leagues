@@ -11,15 +11,19 @@
     width: 300px;
     height: 150px;
   }
+
   #dashboard {
     width: 100%;
   }
+
   #avatar-group {
     text-align: center;
   }
+
   #avatar {
     width: 100px;
   }
+
   h1 {
     font-size: 40px !important;
   }
@@ -29,7 +33,7 @@
   .h5 {
     font-size: 200px;
   }
-  
+
 }
 
 * {
@@ -284,5 +288,10 @@ form {
 .logimgheader{
   size: 20px;
 }
+
+.select-dropdown {
+  color: white;
+}
+
 /* * {cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo38.cur), auto !important;}  */
 /* End http://www.cursors-4u.com */
