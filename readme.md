@@ -1,30 +1,35 @@
 # Portsmouth NH Pickup
+![${type}](https://img.shields.io/badge/Javascript-58%-green)![${type}](https://img.shields.io/badge/HTML-27%-blue)![${type}](https://img.shields.io/badge/CSS-6%-orange)![${type}](https://img.shields.io/badge/licence-MIT-red)
 
 A way to find pickup games in Portsmouth NH!
 
-# ![${type}](https://img.shields.io/badge/Javascript-50%-green) ![${type}](https://img.shields.io/badge/HTML-25%-blue)![${type}](https://img.shields.io/badge/CSS-25%-orange)![${type}](https://img.shields.io/badge/licence-MIT-red)
+# Table Of Contents:
 
-# Heroku Url:
+- [Heroku](#Heroku)
+- [Description](#Description)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Technologies](#Technologies)
+- [Contributors](#Contributors)
+
+
+# Heroku:
 
 https://thawing-dusk-46621.herokuapp.com/
 
-# Table Of Contents:
-
-- Project Description
-- Application
-- How It Works
-- Technologies
-- Host
-- Installation
-- Contributors
-
-# Project Description:
+# Description:
 
 Have you ever wanted to play pick up games in Portsmouth nh. Or may be you just moved in and are looking ways to be social .Portsmouth NH Pickup Application give you a way to play pickup games in portsmouth nh.
 
-# Application:
+# Installation:
 
-# How It Works:
+The repository is set up , you will need to run npm init -y and npm install in order to install NPM packages .
+
+Once the packages are installed you can start the server by typing node server file or by using nodemon.
+
+The application can be run either on local port by accessing http://localhost:8000 which is connected to your local MySql database or by running the app deployed in Heroku that is connected to the JawsDB Database.
+
+# Usage:
 
 1. The application directs you to a sign up or login icon. Existing users can login in and new users should sign up for the first time .
 2. Once you are signed in you will be shown the steps to sign up a game of your choice.
@@ -32,7 +37,7 @@ Have you ever wanted to play pick up games in Portsmouth nh. Or may be you just 
 4. Next you will be able to see the added came under "Find Game" or you could just have a look at the game that were created by other users and click on join and this way you can add yourself to an existing game.
 5. You will be able to view your schedule in "Game Schedule". Anytime you can cancel the game by clicking the delete icon and that removes you from the game.
 
-# Technologies:
+# Technologies-
 
 ## Front-End Technologies:
 
@@ -43,7 +48,7 @@ Have you ever wanted to play pick up games in Portsmouth nh. Or may be you just 
 - CSS : For styling the HTML pages.
 - Javascript: This application conforms to the ECMA script specification.
 
-- Date-Fns: Provides the most comphrehensive yet simple and consistent toolset for manipulating Javascript Dates in a browser and Node.js
+- Date-Fns: Provides the most comprehensive yet simple and consistent toolset for manipulating Javascript Dates in a browser and Node.js
 
 ## Back-End Technologies:
 
@@ -59,17 +64,6 @@ Have you ever wanted to play pick up games in Portsmouth nh. Or may be you just 
 - ESLint:A static code analysis tool for identifying problematic patterns found in Javacript code.
 - Nodemon:nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.
 
-# Host:
-
-- Deployed in Heroku
-
-# Installation:
-
-The repository is set up , you will need to run npm init -y and npm install in order to install NPM packages .
-
-Once the packages are installed you can start the server by typing node server file or by using nodemon.
-
-The application can be run either on local port by accessing http://localhost:8000 which is connected to your local MySql database or by running the app deployed in Heroku that is connected to the JawsDB Database.
 
 # Contributors:
 
