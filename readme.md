@@ -17,7 +17,7 @@ A way to find pickup games in Portsmouth NH!
 
 ![](./public/assets/images/PortsmouthPickup.gif)
 
-# Table Of Contents:
+# Heroku:
 
 https://thawing-dusk-46621.herokuapp.com/
 
