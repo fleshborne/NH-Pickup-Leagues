@@ -5,7 +5,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable comma-dangle */
 /* eslint-disable linebreak-style */
-
+/* eslint-disable eol-last */
 // const moment = require('moment');
 /* eslint-disable linebreak-style */
 // const moment = require('moment');
