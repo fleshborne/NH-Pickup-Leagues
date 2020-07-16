@@ -1,5 +1,6 @@
 # Portsmouth NH Pickup
-![${type}](https://img.shields.io/badge/Javascript-58%-green)![${type}](https://img.shields.io/badge/HTML-27%-blue)![${type}](https://img.shields.io/badge/CSS-6%-orange)![${type}](https://img.shields.io/badge/licence-MIT-red)
+
+![${type}](https://img.shields.io/badge/Javascript-58%-green) ![${type}](https://img.shields.io/badge/HTML-27%-blue) ![${type}](https://img.shields.io/badge/CSS-6%-orange) ![${type}](https://img.shields.io/badge/licence-MIT-red)
 
 A way to find pickup games in Portsmouth NH!
 
@@ -11,7 +12,6 @@ A way to find pickup games in Portsmouth NH!
 - [Usage](#Usage)
 - [Technologies](#Technologies)
 - [Contributors](#Contributors)
-
 
 ## GIF shot Portsmouth Pickup!
 
