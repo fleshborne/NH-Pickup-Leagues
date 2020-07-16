@@ -180,7 +180,7 @@ $(document).ready(() => {
 
       // Check if the max number of players have reached to add game
       console.log('1+', numofplayerssigned, '2+ ', maxnumofplayers);
-      if (numofplayerssigned < maxnumofplayers) {
+      if (numofplayerssigned === 0) {
         addGame(
           gameData.date,
           gameData.numOfPlayersSignedUp,
