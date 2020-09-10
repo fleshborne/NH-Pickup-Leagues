@@ -27,12 +27,12 @@ $(document).ready(() => {
       `inside POST - date:${date} numOfPlayers ${numOfPlayersSignedUp} Location ${LocationId} Type: ${GameTypeId}`
     );
     $.post('/api/games', {
-        date,
-        numOfPlayersSignedUp,
-        LocationId,
-        GameTypeId,
-        user,
-      })
+      date,
+      numOfPlayersSignedUp,
+      LocationId,
+      GameTypeId,
+      user,
+    })
       .then((res) => {
         console.log(res);
         window.location.replace('/members');
